@@ -232,7 +232,7 @@
 <!-- NAV -->
 <nav>
   <div class="nav-logo">Chris Lynch</div>
-  <a href="#hero-form" class="nav-cta" id="nav-cta-btn">Get the Free Explanation Tonight →</a>
+  <a href="javascript:void(0)" class="nav-cta" id="nav-cta-btn">Get the Free Explanation Tonight →</a>
 </nav>
 
 <!-- ══ HERO — FORM ABOVE FOLD · HORMOZI-COMPLIANT ══ -->
@@ -666,10 +666,19 @@
     if(!btn) return;
     btn.addEventListener('click', function(e){
       e.preventDefault();
-      var mid = document.body.scrollHeight / 2;
-      var target = window.scrollY < mid ? '#hero-form' : '#bottom-form';
-      var el = document.querySelector(target);
-      if(el) el.scrollIntoView({behavior:'smooth', block:'start'});
+      var heroForm = document.getElementById('hero-form');
+      var bottomForm = document.getElementById('bottom-form');
+      if(!heroForm || !bottomForm) {
+        if(heroForm) heroForm.scrollIntoView({behavior:'smooth', block:'start'});
+        return;
+      }
+      var scrollMid = window.scrollY + (window.innerHeight / 2);
+      var heroTop = heroForm.getBoundingClientRect().top + window.scrollY;
+      var bottomTop = bottomForm.getBoundingClientRect().top + window.scrollY;
+      var distHero = Math.abs(scrollMid - heroTop);
+      var distBottom = Math.abs(scrollMid - bottomTop);
+      var target = distHero <= distBottom ? heroForm : bottomForm;
+      target.scrollIntoView({behavior:'smooth', block:'start'});
     });
   })();
 </script>
