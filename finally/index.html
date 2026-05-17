@@ -232,7 +232,7 @@
 <!-- NAV -->
 <nav>
   <div class="nav-logo">Chris Lynch</div>
-  <a href="#hero-form" class="nav-cta">Get the Free Guide</a>
+  <a href="#hero-form" class="nav-cta" id="nav-cta-btn">Get the Free Explanation Tonight →</a>
 </nav>
 
 <!-- ══ HERO — FORM ABOVE FOLD · HORMOZI-COMPLIANT ══ -->
@@ -658,6 +658,21 @@
   </div>
   <p class="footer-copy">© 2026 Chris Lynch. All rights reserved.</p>
 </footer>
+
+<!-- Context-aware nav CTA — scrolls to nearest form -->
+<script>
+  (function(){
+    var btn = document.getElementById('nav-cta-btn');
+    if(!btn) return;
+    btn.addEventListener('click', function(e){
+      e.preventDefault();
+      var mid = document.body.scrollHeight / 2;
+      var target = window.scrollY < mid ? '#hero-form' : '#bottom-form';
+      var el = document.querySelector(target);
+      if(el) el.scrollIntoView({behavior:'smooth', block:'start'});
+    });
+  })();
+</script>
 
 <!-- MailerLite Universal -->
 <script>
