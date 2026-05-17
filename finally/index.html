@@ -30,7 +30,7 @@
   .topbar span{color:var(--amber);}
 
   /* ── NAV ── */
-  nav{background:var(--teal);padding:12px 32px;display:flex;align-items:center;justify-content:space-between;box-shadow:0 2px 16px rgba(26,53,53,0.22);}
+  nav{background:var(--teal);padding:12px 32px;display:flex;align-items:center;justify-content:space-between;box-shadow:0 2px 16px rgba(26,53,53,0.22);position:sticky;top:0;z-index:100;}
   .nav-logo{font-family:var(--serif);font-size:16px;color:var(--ivory);font-weight:400;}
   .nav-logo span{font-family:var(--mono);font-size:9px;color:var(--teal-light);display:block;letter-spacing:2px;}
   .nav-cta{background:var(--amber);color:var(--ivory);font-family:var(--sans);font-size:12px;font-weight:700;padding:8px 18px;border-radius:6px;text-decoration:none;border:none;cursor:pointer;animation:pulse 2.5s ease infinite;}
@@ -178,9 +178,9 @@
   .about-chris::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 90% 50%,rgba(26,53,53,0.45) 0%,transparent 60%);}
   .about-inner{max-width:720px;margin:0 auto;position:relative;z-index:1;display:grid;grid-template-columns:190px 1fr;gap:40px;align-items:start;}
   .about-photo-col{display:flex;flex-direction:column;align-items:center;gap:10px;}
-  .about-photo-placeholder{width:100%;max-width:190px;aspect-ratio:3/4;border-radius:12px;background:rgba(250,246,239,0.08);border:2px dashed rgba(250,246,239,0.22);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;}
+  .about-photo-placeholder{width:100%;max-width:190px;aspect-ratio:3/4;border-radius:12px;background:linear-gradient(160deg,#1A3535 0%,#2D7A7A 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;}
   .about-photo-placeholder svg{width:36px;height:36px;}
-  .about-photo-placeholder span{font-size:10px;color:rgba(250,246,239,0.38);font-family:var(--mono);text-align:center;letter-spacing:1px;}
+  .about-photo-placeholder span{font-size:28px;color:rgba(250,246,239,0.25);font-family:'Playfair Display',serif;font-weight:700;letter-spacing:2px;}
   .photo-note{font-family:var(--mono);font-size:9px;color:rgba(250,246,239,0.35);text-align:center;letter-spacing:1px;}
   .about-eye{font-family:var(--mono);font-size:10px;letter-spacing:3px;color:var(--teal-light);margin-bottom:16px;text-transform:uppercase;}
   .about-h{font-family:var(--serif);font-size:clamp(19px,3.2vw,28px);color:var(--ivory);font-weight:400;line-height:1.3;margin-bottom:16px;}
@@ -444,7 +444,7 @@
     <div><span class="r-tag">Inflammation</span>
       <h3 class="r-title">Your fat tissue remembers every diet you've ever tried — and something has been quietly driving that pattern the whole time</h3>
       <p class="r-body">The more you've tried, the more resistant fat loss may have become. Fat tissue is living, reactive — and its immune cells adapt over time.</p>
-      <p class="r-body">If you've cycled through restriction and regain, your fat tissue may have quietly remodelled itself. Not to punish you. To protect you.</p>
+      <p class="r-body">If you've cycled through eating less and gaining it back, your fat tissue may have quietly remodelled itself. Not to punish you. To protect you.</p>
       <p class="r-body">But something has been driving that inflammatory environment the entire time. Something you keep returning to — possibly something you consider healthy — that your immune system has been quietly treating as a threat.</p>
       <div class="r-truth">"The women who have tried the hardest often find fat loss the most resistant — because there is something in the picture that every plan has overlooked."</div>
     </div>
@@ -473,9 +473,9 @@
     <div><span class="r-tag">Estrogen Decline</span>
       <h3 class="r-title">After 35, your body starts storing fat differently — and something you may be eating daily could be making that shift far harder than it needs to be</h3>
       <p class="r-body">As estrogen declines from the mid-30s, fat storage shifts from hips and thighs toward the abdomen. Abdominal fat is genuinely more resistant to diet-driven fat loss — it simply behaves differently.</p>
-      <p class="r-body">The same approach that worked at 32 is now working inside a completely different hormonal environment. And while estrogen decline cannot be stopped by food, the inflammatory environment that worsens its impact can partly be addressed.</p>
+      <p class="r-body">The same approach that worked at 32 is now working inside a completely different hormonal environment. As estrogen declines, the gut lining can weaken — allowing more immune triggers through. The immune system stays activated. And when the immune system stays on, it disrupts how insulin and cortisol signal, making fat release biologically difficult regardless of how little you eat.</p>
       <p class="r-body">Something you eat regularly — possibly something you consider healthy — may be quietly working against your body's ability to navigate this transition.</p>
-      <div class="r-truth">"Estrogen decline changes where the body stores fat and how well it responds to restriction — and what she eats daily can either ease or significantly worsen that impact."</div>
+      <div class="r-truth">"Estrogen decline changes where your body stores fat — and makes it progressively harder to release that fat, even when you are eating less."</div>
     </div>
   </div>
 </section>
@@ -489,7 +489,7 @@
       <p class="r-body">Every time you reduced calories, your body became more efficient. Less at rest. Less in everyday movement.</p>
       <p class="r-body">The result is the pattern every chronic dieter recognises: restrict, lose a little, stall. Restrict more, lose less, stall sooner. The same deficit that worked at 32 produces almost nothing at 42 — not weakness, but adaptation.</p>
       <p class="r-body">Your body learned to hold on. And it will keep holding on against every version of the same approach. The answer is not more restriction. It is removing something specific it has been quietly fighting the entire time.</p>
-      <div class="r-truth">"Your body adapted to hold on through restriction. What changes it is not more restriction — it is removing something it has been quietly fighting the entire time."</div>
+      <div class="r-truth">"Your body adapted to hold on every time you ate less. What changes it is not eating even less — it is removing the specific food your body has been quietly reacting to."</div>
     </div>
   </div>
 </section>
@@ -596,15 +596,15 @@
     <div style="text-align:left;display:inline-block;max-width:460px;">
       <div style="display:flex;gap:12px;align-items:flex-start;padding:10px 0;border-bottom:1px solid var(--sand);">
         <div style="width:6px;height:6px;border-radius:50%;background:var(--amber);flex-shrink:0;margin-top:7px;"></div>
-        <p style="font-size:15px;color:var(--body);line-height:1.6;">Why the foods most often recommended for women's health may be the exact ones working against yours</p>
+        <p style="font-size:15px;color:var(--body);line-height:1.6;">The hidden biological reason your symptoms have never fully responded to anything you have tried — one that no diet plan, no GP appointment and no amount of effort has ever addressed</p>
       </div>
       <div style="display:flex;gap:12px;align-items:flex-start;padding:10px 0;border-bottom:1px solid var(--sand);">
         <div style="width:6px;height:6px;border-radius:50%;background:var(--amber);flex-shrink:0;margin-top:7px;"></div>
-        <p style="font-size:15px;color:var(--body);line-height:1.6;">Why the harder and longer you have tried, the more your body may have learned to resist — and what breaks that pattern</p>
+        <p style="font-size:15px;color:var(--body);line-height:1.6;">Why every attempt to fix this made your body more resistant to losing fat — and the one thing that actually breaks the cycle</p>
       </div>
       <div style="display:flex;gap:12px;align-items:flex-start;padding:10px 0;">
         <div style="width:6px;height:6px;border-radius:50%;background:var(--amber);flex-shrink:0;margin-top:7px;"></div>
-        <p style="font-size:15px;color:var(--body);line-height:1.6;">The one question that — once answered for your specific body — changes everything about what you do next</p>
+        <p style="font-size:15px;color:var(--body);line-height:1.6;">The one 48-hour experiment — inside the guide on the last page — that costs nothing, requires no meal plan, and gives your body a chance to show you something it has been trying to show you for years</p>
       </div>
     </div>
   </div>
@@ -650,7 +650,7 @@
 <!-- FOOTER -->
 <footer>
   <div class="footer-logo">Chris Lynch</div>
-  <div class="footer-tag">HEALTH COACH · THE 21-DAY RESET · CHRISLYNCHRESET.COM/FINALLY</div>
+  <div class="footer-tag">HEALTH COACH · CHRISLYNCHRESET.COM</div>
   <div class="footer-links">
     <a href="#">Instagram @chrislynch.reset</a>
     <a href="#">Privacy Policy</a>
