@@ -67,11 +67,11 @@
 
   /* FORM CARD */
   .form-card{background:#fff;border-radius:14px;padding:28px 24px;box-shadow:0 8px 40px rgba(45,122,122,0.13);border:1.5px solid rgba(45,122,122,0.1);}
-  .form-card-mockup.png{width:100%;max-width:200px;margin:0 auto 18px;display:block;}
-  .form-card-mockup.png img{width:100%;height:auto;display:block;border-radius:8px;box-shadow:6px 8px 20px rgba(26,53,53,0.22);}
-  /* CSS mockup.png fallback — remove once real PNG added */
-  .form-card-mockup.png-fallback{background:linear-gradient(160deg,var(--teal) 0%,var(--dark) 100%);border-radius:10px;padding:20px 16px;box-shadow:6px 8px 20px rgba(26,53,53,0.25);transform:rotate(-1deg);position:relative;width:160px;margin:0 auto 20px;}
-  .form-card-mockup.png-fallback:hover{transform:rotate(0deg) scale(1.02);transition:transform 0.3s;}
+  .form-card-mockup{width:100%;max-width:200px;margin:0 auto 18px;display:block;}
+  .form-card-mockup img{width:100%;height:auto;display:block;border-radius:8px;box-shadow:6px 8px 20px rgba(26,53,53,0.22);}
+  /* CSS mockup fallback — remove once real PNG added */
+  .form-card-mockup-fallback{background:linear-gradient(160deg,var(--teal) 0%,var(--dark) 100%);border-radius:10px;padding:20px 16px;box-shadow:6px 8px 20px rgba(26,53,53,0.25);transform:rotate(-1deg);position:relative;width:160px;margin:0 auto 20px;}
+  .form-card-mockup-fallback:hover{transform:rotate(0deg) scale(1.02);transition:transform 0.3s;}
   .guide-badge{position:absolute;top:-8px;right:-8px;background:var(--amber);color:var(--ivory);font-family:var(--mono);font-size:8px;font-weight:700;padding:3px 8px;border-radius:10px;transform:rotate(8deg);box-shadow:0 2px 6px rgba(212,135,74,0.4);}
   .guide-num{font-family:var(--serif);font-size:44px;color:var(--amber);font-weight:700;line-height:1;margin-bottom:4px;}
   .guide-title{font-family:var(--serif);font-size:11px;color:var(--ivory);line-height:1.35;font-weight:600;margin-bottom:8px;}
@@ -159,12 +159,12 @@
   .r-truth{background:rgba(45,122,122,0.08);border-left:3px solid var(--teal);border-radius:0 7px 7px 0;padding:10px 14px;font-size:13px;color:var(--teal);font-style:italic;font-family:var(--serif);line-height:1.5;}
   .reason-sec.hl .r-truth{background:rgba(26,53,53,0.1);color:var(--dark);}
 
-  /* ── HOW IT WORKS — WITH mockup.png ── */
+  /* ── HOW IT WORKS — WITH MOCKUP ── */
   .how-works{background:var(--sand);padding:72px 24px;}
   .how-works-inner{max-width:700px;margin:0 auto;text-align:center;}
   .how-grid{display:grid;grid-template-columns:180px 1fr;gap:48px;align-items:start;text-align:left;margin-top:36px;}
-  .mockup.png-col{display:flex;flex-direction:column;align-items:center;gap:12px;}
-  .mockup.png-note{font-family:var(--mono);font-size:10px;color:var(--slate);text-align:center;letter-spacing:0.5px;}
+  .mockup-col{display:flex;flex-direction:column;align-items:center;gap:12px;}
+  .mockup-note{font-family:var(--mono);font-size:10px;color:var(--slate);text-align:center;letter-spacing:0.5px;}
   .steps-col{display:flex;flex-direction:column;gap:20px;}
   .step-item{background:#fff;border-radius:12px;padding:18px 20px;border:1.5px solid rgba(45,122,122,0.1);}
   .step-row{display:flex;gap:14px;align-items:flex-start;}
@@ -215,8 +215,8 @@
     h1{font-size:clamp(24px,6.5vw,32px);}
     .reason-inner{grid-template-columns:1fr;gap:10px;}
     .how-grid{grid-template-columns:1fr;gap:28px;}
-    .mockup.png-col{flex-direction:row;align-items:flex-start;}
-    .form-card-mockup.png-fallback{max-width:130px;}
+    .mockup-col{flex-direction:row;align-items:flex-start;}
+    .form-card-mockup-fallback{max-width:130px;}
     .about-inner{grid-template-columns:1fr;gap:20px;}
     .about-photo-col{flex-direction:row;}
     .about-photo-placeholder{max-width:110px;}
@@ -274,11 +274,11 @@
 
     </div>
 
-    <!-- RIGHT: Form card — mockup.png + form in one visual unit -->
+    <!-- RIGHT: Form card — mockup + form in one visual unit -->
     <div class="hero-right fu d2">
       <div class="form-card" id="hero-form">
 
-        <div class="form-card-mockup.png"><img src="YOUR-3D-mockup.png.png" alt="Finally — The Explanation Your Body Has Been Waiting For" /></div>
+        <div class="form-card-mockup"><img src="mockup.png" alt="Finally — The Explanation Your Body Has Been Waiting For" /></div>
 
         <p class="form-card-headline">Get the free guide — understand your body tonight</p>
 
@@ -504,7 +504,7 @@
 
 <div class="teal-line"></div>
 
-<!-- HOW IT WORKS — mockup.png LIVES HERE -->
+<!-- HOW IT WORKS — MOCKUP LIVES HERE -->
 <section class="how-works">
   <div class="how-works-inner">
     <p class="sec-eye">How the guide works</p>
@@ -512,10 +512,10 @@
     <p class="sec-sub" style="margin-bottom:0;">Just the honest explanation you have deserved for years — and the starting point for everything that actually changes.</p>
 
     <div class="how-grid">
-      <!-- mockup.png IMAGE COLUMN -->
-      <div class="mockup.png-col">
-        <img src="YOUR-3D-mockup.png.png" alt="Why Your Body Resists Weight Loss After 35" style="width:100%;max-width:180px;border-radius:8px;box-shadow:6px 8px 20px rgba(26,53,53,0.22);transform:rotate(-1deg);" />
-        <div class="mockup.png-note"></div>
+      <!-- MOCKUP IMAGE COLUMN -->
+      <div class="mockup-col">
+        <img src="mockup.png" alt="Why Your Body Resists Weight Loss After 35" style="width:100%;max-width:180px;border-radius:8px;box-shadow:6px 8px 20px rgba(26,53,53,0.22);transform:rotate(-1deg);" />
+        <div class="mockup-note"></div>
       </div>
 
       <!-- 3 STEPS COLUMN -->
