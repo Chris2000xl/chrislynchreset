@@ -207,19 +207,40 @@
   .teal-line{height:4px;background:linear-gradient(90deg,var(--amber),var(--teal-mid),var(--teal));}
 
   @media(max-width:600px){
-    .hero-inner{grid-template-columns:1fr;gap:28px;}
+    /* HERO — stack layout, mockup above form */
+    .hero-inner{grid-template-columns:1fr;gap:16px;}
     .hero-left{text-align:center;}
     .headshot-block{justify-content:center;}
     .headshot-info{text-align:center;}
     .cred-pills{justify-content:center;}
     h1{font-size:clamp(24px,6.5vw,32px);}
+
+    /* FORM CARD — mockup moves directly under headline, no gap */
+    .form-card{padding:20px 16px;}
+    .form-card-mockup{max-width:260px;margin:0 auto 12px;}
+
+    /* PROOF STRIP — align all items left */
+    .proof-inner{justify-content:flex-start;gap:8px;padding:0 4px;}
+    .proof-text{font-size:12px;}
+    .proof-div{display:none;}
+
+    /* REASONS — break up paragraphs with more breathing room */
     .reason-inner{grid-template-columns:1fr;gap:10px;}
+    .r-body{font-size:14px;line-height:1.8;margin-bottom:16px;}
+    .r-body + .r-body{margin-top:4px;}
+    .reason-sec{padding:36px 20px;}
+
+    /* HOW IT WORKS — mockup full width and large */
     .how-grid{grid-template-columns:1fr;gap:28px;}
-    .mockup-col{flex-direction:row;align-items:flex-start;}
-    .form-card-mockup-fallback{max-width:130px;}
+    .mockup-col{flex-direction:column;align-items:center;}
+    .mockup-col img{max-width:300px !important;width:90% !important;}
+
+    /* ABOUT */
     .about-inner{grid-template-columns:1fr;gap:20px;}
     .about-photo-col{flex-direction:row;}
     .about-photo-placeholder{max-width:110px;}
+
+    /* BOTTOM CTA */
     .optin-card{padding:28px 18px;}
   }
 </style>
@@ -450,8 +471,10 @@
     <div><span class="r-tag">Cortisol</span>
       <h3 class="r-title">Stress doesn't lock fat in — but it consistently steers you toward the exact foods that may be working hardest against you</h3>
       <p class="r-body">Cortisol does not lock fat in place. But it does something more insidious — it quietly dismantles your ability to choose.</p>
-      <p class="r-body">Here is what your GP rarely mentions: restriction itself is a physical stressor. Fasting and extended periods without food are strongly associated with elevated cortisol. And elevated cortisol instructs your body to store fat — particularly around the abdomen. You are fighting your own stress response every time you try to cut calories harder.</p>
-      <p class="r-body">Under cortisol elevation, certain foods stop feeling like choices and start feeling like needs — urgent, impossible to ignore. Your body steers toward energy-dense, high-carb, intensely satisfying foods in a way that feels biological, because it is. And for many women, those are the same foods your body has been quietly reacting to all along — creating the very inflammatory environment that makes everything else harder.</p>
+      <p class="r-body">Here is what your GP rarely mentions: restriction itself is a physical stressor. Fasting and extended periods without food are strongly associated with elevated cortisol.</p>
+      <p class="r-body">Elevated cortisol instructs your body to store fat — particularly around the abdomen. You are fighting your own stress response every time you try to cut calories harder.</p>
+      <p class="r-body">Under cortisol elevation, certain foods stop feeling like choices and start feeling like needs. Your body steers toward energy-dense, high-carb foods in a way that feels biological, because it is.</p>
+      <p class="r-body">For many women, those are the same foods your body has been quietly reacting to all along — creating the very inflammatory environment that makes everything else harder.</p>
       <p class="r-body">The fast itself is not the problem. What the cortisol spike reliably leads you back to is.</p>
       <div class="r-truth">"Fasting is strongly associated with cortisol elevation that drives food behaviours — and the foods those cravings point toward are often the exact ones working against the body's ability to let go."</div>
     </div>
@@ -465,7 +488,8 @@
     <div><span class="r-tag">Estrogen Decline</span>
       <h3 class="r-title">After 35, your body starts storing fat differently — and something you may be eating daily could be making that shift far harder than it needs to be</h3>
       <p class="r-body">As estrogen declines from the mid-30s, fat storage shifts from hips and thighs toward the abdomen. Abdominal fat is genuinely more resistant to diet-driven fat loss — it simply behaves differently.</p>
-      <p class="r-body">The same approach that worked at 32 is now working inside a completely different hormonal environment. As estrogen declines, the gut lining can weaken — allowing more immune triggers through. The immune system stays activated. And when the immune system stays on, it disrupts how insulin and cortisol signal, making fat release biologically difficult regardless of how little you eat.</p>
+      <p class="r-body">The same approach that worked at 32 is now working inside a completely different hormonal environment.</p>
+      <p class="r-body">As estrogen declines, the gut lining can weaken — allowing more immune triggers through. The immune system stays activated. And when it stays on, it disrupts how insulin and cortisol signal, making fat release biologically difficult regardless of how little you eat.</p>
       <p class="r-body">Something you eat regularly — possibly something you consider healthy — may be quietly working against your body's ability to navigate this transition.</p>
       <div class="r-truth">"Estrogen decline changes where your body stores fat — and makes it progressively harder to release that fat, even when you are eating less."</div>
     </div>
