@@ -206,8 +206,12 @@
   .footer-copy{font-size:11px;color:var(--slate);}
   .teal-line{height:4px;background:linear-gradient(90deg,var(--amber),var(--teal-mid),var(--teal));}
 
+  /* MOBILE PROOF GRID — hidden on desktop */
+  .proof-mobile{display:none;}
+  .proof-row{display:grid;grid-template-columns:1fr 1fr;gap:4px 12px;margin-bottom:4px;}
+
   @media(max-width:600px){
-    /* HERO — stack layout, mockup above form */
+    /* HERO — stack layout */
     .hero-inner{grid-template-columns:1fr;gap:8px;}
     .hero-left{text-align:center;}
     .headshot-block{justify-content:center;}
@@ -215,32 +219,51 @@
     .cred-pills{justify-content:center;}
     h1{font-size:clamp(24px,6.5vw,32px);}
 
-    /* FORM CARD — mockup larger, closer to headline */
+    /* FORM CARD — mockup fills full width of card */
     .form-card{padding:16px 16px 20px;}
-    .form-card-mockup{max-width:100%;margin:0 auto 10px;}
-    .form-card-mockup img{width:100%;max-width:100%;transform:scale(1.3);transform-origin:center center;margin-bottom:-20px;}
+    .form-card-mockup{
+      width:100%;
+      max-width:none;
+      margin:0 0 12px 0;
+      overflow:hidden;
+      height:340px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+    .form-card-mockup img{
+      width:auto;
+      height:420px;
+      max-width:none;
+    }
     .form-card-headline{font-size:15px;margin-bottom:10px;}
 
-    /* PROOF STRIP — two items per line, aligned */
-    .proof-inner{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:6px 8px;
-      padding:0 4px;
-      justify-items:start;
-    }
-    .proof-text{font-size:12px;line-height:1.4;}
-    .proof-div{display:none;}
+    /* PROOF STRIP — show mobile grid, hide desktop row */
+    .proof-inner{display:none;}
+    .proof-mobile{display:block;padding:0 4px;}
+    .proof-text{font-size:11px;line-height:1.4;color:var(--ivory);}
+    .proof-text strong{color:var(--teal-light);}
 
     /* REASONS — break up paragraphs */
     .reason-inner{grid-template-columns:1fr;gap:10px;}
     .r-body{font-size:14px;line-height:1.8;margin-bottom:16px;}
     .reason-sec{padding:36px 20px;}
 
-    /* HOW IT WORKS — mockup much larger, zoomed into book */
+    /* HOW IT WORKS — mockup fills column, tall and prominent */
     .how-grid{grid-template-columns:1fr;gap:28px;}
-    .mockup-col{flex-direction:column;align-items:center;overflow:hidden;}
-    .mockup-col img{max-width:100% !important;width:100% !important;transform:scale(1.4);transform-origin:center top;}
+    .mockup-col{
+      flex-direction:column;
+      align-items:center;
+      overflow:hidden;
+      height:420px;
+      display:flex;
+      justify-content:center;
+    }
+    .mockup-col img{
+      width:auto !important;
+      height:520px !important;
+      max-width:none !important;
+    }
 
     /* ABOUT */
     .about-inner{grid-template-columns:1fr;gap:20px;}
@@ -414,6 +437,18 @@
     <span class="proof-div">·</span>
     <span class="proof-text">Mechanism-led. <strong>Not another diet plan.</strong></span>
   </div>
+  <!-- MOBILE ONLY proof grid — hidden on desktop -->
+  <div class="proof-mobile">
+    <div class="proof-row">
+      <span class="proof-text">Health coach · <strong>NHS background</strong></span>
+      <span class="proof-text"><strong>9 years</strong> coaching experience</span>
+    </div>
+    <div class="proof-row">
+      <span class="proof-text">Working exclusively with <strong>women 35+</strong></span>
+      <span class="proof-text">Mechanism-led. <strong>Not another diet plan.</strong></span>
+    </div>
+  </div>
+</div>
 </div>
 
 <!-- VALIDATION -->
