@@ -216,10 +216,12 @@
     h1{font-size:clamp(24px,6.5vw,32px);}
 
     /* FORM CARD &mdash; mockup larger, closer to headline */
-    .form-card{padding:0 0 20px;}
+    .form-card{padding:0 0 20px;border-radius:0;}
     .form-card-mockup{max-width:100%;width:100%;margin:0 0 12px;}
-    .form-card-mockup img{width:100%;max-width:100%;}
+    .form-card-mockup img{width:100%;max-width:100%;max-height:200px;object-fit:cover;object-position:center top;}
     .form-card-headline{font-size:15px;margin-bottom:10px;}
+    .badge{font-size:9px;padding:2px 7px;}
+    .badges{gap:4px;padding:0 12px;flex-wrap:nowrap;}
 
     /* PROOF STRIP &mdash; two items per line, aligned */
     .proof-inner{
