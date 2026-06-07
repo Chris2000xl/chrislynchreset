@@ -41,9 +41,9 @@ nav{background:var(--teal);padding:13px 32px;display:flex;align-items:center;jus
 .hero-stats{display:flex;gap:24px;justify-content:center;flex-wrap:wrap;margin-bottom:28px;}
 .hero-stat{font-family:var(--mono);font-size:12px;color:var(--teal-light);letter-spacing:1.5px;text-transform:uppercase;}
 .hero-stat strong{color:var(--ivory);font-family:var(--sans);font-size:20px;font-weight:700;display:block;letter-spacing:0;}
-.hero-author{display:flex;align-items:center;gap:10px;justify-content:center;}
+.hero-author{display:flex;align-items:center;gap:14px;justify-content:center;}
 .author-label{font-family:var(--mono);font-size:12px;color:rgba(250,246,239,0.65);letter-spacing:1px;text-align:left;}
-.author-label strong{color:var(--ivory);font-family:var(--sans);font-size:14px;font-weight:700;display:block;letter-spacing:0;}
+.author-label strong{color:var(--ivory);font-family:var(--sans);font-size:16px;font-weight:700;display:block;letter-spacing:0;margin-bottom:2px;}
 
 /* ── PROGRESS BAR ── */
 .progress-bar-wrap{background:var(--teal-dark);border-bottom:1px solid rgba(45,122,122,0.2);padding:12px 24px;position:sticky;top:52px;z-index:90;}
@@ -141,8 +141,8 @@ nav{background:var(--teal);padding:13px 32px;display:flex;align-items:center;jus
 /* Symptom strip */
 .sym-strip{display:flex;flex-direction:column;gap:9px;margin-bottom:24px;padding:16px 18px;background:rgba(45,122,122,0.05);border-radius:8px;border:1px solid rgba(45,122,122,0.14);}
 .sym-strip-label{font-family:var(--mono);font-size:11px;letter-spacing:2px;color:var(--teal-mid);text-transform:uppercase;display:block;line-height:1;}
-.sym-pills-row{display:flex;flex-wrap:wrap;gap:7px;}
-.sym-pill{background:#fff;border:1px solid rgba(45,122,122,0.22);border-radius:20px;padding:6px 14px;font-family:var(--mono);font-size:12px;color:var(--teal);letter-spacing:0.3px;white-space:nowrap;}
+.sym-pills-row{display:grid;grid-template-columns:1fr 1fr;gap:7px;}
+.sym-pill{background:#fff;border:1px solid rgba(45,122,122,0.22);border-radius:20px;padding:7px 14px;font-family:var(--mono);font-size:12px;color:var(--teal);letter-spacing:0.3px;text-align:center;line-height:1.4;}
 
 .next-reason{font-family:var(--mono);font-size:12px;color:var(--slate);border-top:1px solid var(--sand);padding-top:16px;margin-top:28px;letter-spacing:0.5px;line-height:1.6;}
 .next-reason strong{color:var(--teal);}
@@ -301,8 +301,8 @@ footer a{color:var(--teal-light);text-decoration:none;}
 }
 @media(max-width:560px){
   .about-photo-row{grid-template-columns:1fr;gap:24px;}
-  .about-photo-col{flex-direction:row;align-items:center;gap:16px;}
-  .about-photo-img,.about-photo-placeholder{max-width:100px;aspect-ratio:1/1;}
+  .about-photo-col{flex-direction:column;align-items:center;gap:10px;}
+  .about-photo-img,.about-photo-placeholder{max-width:280px;width:100%;aspect-ratio:3/4;}
 }
 </style>
 </head>
@@ -347,10 +347,10 @@ footer a{color:var(--teal-light);text-decoration:none;}
       <div class="hero-stat"><strong>1</strong>EXPLANATION</div>
     </div>
     <div class="hero-author">
-      <img src="chris-lynch-headshot-circle.png" alt="Chris Lynch" style="width:40px;height:40px;border-radius:50%;border:2px solid var(--teal-light);object-fit:cover;flex-shrink:0;">
+      <img src="chris-lynch-headshot-circle.png" alt="Chris Lynch" style="width:64px;height:64px;border-radius:50%;border:2px solid var(--teal-light);object-fit:cover;flex-shrink:0;">
       <div class="author-label">
         <strong>Chris Lynch</strong>
-        HEALTH COACH · NHS BACKGROUND · 9 YEARS · WOMEN 35+
+        <span style="display:block;white-space:nowrap;">HEALTH COACH · NHS BACKGROUND</span><span style="display:block;white-space:nowrap;">9 YEARS · WOMEN 35+</span>
       </div>
     </div>
   </div>
@@ -868,7 +868,7 @@ footer a{color:var(--teal-light);text-decoration:none;}
       <button class="mech-btn" data-mech="metabolism" onclick="selectMechanism(this)">Metabolic Adaptation</button>
     </div>
     <div class="mech-selected-msg" id="mech-msg"></div>
-    <a href="https://www.instagram.com/chrislynch.reset" target="_blank" class="instagram-link" style="margin-top:20px;">
+    <a href="https://www.instagram.com/chrislynch.reset/" target="_blank" rel="noopener noreferrer" class="instagram-link" style="margin-top:20px;">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
       Follow @chrislynch.reset
     </a>
