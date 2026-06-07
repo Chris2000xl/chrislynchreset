@@ -1,0 +1,1133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>FINALLY — The explanation your body has been waiting for · Chris Lynch</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Lato:wght@300;400;700&family=DM+Mono&display=swap" rel="stylesheet"/>
+<style>
+:root {
+  --teal:#2D7A7A; --teal-mid:#4A9E9E; --teal-light:#8ECECE;
+  --teal-dark:#1A3535;
+  --amber:#D4874A; --blush:#E8B89A;
+  --ivory:#FAF6EF; --sand:#EDE0CC; --slate:#8A9090;
+  --dark:#1A3535; --body:#3D5252;
+  --serif:'Playfair Display',Georgia,serif;
+  --sans:'Lato',sans-serif;
+  --mono:'DM Mono',monospace;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:var(--sans);background:var(--ivory);color:var(--body);line-height:1.75;-webkit-font-smoothing:antialiased;}
+
+/* ── TOPBAR ── */
+.topbar{background:var(--dark);padding:9px 24px;text-align:center;}
+.topbar p{font-family:var(--mono);font-size:12px;color:var(--teal-light);letter-spacing:1.5px;}
+.topbar span{color:var(--amber);}
+
+/* ── NAV ── */
+nav{background:var(--teal);padding:13px 32px;display:flex;align-items:center;justify-content:space-between;box-shadow:0 2px 16px rgba(26,53,53,0.22);position:sticky;top:0;z-index:100;}
+.nav-logo{font-family:var(--serif);font-size:17px;color:var(--ivory);font-weight:400;}
+.nav-logo span{font-family:var(--mono);font-size:10px;color:var(--teal-light);display:block;letter-spacing:2px;}
+.nav-pill{font-family:var(--mono);font-size:11px;color:var(--teal-light);letter-spacing:1px;}
+
+/* ── HERO ── */
+.hero{background:var(--dark);padding:48px 24px 56px;text-align:center;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 10% 90%,rgba(212,135,74,0.14) 0%,transparent 55%),radial-gradient(ellipse at 90% 10%,rgba(45,122,122,0.12) 0%,transparent 50%);pointer-events:none;}
+.hero-inner{max-width:640px;margin:0 auto;position:relative;z-index:1;}
+.guide-tag{display:inline-block;font-family:var(--mono);font-size:12px;letter-spacing:2px;color:var(--amber);border:1px solid rgba(212,135,74,0.4);border-radius:20px;padding:5px 16px;margin-bottom:20px;text-transform:uppercase;}
+.hero h1{font-family:var(--serif);font-size:clamp(42px,7vw,68px);font-weight:700;color:var(--amber);line-height:1.05;margin-bottom:10px;letter-spacing:-1px;}
+.hero-tagline{font-family:var(--serif);font-style:italic;font-size:clamp(18px,2.8vw,24px);color:var(--ivory);margin-bottom:28px;line-height:1.45;}
+.hero-stats{display:flex;gap:24px;justify-content:center;flex-wrap:wrap;margin-bottom:28px;}
+.hero-stat{font-family:var(--mono);font-size:12px;color:var(--teal-light);letter-spacing:1.5px;text-transform:uppercase;}
+.hero-stat strong{color:var(--ivory);font-family:var(--sans);font-size:20px;font-weight:700;display:block;letter-spacing:0;}
+.hero-author{display:flex;align-items:center;gap:10px;justify-content:center;}
+.author-dot{width:32px;height:32px;border-radius:50%;background:var(--teal);border:2px solid var(--teal-light);flex-shrink:0;}
+.author-label{font-family:var(--mono);font-size:12px;color:rgba(250,246,239,0.65);letter-spacing:1px;text-align:left;}
+.author-label strong{color:var(--ivory);font-family:var(--sans);font-size:14px;font-weight:700;display:block;letter-spacing:0;}
+
+/* ── PROGRESS BAR ── */
+.progress-bar-wrap{background:var(--teal-dark);border-bottom:1px solid rgba(45,122,122,0.2);padding:12px 24px;position:sticky;top:52px;z-index:90;}
+.progress-bar-inner{max-width:680px;margin:0 auto;}
+.progress-label{font-family:var(--mono);font-size:11px;color:var(--teal-light);letter-spacing:1px;margin-bottom:6px;display:flex;justify-content:space-between;}
+.progress-track{background:rgba(45,122,122,0.25);border-radius:100px;height:4px;}
+.progress-fill{background:linear-gradient(90deg,var(--teal) 0%,var(--amber) 100%);border-radius:100px;height:4px;width:0%;transition:width 0.5s ease;}
+
+/* ── INTRO SECTION ── */
+.intro-sec{background:var(--ivory);padding:56px 24px;}
+.sec-inner{max-width:640px;margin:0 auto;}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:3px;text-transform:uppercase;color:var(--teal-mid);margin-bottom:12px;}
+.sec-h2{font-family:var(--serif);font-size:clamp(24px,3.5vw,34px);color:var(--teal);font-weight:600;line-height:1.25;margin-bottom:16px;}
+.sec-h2 em{color:var(--amber);font-style:italic;}
+.sec-body{font-size:17px;color:var(--body);line-height:1.85;margin-bottom:18px;}
+.premise-card{background:var(--sand);border-left:3px solid var(--amber);border-radius:0 10px 10px 0;padding:20px 22px;margin:24px 0;}
+.premise-label{font-family:var(--mono);font-size:11px;letter-spacing:2px;color:var(--amber);text-transform:uppercase;margin-bottom:10px;}
+.premise-quote{font-family:var(--serif);font-style:italic;font-size:18px;color:var(--teal);line-height:1.65;}
+.premise-attr{font-family:var(--mono);font-size:12px;color:var(--slate);margin-top:10px;letter-spacing:1px;}
+
+/* ── SYMPTOM MAP — INTERACTIVE ── */
+.symptom-sec{background:var(--teal);padding:56px 24px;}
+.symptom-sec .sec-h2{color:var(--ivory);}
+.symptom-sec .eyebrow{color:var(--teal-light);}
+.symptom-intro{font-size:17px;color:var(--ivory);margin-bottom:28px;line-height:1.8;max-width:540px;}
+.symptom-instruction{font-family:var(--mono);font-size:12px;color:var(--amber);letter-spacing:1px;margin-bottom:20px;text-align:center;}
+.symptom-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:28px;}
+.sym-card{background:rgba(250,246,239,0.07);border:1.5px solid rgba(250,246,239,0.15);border-radius:12px;padding:20px 16px;cursor:pointer;transition:all 0.25s ease;position:relative;}
+.sym-card:hover{background:rgba(250,246,239,0.12);border-color:rgba(250,246,239,0.3);transform:translateY(-2px);}
+.sym-card.selected{background:rgba(212,135,74,0.18);border-color:var(--amber);box-shadow:0 0 0 2px rgba(212,135,74,0.3);}
+.sym-card.faded{opacity:0.35;}
+.sym-num{font-family:var(--serif);font-size:40px;font-weight:700;color:var(--amber);line-height:1;margin-bottom:8px;}
+.sym-card.selected .sym-num{color:var(--amber);}
+.sym-title{font-family:var(--sans);font-size:14px;font-weight:700;color:var(--ivory);margin-bottom:8px;letter-spacing:0.3px;text-transform:uppercase;}
+.sym-list{font-size:14px;color:var(--ivory);line-height:1.7;}
+.sym-check{position:absolute;top:12px;right:12px;width:22px;height:22px;border-radius:50%;background:var(--amber);display:none;align-items:center;justify-content:center;}
+.sym-check svg{width:11px;height:11px;fill:none;stroke:#fff;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;}
+.sym-card.selected .sym-check{display:flex;}
+
+.sym-reveal{background:rgba(26,53,53,0.6);border-radius:12px;padding:22px;margin-top:8px;display:none;border:1px solid rgba(212,135,74,0.35);}
+.sym-reveal.show{display:block;animation:fadeIn 0.3s ease;}
+.sym-reveal-label{font-family:var(--mono);font-size:11px;letter-spacing:2px;color:var(--amber);text-transform:uppercase;margin-bottom:10px;}
+.sym-reveal p{font-size:16px;color:var(--ivory);line-height:1.8;}
+.sym-reveal-path{display:inline-block;margin-top:12px;font-family:var(--mono);font-size:12px;letter-spacing:1px;background:var(--amber);color:var(--ivory);padding:7px 16px;border-radius:20px;}
+
+.path-summary{background:rgba(26,53,53,0.6);border:1px solid rgba(212,135,74,0.4);border-radius:14px;padding:22px 24px;margin-top:16px;display:none;}
+.path-summary.show{display:block;animation:fadeIn 0.4s ease;}
+.path-summary-label{font-family:var(--mono);font-size:11px;letter-spacing:2px;color:var(--amber);text-transform:uppercase;margin-bottom:12px;}
+.path-summary h3{font-family:var(--serif);font-size:22px;color:var(--ivory);margin-bottom:10px;}
+.path-summary p{font-size:16px;color:var(--ivory);line-height:1.8;}
+.path-badge{display:inline-block;margin-top:14px;font-family:var(--mono);font-size:12px;letter-spacing:1px;background:var(--amber);color:var(--ivory);padding:8px 18px;border-radius:20px;}
+
+/* ── REASONS SECTION ── */
+.reasons-intro{background:var(--sand);padding:52px 24px;text-align:center;}
+.reasons-intro .sec-h2{margin-bottom:10px;}
+.reasons-intro .sec-body{max-width:520px;margin:0 auto;}
+
+.reason-sec{padding:52px 24px;}
+.reason-sec.r1{background:var(--ivory);}
+.reason-sec.r2{background:var(--sand);}
+.reason-sec.r3{background:var(--ivory);}
+.reason-sec.r4{background:var(--sand);}
+
+.reason-inner{max-width:640px;margin:0 auto;}
+.reason-header{display:grid;grid-template-columns:80px 1fr;gap:16px;align-items:flex-start;margin-bottom:24px;}
+.r-num-block{}
+.r-num{font-family:var(--serif);font-size:52px;font-weight:700;line-height:1;color:var(--teal);}
+.r-tag{display:inline-block;background:var(--amber);color:var(--ivory);font-family:var(--mono);font-size:11px;letter-spacing:2px;padding:4px 12px;border-radius:20px;margin-top:4px;text-transform:uppercase;}
+.r-title{font-family:var(--serif);font-size:clamp(22px,3vw,30px);font-weight:600;color:var(--teal);line-height:1.2;margin-bottom:8px;}
+.r-subtitle{font-family:var(--serif);font-style:italic;font-size:17px;color:var(--amber);line-height:1.6;}
+
+.mechanism-card{background:rgba(45,122,122,0.06);border-left:3px solid var(--teal);border-radius:0 10px 10px 0;padding:18px 20px;margin:22px 0;}
+.mechanism-label{font-family:var(--mono);font-size:11px;letter-spacing:2px;color:var(--teal);text-transform:uppercase;margin-bottom:8px;}
+.mechanism-card p{font-family:var(--serif);font-style:italic;font-size:17px;color:var(--teal);line-height:1.7;}
+.mechanism-card p em{color:var(--amber);font-style:normal;}
+
+.case-card{background:var(--sand);border-radius:10px;padding:20px 22px;margin:22px 0;}
+.case-label{font-family:var(--mono);font-size:11px;letter-spacing:2px;color:var(--amber);text-transform:uppercase;margin-bottom:10px;}
+.case-card p{font-size:16px;color:var(--body);line-height:1.85;}
+.case-card p strong{color:var(--dark);}
+
+/* Reflection block */
+.reflection-block{background:#fff;border:1.5px solid var(--sand);border-radius:10px;padding:22px 24px;margin:22px 0;}
+.reflection-label{font-family:var(--mono);font-size:11px;letter-spacing:2px;color:var(--teal);text-transform:uppercase;margin-bottom:12px;}
+.reflect-q{font-family:var(--serif);font-style:italic;font-size:17px;color:var(--amber);margin-bottom:12px;display:flex;align-items:flex-start;gap:10px;}
+.reflect-q::before{content:'?';font-family:var(--mono);font-size:15px;color:var(--amber);flex-shrink:0;margin-top:3px;}
+.reflect-input{width:100%;border:none;border-bottom:1.5px solid var(--sand);background:transparent;padding:10px 0;font-family:var(--sans);font-size:16px;color:var(--dark);outline:none;transition:border-color 0.2s;resize:none;min-height:42px;}
+.reflect-input:focus{border-color:var(--teal);}
+.reflect-note{font-family:var(--mono);font-size:12px;color:var(--slate);margin-top:10px;letter-spacing:0.5px;}
+
+/* Relevance indicator */
+.reason-relevance{display:none;font-family:var(--mono);font-size:12px;background:rgba(212,135,74,0.12);color:var(--amber);border:1px solid rgba(212,135,74,0.28);border-radius:6px;padding:8px 14px;margin-bottom:18px;letter-spacing:0.5px;}
+.reason-relevance.show{display:inline-block;}
+
+/* Symptom strip */
+.sym-strip{display:flex;flex-direction:column;gap:9px;margin-bottom:24px;padding:16px 18px;background:rgba(45,122,122,0.05);border-radius:8px;border:1px solid rgba(45,122,122,0.14);}
+.sym-strip-label{font-family:var(--mono);font-size:11px;letter-spacing:2px;color:var(--teal-mid);text-transform:uppercase;display:block;line-height:1;}
+.sym-pills-row{display:flex;flex-wrap:wrap;gap:7px;}
+.sym-pill{background:#fff;border:1px solid rgba(45,122,122,0.22);border-radius:20px;padding:6px 14px;font-family:var(--mono);font-size:12px;color:var(--teal);letter-spacing:0.3px;white-space:nowrap;}
+
+.next-reason{font-family:var(--mono);font-size:12px;color:var(--slate);border-top:1px solid var(--sand);padding-top:16px;margin-top:28px;letter-spacing:0.5px;line-height:1.6;}
+.next-reason strong{color:var(--teal);}
+
+/* ── THREAD ── */
+.thread-sec{background:var(--dark);padding:56px 24px;}
+.thread-inner{max-width:640px;margin:0 auto;}
+.thread-sec .sec-h2{color:var(--ivory);}
+.thread-sec .eyebrow{color:var(--teal-light);}
+.thread-sec .sec-body{color:var(--ivory);}
+.thread-card{background:rgba(250,246,239,0.05);border:1px solid rgba(142,206,206,0.22);border-radius:12px;padding:22px 24px;margin:22px 0;}
+.thread-card p{font-size:17px;color:var(--ivory);line-height:1.85;}
+.thread-card p strong{color:var(--ivory);font-weight:700;}
+.thread-card p em{color:var(--amber);font-style:italic;}
+
+.path-router{background:rgba(212,135,74,0.1);border:1.5px solid rgba(212,135,74,0.35);border-radius:14px;padding:24px;margin:28px 0;}
+.router-label{font-family:var(--mono);font-size:11px;letter-spacing:2px;color:var(--amber);text-transform:uppercase;margin-bottom:16px;}
+.router-table{width:100%;border-collapse:separate;border-spacing:0 8px;}
+.router-table td{padding:10px 12px;font-size:16px;color:var(--ivory);vertical-align:middle;}
+.router-table td:first-child{font-family:var(--mono);font-size:12px;color:var(--teal-light);letter-spacing:0.5px;width:145px;}
+.router-table td:last-child{font-family:var(--mono);color:var(--amber);font-size:12px;}
+
+.your-path-indicator{display:none;background:rgba(212,135,74,0.15);border:1px solid var(--amber);border-radius:10px;padding:18px 20px;margin-top:16px;}
+.your-path-indicator.show{display:block;animation:fadeIn 0.4s ease;}
+.ypi-label{font-family:var(--mono);font-size:11px;letter-spacing:2px;color:var(--amber);margin-bottom:8px;text-transform:uppercase;}
+.ypi-text{font-family:var(--serif);font-size:17px;color:var(--ivory);line-height:1.6;}
+
+/* ── EXPERIMENT ── */
+.experiment-sec{padding:56px 24px;}
+.experiment-sec.path-a-sec{background:var(--ivory);}
+.experiment-sec.path-b-sec{background:var(--sand);}
+.experiment-sec .sec-h2{margin-bottom:8px;}
+.experiment-subhead{font-family:var(--serif);font-style:italic;font-size:17px;color:var(--amber);margin-bottom:22px;line-height:1.6;}
+
+.dairy-gluten-q{background:var(--sand);border-radius:10px;padding:18px 20px;margin-bottom:22px;}
+.dq-label{font-family:var(--mono);font-size:11px;letter-spacing:2px;color:var(--teal);text-transform:uppercase;margin-bottom:12px;}
+.dq-options{display:flex;gap:10px;flex-wrap:wrap;}
+.dq-btn{font-family:var(--mono);font-size:13px;letter-spacing:0.5px;padding:11px 20px;border-radius:6px;border:1.5px solid var(--teal-mid);background:transparent;color:var(--teal);cursor:pointer;transition:all 0.2s;}
+.dq-btn:hover{background:var(--teal);color:var(--ivory);}
+.dq-btn.active{background:var(--teal);color:var(--ivory);border-color:var(--teal);}
+
+.swap-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:22px 0;}
+.swap-col{background:#fff;border-radius:10px;overflow:hidden;border:1.5px solid var(--sand);}
+.swap-col-header{background:var(--teal);padding:12px 16px;font-family:var(--mono);font-size:11px;letter-spacing:2px;color:var(--ivory);text-transform:uppercase;}
+.swap-items{padding:14px 16px;}
+.swap-row{display:grid;grid-template-columns:1fr 22px 1fr;gap:8px;align-items:center;padding:10px 0;border-bottom:1px solid var(--sand);}
+.swap-row:last-child{border-bottom:none;}
+.swap-from{font-size:15px;color:var(--body);}
+.swap-arrow{font-size:15px;color:var(--teal);text-align:center;}
+.swap-to{font-size:15px;color:var(--teal);font-weight:700;}
+
+.hidden-triggers{background:rgba(212,135,74,0.08);border:1px solid rgba(212,135,74,0.2);border-radius:10px;padding:18px 20px;margin:22px 0;}
+.ht-label{font-family:var(--mono);font-size:11px;letter-spacing:2px;color:var(--amber);text-transform:uppercase;margin-bottom:12px;}
+.ht-item{display:flex;gap:10px;align-items:flex-start;margin-bottom:8px;font-size:16px;color:var(--body);line-height:1.75;}
+.ht-item::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--amber);flex-shrink:0;margin-top:9px;}
+
+.plate-method{margin:22px 0;}
+.plate-cols{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:16px 0;}
+.plate-col{background:#fff;border:1.5px solid var(--sand);border-radius:10px;padding:18px 14px;text-align:center;}
+.plate-icon{font-family:var(--mono);font-size:22px;color:var(--teal);margin-bottom:8px;font-weight:700;}
+.plate-label{font-family:var(--mono);font-size:11px;letter-spacing:2px;color:var(--teal);text-transform:uppercase;margin-bottom:8px;}
+.plate-examples{font-size:14px;color:var(--body);line-height:1.65;}
+
+.path-note{font-family:var(--serif);font-style:italic;font-size:17px;color:var(--teal);text-align:center;margin:24px 0 0;line-height:1.65;}
+
+/* ── OBSERVATION ── */
+.observation-sec{background:var(--teal-dark);padding:56px 24px;}
+.observation-sec .sec-h2{color:var(--ivory);}
+.observation-sec .eyebrow{color:var(--teal-light);}
+.obs-intro{font-size:17px;color:var(--ivory);margin-bottom:28px;line-height:1.8;max-width:560px;}
+
+.obs-grid{display:grid;gap:10px;margin-bottom:28px;}
+.obs-item{background:rgba(250,246,239,0.06);border:1px solid rgba(250,246,239,0.12);border-radius:10px;padding:16px 18px;display:grid;grid-template-columns:1fr auto;gap:14px;align-items:center;}
+.obs-label{font-size:16px;color:var(--ivory);line-height:1.55;}
+.obs-label strong{color:var(--ivory);font-weight:700;}
+.obs-buttons{display:flex;gap:7px;}
+.obs-btn{font-family:var(--mono);font-size:13px;letter-spacing:0.3px;padding:8px 14px;border-radius:5px;border:1px solid rgba(250,246,239,0.25);background:transparent;color:rgba(250,246,239,0.65);cursor:pointer;transition:all 0.15s;}
+.obs-btn:hover{border-color:rgba(250,246,239,0.6);color:var(--ivory);}
+.obs-btn.better{border-color:var(--teal-mid);color:var(--teal-light);}
+.obs-btn.better.active{background:var(--teal);border-color:var(--teal);color:var(--ivory);}
+.obs-btn.same.active{background:rgba(142,206,206,0.2);border-color:var(--teal-light);color:var(--teal-light);}
+.obs-btn.worse.active{background:rgba(212,135,74,0.2);border-color:var(--amber);color:var(--amber);}
+
+.obs-summary{display:none;background:rgba(45,122,122,0.28);border:1px solid rgba(142,206,206,0.3);border-radius:12px;padding:20px 22px;margin-top:10px;}
+.obs-summary.show{display:block;animation:fadeIn 0.5s ease;}
+.obs-summary-label{font-family:var(--mono);font-size:11px;letter-spacing:2px;color:var(--teal-light);text-transform:uppercase;margin-bottom:10px;}
+.obs-summary p{font-size:16px;color:var(--ivory);line-height:1.8;}
+
+.obs-thread{background:rgba(250,246,239,0.04);border-left:3px solid var(--teal-light);padding:18px 20px;margin-top:24px;border-radius:0 10px 10px 0;}
+.obs-thread p{font-size:16px;color:var(--ivory);line-height:1.85;font-style:italic;font-family:var(--serif);}
+
+/* ── REPLY / INSTAGRAM ── */
+.reply-sec{background:var(--sand);padding:52px 24px;text-align:center;}
+.reply-inner{max-width:500px;margin:0 auto;}
+.reply-h{font-family:var(--serif);font-size:clamp(22px,3vw,28px);color:var(--teal);margin-bottom:14px;}
+.reply-body{font-size:17px;color:var(--body);line-height:1.8;margin-bottom:26px;}
+.mechanism-buttons{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-bottom:20px;}
+.mech-btn{font-family:var(--mono);font-size:13px;letter-spacing:0.8px;padding:12px 20px;border-radius:6px;border:1.5px solid var(--teal-mid);background:transparent;color:var(--teal);cursor:pointer;transition:all 0.2s;text-transform:uppercase;}
+.mech-btn:hover{background:var(--teal);color:var(--ivory);}
+.mech-btn.selected{background:var(--teal);color:var(--ivory);}
+.mech-selected-msg{display:none;font-family:var(--mono);font-size:13px;color:var(--teal);background:rgba(45,122,122,0.08);border-radius:7px;padding:14px 18px;margin-top:10px;line-height:1.65;}
+.mech-selected-msg.show{display:block;animation:fadeIn 0.3s ease;}
+.instagram-link{display:inline-flex;align-items:center;gap:9px;font-family:var(--mono);font-size:13px;color:var(--teal);border:1.5px solid rgba(45,122,122,0.3);border-radius:6px;padding:13px 22px;text-decoration:none;transition:all 0.2s;margin-top:20px;}
+.instagram-link:hover{background:var(--teal);color:var(--ivory);border-color:var(--teal);}
+
+/* ── ABOUT ── */
+.about-sec{background:var(--teal);padding:56px 24px;position:relative;overflow:hidden;}
+.about-sec::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 90% 50%,rgba(26,53,53,0.45) 0%,transparent 60%);pointer-events:none;}
+.about-inner{max-width:680px;margin:0 auto;position:relative;z-index:1;}
+.about-photo-row{display:grid;grid-template-columns:200px 1fr;gap:40px;align-items:start;}
+.about-photo-col{display:flex;flex-direction:column;align-items:center;gap:8px;}
+.about-photo-img{width:100%;max-width:200px;aspect-ratio:3/4;object-fit:cover;object-position:center top;border-radius:12px;border:2px solid rgba(142,206,206,0.25);display:block;}
+.about-photo-placeholder{width:100%;max-width:200px;aspect-ratio:3/4;border-radius:12px;background:linear-gradient(160deg,#1A3535 0%,#2D7A7A 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;}
+.about-photo-placeholder svg{width:36px;height:36px;}
+.about-photo-placeholder span{font-size:28px;color:rgba(250,246,239,0.25);font-family:'Playfair Display',serif;font-weight:700;letter-spacing:2px;}
+.photo-note{font-family:var(--mono);font-size:11px;color:rgba(250,246,239,0.45);text-align:center;letter-spacing:1px;}
+.about-text-col{}
+.about-sec .eyebrow{color:var(--teal-light);}
+.about-sec .sec-h2{color:var(--ivory);}
+.about-body{font-size:16px;color:var(--ivory);line-height:1.85;margin-bottom:18px;}
+.nhs-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(250,246,239,0.08);border:1px solid rgba(250,246,239,0.16);border-radius:7px;padding:10px 14px;}
+.nhs-dot{width:7px;height:7px;border-radius:50%;background:var(--amber);flex-shrink:0;}
+.nhs-txt{font-family:var(--mono);font-size:12px;color:var(--ivory);letter-spacing:0.5px;}
+.nhs-txt strong{color:var(--amber);}
+.about-quote{background:rgba(250,246,239,0.06);border-radius:10px;padding:20px 22px;margin-top:22px;}
+.about-quote p{font-family:var(--serif);font-style:italic;font-size:17px;color:var(--ivory);line-height:1.8;}
+.about-quote em{color:var(--amber);font-style:normal;}
+
+/* ── FOOTER ── */
+footer{background:var(--dark);padding:28px 24px;text-align:center;}
+footer p{font-family:var(--mono);font-size:12px;color:rgba(250,246,239,0.4);letter-spacing:1px;line-height:1.9;}
+footer a{color:var(--teal-light);text-decoration:none;}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:translateY(0);}}
+
+/* ── RESPONSIVE ── */
+@media(max-width:600px){
+  .symptom-grid{grid-template-columns:1fr;}
+  .swap-grid{grid-template-columns:1fr;}
+  .plate-cols{grid-template-columns:repeat(3,1fr);}
+  .reason-header{grid-template-columns:60px 1fr;gap:10px;}
+  .r-num{font-size:42px;}
+  .obs-item{grid-template-columns:1fr;gap:10px;}
+  .obs-buttons{flex-wrap:wrap;}
+  .router-table td{font-size:14px;}
+  .router-table td:first-child{width:110px;font-size:11px;}
+  .sec-body{font-size:16px;}
+  .case-card p{font-size:15px;}
+  .mechanism-card p{font-size:15px;}
+  .thread-card p{font-size:15px;}
+  .swap-from,.swap-arrow,.swap-to{font-size:13px;}
+}
+@media(max-width:400px){
+  .plate-cols{grid-template-columns:1fr;}
+}
+@media(max-width:560px){
+  .about-photo-row{grid-template-columns:1fr;gap:24px;}
+  .about-photo-col{flex-direction:row;align-items:center;gap:16px;}
+  .about-photo-img,.about-photo-placeholder{max-width:100px;aspect-ratio:1/1;}
+}
+</style>
+</head>
+<body>
+
+<!-- TOPBAR -->
+<div class="topbar">
+  <p>FREE GUIDE &nbsp;·&nbsp; <span>FINALLY</span> &nbsp;·&nbsp; chrislynchreset.com</p>
+</div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    Chris Lynch
+    <span>HEALTH COACH</span>
+  </div>
+  <span class="nav-pill">FINALLY · FREE GUIDE</span>
+</nav>
+
+<!-- PROGRESS BAR -->
+<div class="progress-bar-wrap">
+  <div class="progress-bar-inner">
+    <div class="progress-label">
+      <span id="progress-text">YOUR PROGRESS</span>
+      <span id="progress-pct">0%</span>
+    </div>
+    <div class="progress-track">
+      <div class="progress-fill" id="progress-fill"></div>
+    </div>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="guide-tag">FREE GUIDE · WOMEN 35+</div>
+    <h1>FINALLY</h1>
+    <p class="hero-tagline">The explanation your body has been waiting for.</p>
+    <div class="hero-stats">
+      <div class="hero-stat"><strong>12</strong>MINUTES</div>
+      <div class="hero-stat"><strong>4</strong>REASONS</div>
+      <div class="hero-stat"><strong>1</strong>EXPLANATION</div>
+    </div>
+    <div class="hero-author">
+      <div class="author-dot"></div>
+      <div class="author-label">
+        <strong>Chris Lynch</strong>
+        HEALTH COACH · NHS BACKGROUND · 9 YEARS · WOMEN 35+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INTRO -->
+<section class="intro-sec" id="s-intro">
+  <div class="sec-inner">
+    <p class="eyebrow">START HERE</p>
+    <h2 class="sec-h2">You have not been failing.<br><em>Your body has been resisting.</em></h2>
+    <p class="sec-body">If you are reading this, you have almost certainly done everything you were told to do. Counted calories. Cut carbs. Exercised more. Tried fasting. And your body has not cooperated. This is not a failure of willpower. <strong>This is biology.</strong></p>
+    <p class="sec-body">After 35, four things change in your body that work against the standard approach to weight loss. Not one of them is addressed by eating less and moving more. Not one of them shows up on a standard blood test.</p>
+    <p class="sec-body">This guide explains all four. Read each reason slowly. Notice which ones you recognise in your own experience — <strong>that recognition is the beginning of something important.</strong></p>
+    <p class="sec-body">By the time you finish, you will not have a new plan. You will have something more useful: a real explanation for everything your body has been doing that nobody has ever been able to account for.</p>
+    <div class="premise-card">
+      <p class="premise-label">THE PREMISE</p>
+      <p class="premise-quote">"I am not here to give you another plan. I am here to help you understand why your body has been resistant — and what actually changes that."</p>
+      <p class="premise-attr">— CHRIS LYNCH</p>
+    </div>
+  </div>
+</section>
+
+<!-- REASONS INTRO -->
+<section class="reasons-intro" id="s-reasons">
+  <div class="sec-inner">
+    <p class="eyebrow">THE FOUR REASONS</p>
+    <h2 class="sec-h2">Read each reason. Notice which one you recognise.</h2>
+    <p class="sec-body">These are the four mechanisms working against you after 35. Read all four — they connect to each other, which is why addressing one at a time has never been enough. As you read, notice which one you recognise most in your own experience. That recognition will matter at the end.</p>
+  </div>
+</section>
+
+<!-- REASON 01 — INFLAMMATION -->
+<section class="reason-sec r1" id="s-r01">
+  <div class="reason-inner">
+    <div id="badge-01" class="reason-relevance">★ THIS MATCHES YOUR SYMPTOM SELECTION</div>
+    <div class="reason-header">
+      <div class="r-num-block">
+        <div class="r-num">01</div>
+        <div class="r-tag">ONE OF FOUR</div>
+      </div>
+      <div>
+        <h2 class="r-title">Inflammation</h2>
+        <p class="r-subtitle">Chronic inflammation quietly stops your body releasing fat — and the trigger is almost certainly a food you would never suspect.</p>
+      </div>
+    </div>
+
+    <div class="sym-strip">
+      <span class="sym-strip-label">SYMPTOMS THIS ADDRESSES</span>
+      <div class="sym-pills-row">
+        <span class="sym-pill">Stubborn weight</span>
+        <span class="sym-pill">Bloating</span>
+        <span class="sym-pill">Energy crashes after eating</span>
+        <span class="sym-pill">Skin changes</span>
+      </div>
+    </div>
+
+    <p class="sec-body">Your immune system does not distinguish between a genuine threat and a food it has learned to react to. <strong>Both produce the same fat-holding response.</strong></p>
+    <p class="sec-body">When your immune system runs at a low, persistent level of activation — not illness, just a quiet constant hum — it sends a clear signal: hold on. Do not release. After 35, your body becomes progressively more sensitive to specific triggers. Foods your system managed at 28 may now be creating a sustained immune response you have never been helped to identify.</p>
+
+    <div class="mechanism-card">
+      <p class="mechanism-label">THE MECHANISM</p>
+      <p><em>Inflammation — not calories —</em> is the reason most commonly missed in women who are doing everything right.</p>
+    </div>
+
+    <div class="case-card">
+      <p class="case-label">A WOMAN I WORKED WITH</p>
+      <p>One of the women I coach had been bloated every single afternoon for three years. When she removed the one food her immune system had been quietly reacting to, <strong>the bloating was gone within four days.</strong></p>
+    </div>
+
+    <div class="reflection-block">
+      <p class="reflection-label">WHAT THIS MEANS FOR YOU</p>
+      <p style="font-size:16px;color:var(--body);margin-bottom:14px;line-height:1.8;">If you recognised stubborn weight, bloating, energy crashes or skin changes in the symptom strip above — these are not separate problems. They are the same mechanism expressing itself in different ways.</p>
+      <p class="reflect-q">The physical symptom I notice most after eating</p>
+      <textarea class="reflect-input" id="r01-q1" rows="1" placeholder="Write what you notice..." oninput="saveReflection('r01-q1',this.value)"></textarea>
+      <p class="reflect-note">→ Take this answer into the experiment on Path A below.</p>
+    </div>
+
+    <p class="next-reason">NEXT · <strong>REASON 02 — CORTISOL</strong> · That alert state is exactly what drives the next mechanism.</p>
+  </div>
+</section>
+
+<!-- REASON 02 — CORTISOL -->
+<section class="reason-sec r2" id="s-r02">
+  <div class="reason-inner">
+    <div id="badge-02" class="reason-relevance">★ THIS MATCHES YOUR SYMPTOM SELECTION</div>
+    <div class="reason-header">
+      <div class="r-num-block">
+        <div class="r-num">02</div>
+        <div class="r-tag">TWO OF FOUR</div>
+      </div>
+      <div>
+        <h2 class="r-title">Cortisol</h2>
+        <p class="r-subtitle">Every time you eat less to try harder, your body activates the exact stress response that makes fat loss more difficult — not less.</p>
+      </div>
+    </div>
+
+    <div class="sym-strip">
+      <span class="sym-strip-label">SYMPTOMS THIS ADDRESSES</span>
+      <div class="sym-pills-row">
+        <span class="sym-pill">Belly fat</span>
+        <span class="sym-pill">Cravings</span>
+        <span class="sym-pill">Poor sleep</span>
+        <span class="sym-pill">Wired but exhausted</span>
+      </div>
+    </div>
+
+    <p class="sec-body">Eating less activates your body's stress response in exactly the same way a physical danger would. <strong>Your body cannot tell the difference.</strong> Eating less raises cortisol. The cortisol creates the craving. The craving leads back to the trigger food. You were not failing to be disciplined — you were caught in a loop that no amount of willpower could have broken.</p>
+    <p class="sec-body">Sleep compounds this. When sleep is disrupted — more common after 35 due to hormonal shifts — cortisol stays out of balance overnight. The following day is harder before it has started.</p>
+
+    <div class="mechanism-card">
+      <p class="mechanism-label">THE MECHANISM</p>
+      <p>Long gaps without food raise cortisol — and raised cortisol tells your body to <em>store fat, not burn it.</em></p>
+    </div>
+
+    <div class="case-card">
+      <p class="case-label">A WOMAN I WORKED WITH</p>
+      <p>A client came to me having tried intermittent fasting for six months. Her cravings were getting worse, not better, and belly fat was increasing. <strong>Her cortisol was rising every time she extended the fasting window.</strong> The approach meant to help was the thing making it harder.</p>
+    </div>
+
+    <div class="reflection-block">
+      <p class="reflection-label">WHAT THIS MEANS FOR YOU</p>
+      <p style="font-size:16px;color:var(--body);margin-bottom:14px;line-height:1.8;">If you recognised belly fat, cravings, poor sleep or that wired-but-exhausted feeling in the symptom strip above — cortisol rhythm disruption connects all of them. Not a lack of discipline, not getting older.</p>
+      <p class="reflect-q">When I go several hours without eating I notice</p>
+      <textarea class="reflect-input" id="r02-q1" rows="1" placeholder="Write what you notice..." oninput="saveReflection('r02-q1',this.value)"></textarea>
+      <p class="reflect-q" style="margin-top:12px;">The symptom above that I feel most right now</p>
+      <textarea class="reflect-input" id="r02-q2" rows="1" placeholder="Write what you feel..." oninput="saveReflection('r02-q2',this.value)"></textarea>
+      <p class="reflect-note">→ Take these answers into the experiment on Path B below.</p>
+    </div>
+
+    <p class="next-reason">NEXT · <strong>REASON 03 — OESTROGEN</strong> · When stress hormones are already out of balance, everything oestrogen decline causes becomes harder.</p>
+  </div>
+</section>
+
+<!-- REASON 03 — OESTROGEN -->
+<section class="reason-sec r3" id="s-r03">
+  <div class="reason-inner">
+    <div id="badge-03" class="reason-relevance">★ THIS MATCHES YOUR SYMPTOM SELECTION</div>
+    <div class="reason-header">
+      <div class="r-num-block">
+        <div class="r-num">03</div>
+        <div class="r-tag">THREE OF FOUR</div>
+      </div>
+      <div>
+        <h2 class="r-title">Oestrogen Decline</h2>
+        <p class="r-subtitle">After 35, your hormonal environment changed the rules — and nobody told you, so you kept following the old ones.</p>
+      </div>
+    </div>
+
+    <div class="sym-strip">
+      <span class="sym-strip-label">SYMPTOMS THIS ADDRESSES</span>
+      <div class="sym-pills-row">
+        <span class="sym-pill">Weight shifting to abdomen</span>
+        <span class="sym-pill">Foods causing new reactions</span>
+        <span class="sym-pill">Brain fog</span>
+        <span class="sym-pill">Mood changes</span>
+      </div>
+    </div>
+
+    <p class="sec-body">Oestrogen has been doing far more than you realise — managing your blood sugar, your hunger signals, where your body stores fat, and your levels of inflammation. <strong>All of it.</strong> As oestrogen declines, the gut lining can weaken, allowing more immune triggers through. The immune system stays activated — making fat release biologically difficult regardless of how little you eat.</p>
+    <p class="sec-body">The same foods your body handled easily at 32 are behaving completely differently now. It is not your imagination. It is not weakness. <strong>The rules changed. The approach never did.</strong></p>
+
+    <div class="mechanism-card">
+      <p class="mechanism-label">THE MECHANISM</p>
+      <p>Oestrogen decline changes <em>where</em> your body stores fat — and makes it harder to release, even when you are eating less.</p>
+    </div>
+
+    <div class="case-card">
+      <p class="case-label">A WOMAN I WORKED WITH</p>
+      <p>A 38-year-old came to me frustrated that her weight had shifted to her abdomen over two years despite no change in what she ate. She put it down to age. It was the gut-lining change that follows oestrogen decline. <strong>Once we identified her specific triggers, the abdominal bloating reduced significantly within three weeks.</strong></p>
+    </div>
+
+    <div class="reflection-block">
+      <p class="reflection-label">WHAT THIS MEANS FOR YOU</p>
+      <p style="font-size:16px;color:var(--body);margin-bottom:14px;line-height:1.8;">If you recognised weight shifting to your abdomen, foods causing new reactions, brain fog or mood changes in the symptom strip above — these are the downstream effects of a hormonal shift nobody updated the instruction manual for.</p>
+      <p class="reflect-q">The physical symptom that has changed most since my mid-30s</p>
+      <textarea class="reflect-input" id="r03-q1" rows="1" placeholder="Write what has changed..." oninput="saveReflection('r03-q1',this.value)"></textarea>
+      <p class="reflect-q" style="margin-top:12px;">A food that affects me differently now than it used to</p>
+      <textarea class="reflect-input" id="r03-q2" rows="1" placeholder="Write what comes to mind..." oninput="saveReflection('r03-q2',this.value)"></textarea>
+      <p class="reflect-note">→ Take these answers into the experiment on Path A below.</p>
+    </div>
+
+    <p class="next-reason">NEXT · <strong>REASON 04 — METABOLIC ADAPTATION</strong> · Every time you ate less in response, your metabolism was quietly adapting.</p>
+  </div>
+</section>
+
+<!-- REASON 04 — METABOLIC ADAPTATION -->
+<section class="reason-sec r4" id="s-r04">
+  <div class="reason-inner">
+    <div id="badge-04" class="reason-relevance">★ THIS MATCHES YOUR SYMPTOM SELECTION</div>
+    <div class="reason-header">
+      <div class="r-num-block">
+        <div class="r-num">04</div>
+        <div class="r-tag">FOUR OF FOUR</div>
+      </div>
+      <div>
+        <h2 class="r-title">Metabolic Adaptation</h2>
+        <p class="r-subtitle">Every diet you have ever followed taught your body to need less — and it learned that lesson perfectly.</p>
+      </div>
+    </div>
+
+    <div class="sym-strip">
+      <span class="sym-strip-label">SYMPTOMS THIS ADDRESSES</span>
+      <div class="sym-pills-row">
+        <span class="sym-pill">Diets stopped working</span>
+        <span class="sym-pill">Eating less but not losing</span>
+        <span class="sym-pill">Low energy</span>
+        <span class="sym-pill">Hunger harder to satisfy</span>
+      </div>
+    </div>
+
+    <p class="sec-body">Every time you ate less, your body adapted. It became more efficient at rest. <strong>Your body got smarter at surviving on less.</strong> Eat less, lose a little, stall. Eat even less, lose almost nothing, stall sooner. Each round of dieting taught your body the same lesson a little more deeply.</p>
+    <p class="sec-body">This is not a sign that something is wrong with you. It is your body doing exactly what it was designed to do — protecting you from what it reads as scarcity. What changes it is not eating even less. It is removing the specific food your body has been quietly reacting to, so the protective signal can finally switch off.</p>
+
+    <div class="mechanism-card">
+      <p class="mechanism-label">THE MECHANISM</p>
+      <p>Your body adapted to hold on every time you ate less. What changes it is not eating even less — it is <em>removing</em> the food your body has been quietly reacting to.</p>
+    </div>
+
+    <div class="case-card">
+      <p class="case-label">A WOMAN I WORKED WITH</p>
+      <p>A woman came to me having tried every major diet over ten years. The first one worked well. Each subsequent attempt produced less. <strong>Her metabolism had adapted across a decade of restriction.</strong> What changed things was not eating less — it was removing what her immune system had been fighting the entire time.</p>
+    </div>
+
+    <div class="reflection-block">
+      <p class="reflection-label">WHAT THIS MEANS FOR YOU</p>
+      <p style="font-size:16px;color:var(--body);margin-bottom:14px;line-height:1.8;">If you recognised diets stopping working, eating less but not losing, low energy or hunger that is harder to satisfy in the symptom strip above — after years of restriction, the body runs in a low-level protective state. That is not failure. That is adaptation.</p>
+      <p class="reflect-q">The way my body feels most days right now</p>
+      <textarea class="reflect-input" id="r04-q1" rows="1" placeholder="Describe how you feel..." oninput="saveReflection('r04-q1',this.value)"></textarea>
+      <p class="reflect-note">→ Take this answer into the experiment on Path B below.</p>
+    </div>
+
+    <div style="background:rgba(45,122,122,0.06);border-radius:10px;padding:16px 18px;margin-top:20px;">
+      <p style="font-size:15px;color:var(--dark);font-weight:700;letter-spacing:0.5px;margin-bottom:6px;">BEFORE YOU CONTINUE</p>
+      <p style="font-size:16px;color:var(--body);margin-top:6px;line-height:1.85;">Look back at what you wrote across the four reasons. The symptoms you named, the patterns you recognised — these are your starting point. <strong>The experiment ahead is designed around exactly what you just identified.</strong></p>
+    </div>
+  </div>
+</section>
+
+<!-- SYMPTOM MAP — INTERACTIVE (after all four reasons) -->
+<section class="symptom-sec" id="s-symptom-map">
+  <div class="sec-inner" style="max-width:640px;margin:0 auto;">
+    <p class="eyebrow">THE SYMPTOM MAP</p>
+    <h2 class="sec-h2">Now — which of these felt most like you?</h2>
+    <p class="symptom-intro">You have just read all four reasons. Now tap the symptom group that resonated most with your own experience. <strong style="color:var(--ivory);">This is your routing decision</strong> — the guide will confirm your primary reason and show you exactly which experiment to follow.</p>
+    <p class="symptom-instruction">SELECT THE REASON THAT FELT MOST LIKE YOU</p>
+
+    <div class="symptom-grid">
+      <div class="sym-card" data-sym="01" onclick="selectSymptom(this)">
+        <div class="sym-check"><svg viewBox="0 0 12 10"><polyline points="1,5 4,8 11,1"/></svg></div>
+        <div class="sym-num">01</div>
+        <div class="sym-title">Inflammation</div>
+        <div class="sym-list">Stubborn weight · Bloating · Energy crashes after eating · Skin changes</div>
+      </div>
+      <div class="sym-card" data-sym="02" onclick="selectSymptom(this)">
+        <div class="sym-check"><svg viewBox="0 0 12 10"><polyline points="1,5 4,8 11,1"/></svg></div>
+        <div class="sym-num">02</div>
+        <div class="sym-title">Cortisol</div>
+        <div class="sym-list">Belly fat · Cravings · Poor sleep · Wired but exhausted</div>
+      </div>
+      <div class="sym-card" data-sym="03" onclick="selectSymptom(this)">
+        <div class="sym-check"><svg viewBox="0 0 12 10"><polyline points="1,5 4,8 11,1"/></svg></div>
+        <div class="sym-num">03</div>
+        <div class="sym-title">Oestrogen</div>
+        <div class="sym-list">Weight shifting to abdomen · Foods causing new reactions · Brain fog · Mood changes</div>
+      </div>
+      <div class="sym-card" data-sym="04" onclick="selectSymptom(this)">
+        <div class="sym-check"><svg viewBox="0 0 12 10"><polyline points="1,5 4,8 11,1"/></svg></div>
+        <div class="sym-num">04</div>
+        <div class="sym-title">Metabolic Adaptation</div>
+        <div class="sym-list">Diets stopped working · Eating less but not losing · Low energy · Hunger harder to satisfy</div>
+      </div>
+    </div>
+
+    <div class="sym-reveal" id="sym-reveal">
+      <p class="sym-reveal-label">YOUR PRIMARY REASON</p>
+      <p id="sym-reveal-text"></p>
+      <span class="sym-reveal-path" id="sym-reveal-path"></span>
+    </div>
+
+    <div class="path-summary" id="path-summary">
+      <p class="path-summary-label">YOUR EXPERIMENT</p>
+      <h3 id="path-summary-title"></h3>
+      <p id="path-summary-body"></p>
+      <span class="path-badge" id="path-summary-badge"></span>
+    </div>
+  </div>
+</section>
+
+<!-- THE THREAD -->
+<section class="thread-sec" id="s-thread">
+  <div class="thread-inner">
+    <p class="eyebrow">THE THREAD THAT CONNECTS ALL FOUR</p>
+    <h2 class="sec-h2" style="color:var(--ivory);">So what is the one thing every plan has consistently missed?</h2>
+    <p class="sec-body" style="color:var(--ivory);margin-bottom:20px;">All four mechanisms share a single entry point. Not a new exercise plan. Not eating even less. The specific foods your immune system has quietly learned to react to — and the two most common ones in women 35+ are dairy and gluten. Not in everyone, and not forever — but consistently enough that it is always the first place worth looking.</p>
+
+    <div class="thread-card">
+      <p>Here is why these two specifically: as oestrogen declines, the gut lining becomes more permeable. Proteins in dairy and gluten — casein and gliadin — pass through more easily than they used to, and your immune system registers them as a threat. That quiet immune response is exactly the inflammation from Reason 01, which keeps cortisol elevated from Reason 02 — which tells your body to hold fat regardless of how little you eat. <em>One mechanism feeding the next, in a loop you were never shown.</em></p>
+    </div>
+    <p style="font-size:17px;color:var(--ivory);margin:16px 0 24px;line-height:1.8;font-style:italic;">This is not about these foods being bad. It is about whether your immune system has learned to fight them.</p>
+
+    <div class="path-router">
+      <p class="router-label">YOUR EXPERIMENT — WHICH PATH ARE YOU?</p>
+      <table class="router-table">
+        <tr>
+          <td>Reasons 01 or 03<br><span style="font-size:12px;color:rgba(250,246,239,0.65);">Inflammation · Oestrogen</span></td>
+          <td style="color:var(--teal-light);font-size:16px;">→</td>
+          <td>Path A — gently set dairy or gluten aside</td>
+          <td>↓ below</td>
+        </tr>
+        <tr>
+          <td>Reasons 02 or 04<br><span style="font-size:12px;color:rgba(250,246,239,0.65);">Cortisol · Metabolic</span></td>
+          <td style="color:var(--teal-light);font-size:16px;">→</td>
+          <td>Path B — steady your blood sugar</td>
+          <td>↓ below</td>
+        </tr>
+      </table>
+      <div class="your-path-indicator" id="your-path-indicator">
+        <p class="ypi-label">BASED ON YOUR SELECTION ABOVE</p>
+        <p class="ypi-text" id="your-path-text"></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIMENT — PATH A -->
+<section class="experiment-sec path-a-sec" id="s-path-a">
+  <div class="reason-inner">
+    <div id="path-a-badge" class="reason-relevance">★ THIS IS YOUR RECOMMENDED EXPERIMENT</div>
+    <p class="eyebrow">YOUR 48-HOUR EXPERIMENT · PATH A OF TWO</p>
+    <h2 class="sec-h2">Path A — gently set <em style="color:var(--amber);">one food</em> aside.</h2>
+    <p class="experiment-subhead">This is your path if you recognised yourself most in Reason 01 — Inflammation or Reason 03 — Oestrogen. One small shop, then 48 hours — everything else stays exactly as it is.</p>
+
+    <div class="dairy-gluten-q">
+      <p class="dq-label">DO YOU ALREADY AVOID DAIRY, OR EAT VERY LITTLE OF IT?</p>
+      <div class="dq-options">
+        <button class="dq-btn" id="dairy-no" onclick="selectDairyGluten('dairy')">No — try the DAIRY swaps</button>
+        <button class="dq-btn" id="gluten-yes" onclick="selectDairyGluten('gluten')">Yes — try the GLUTEN swaps</button>
+      </div>
+    </div>
+
+    <div class="swap-grid" id="swap-grid-dairy" style="display:none;">
+      <div class="swap-col">
+        <div class="swap-col-header">DAIRY SWAPS · 48 HOURS</div>
+        <div class="swap-items">
+          <div class="swap-row"><span class="swap-from">Tea/coffee with milk</span><span class="swap-arrow">→</span><span class="swap-to">Oat or almond milk</span></div>
+          <div class="swap-row"><span class="swap-from">Yogurt</span><span class="swap-arrow">→</span><span class="swap-to">Coconut yogurt</span></div>
+          <div class="swap-row"><span class="swap-from">Cheese</span><span class="swap-arrow">→</span><span class="swap-to">Avocado or hummus</span></div>
+          <div class="swap-row"><span class="swap-from">Butter</span><span class="swap-arrow">→</span><span class="swap-to">Avocado or nut butter</span></div>
+          <div class="swap-row"><span class="swap-from">A treat</span><span class="swap-arrow">→</span><span class="swap-to">70% dark chocolate</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="swap-grid" id="swap-grid-gluten" style="display:none;">
+      <div class="swap-col">
+        <div class="swap-col-header">GLUTEN SWAPS · 48 HOURS</div>
+        <div class="swap-items">
+          <div class="swap-row"><span class="swap-from">Bread</span><span class="swap-arrow">→</span><span class="swap-to">Rice bread or rice cakes</span></div>
+          <div class="swap-row"><span class="swap-from">Pasta</span><span class="swap-arrow">→</span><span class="swap-to">Rice or lentil pasta</span></div>
+          <div class="swap-row"><span class="swap-from">Cereals</span><span class="swap-arrow">→</span><span class="swap-to">Gluten-free oats or GF granola</span></div>
+          <div class="swap-row"><span class="swap-from">Snacks</span><span class="swap-arrow">→</span><span class="swap-to">Rice crackers, fruit with nut butter</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hidden-triggers" id="swap-hidden-note" style="display:none;">
+      <p class="ht-label">KEEPING THE EXPERIMENT CLEAN — WHERE THE TRIGGER HIDES</p>
+      <div id="hidden-triggers-content"></div>
+    </div>
+
+    <p class="path-note" style="margin-top:24px;">There is nothing to get perfect here. You are simply giving your body two quiet days without the thing it may have been reacting to — and letting it show you the answer.</p>
+  </div>
+</section>
+
+<!-- EXPERIMENT — PATH B -->
+<section class="experiment-sec path-b-sec" id="s-path-b">
+  <div class="reason-inner">
+    <div id="path-b-badge" class="reason-relevance">★ THIS IS YOUR RECOMMENDED EXPERIMENT</div>
+    <p class="eyebrow">YOUR 48-HOUR EXPERIMENT · PATH B OF TWO</p>
+    <h2 class="sec-h2">Path B — build a steadier plate.</h2>
+    <p class="experiment-subhead">This is your path if you recognised yourself most in Reason 02 — Cortisol or Reason 04 — Metabolic Adaptation. Nothing is removed here — this is simply about how you build each plate.</p>
+
+    <p style="font-size:17px;color:var(--body);margin-bottom:22px;line-height:1.85;">Your experiment is about steadying blood sugar — not removing food. At every meal, build your plate around these three:</p>
+
+    <div class="plate-method">
+      <div class="plate-cols">
+        <div class="plate-col">
+          <div class="plate-icon">P</div>
+          <div class="plate-label">PROTEIN</div>
+          <div class="plate-examples">Eggs · Chicken · Fish · Greek yogurt · Beans · Lentils · Tofu</div>
+        </div>
+        <div class="plate-col">
+          <div class="plate-icon">F</div>
+          <div class="plate-label">FIBRE</div>
+          <div class="plate-examples">Veg · Salad · Berries · Beans · Lentils · Oats · Chia</div>
+        </div>
+        <div class="plate-col">
+          <div class="plate-icon">H</div>
+          <div class="plate-label">HEALTHY FAT</div>
+          <div class="plate-examples">Avocado · Olive oil · Nuts · Seeds · Nut butter</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="swap-col" style="border-radius:10px;overflow:hidden;border:1.5px solid var(--sand);margin-bottom:20px;">
+      <div class="swap-col-header" style="background:var(--teal-dark);">PROTEIN · FIBRE · FAT — AT EVERY MEAL · 48 HOURS</div>
+      <div class="swap-items">
+        <div class="swap-row" style="grid-template-columns:140px 1fr;"><span class="swap-from" style="font-weight:700;color:var(--dark);">Each plate</span><span class="swap-to" style="font-size:15px;font-weight:400;color:var(--body);">Protein + fibre + fat on every plate — keeps blood sugar steady.</span></div>
+        <div class="swap-row" style="grid-template-columns:140px 1fr;"><span class="swap-from" style="font-weight:700;color:var(--dark);">Start with breakfast</span><span class="swap-to" style="font-size:15px;font-weight:400;color:var(--body);">Eggs &amp; veg, Greek yogurt with berries, or salmon &amp; avocado.</span></div>
+        <div class="swap-row" style="grid-template-columns:140px 1fr;"><span class="swap-from" style="font-weight:700;color:var(--dark);">Snacks</span><span class="swap-to" style="font-size:15px;font-weight:400;color:var(--body);">Nuts, boiled eggs, or hummus with veg — something with protein or fibre.</span></div>
+        <div class="swap-row" style="grid-template-columns:140px 1fr;"><span class="swap-from" style="font-weight:700;color:var(--dark);">Meal gaps</span><span class="swap-to" style="font-size:15px;font-weight:400;color:var(--body);">Try not to leave long gaps — aim to eat something within about 4 hours.</span></div>
+        <div class="swap-row" style="grid-template-columns:140px 1fr;"><span class="swap-from" style="font-weight:700;color:var(--dark);">Morning coffee</span><span class="swap-to" style="font-size:15px;font-weight:400;color:var(--body);">Have something to eat before your first coffee of the day.</span></div>
+      </div>
+    </div>
+
+    <p class="path-note">You are not eating less. You are building each plate so blood sugar stops spiking and crashing. You do not need to count anything or get it perfect. Build each plate around the three, start with breakfast, and let the next two days show you how different steady can feel.</p>
+  </div>
+</section>
+
+<!-- OBSERVATION — INTERACTIVE -->
+<section class="observation-sec" id="s-observation">
+  <div class="thread-inner">
+    <p class="eyebrow">DURING &amp; AFTER THE 48 HOURS</p>
+    <h2 class="sec-h2">Then pay attention to one thing only — what gets better.</h2>
+    <p class="obs-intro">Notice the shifts as they happen. After 48 hours, mark where you land on each of these. You are not looking for dramatic change. <strong style="color:var(--ivory);">Even one Better is your body communicating.</strong></p>
+
+    <div class="obs-grid" id="obs-grid">
+      <div class="obs-item" data-obs="energy">
+        <div class="obs-label"><strong>Energy</strong> — does it feel more stable than usual?</div>
+        <div class="obs-buttons">
+          <button class="obs-btn better" onclick="markObs(this,'energy','better')">Better</button>
+          <button class="obs-btn same" onclick="markObs(this,'energy','same')">Same</button>
+          <button class="obs-btn worse" onclick="markObs(this,'energy','worse')">Worse</button>
+        </div>
+      </div>
+      <div class="obs-item" data-obs="bloating">
+        <div class="obs-label"><strong>Bloating</strong> — is there less of it, or does it clear faster?</div>
+        <div class="obs-buttons">
+          <button class="obs-btn better" onclick="markObs(this,'bloating','better')">Better</button>
+          <button class="obs-btn same" onclick="markObs(this,'bloating','same')">Same</button>
+          <button class="obs-btn worse" onclick="markObs(this,'bloating','worse')">Worse</button>
+        </div>
+      </div>
+      <div class="obs-item" data-obs="clarity">
+        <div class="obs-label"><strong>Mental clarity</strong> — does your thinking feel sharper?</div>
+        <div class="obs-buttons">
+          <button class="obs-btn better" onclick="markObs(this,'clarity','better')">Better</button>
+          <button class="obs-btn same" onclick="markObs(this,'clarity','same')">Same</button>
+          <button class="obs-btn worse" onclick="markObs(this,'clarity','worse')">Worse</button>
+        </div>
+      </div>
+      <div class="obs-item" data-obs="sleep">
+        <div class="obs-label"><strong>Sleep</strong> — easier to fall asleep, or less groggy waking?</div>
+        <div class="obs-buttons">
+          <button class="obs-btn better" onclick="markObs(this,'sleep','better')">Better</button>
+          <button class="obs-btn same" onclick="markObs(this,'sleep','same')">Same</button>
+          <button class="obs-btn worse" onclick="markObs(this,'sleep','worse')">Worse</button>
+        </div>
+      </div>
+      <div class="obs-item" data-obs="mood">
+        <div class="obs-label"><strong>Mood</strong> — calmer or less irritable than usual?</div>
+        <div class="obs-buttons">
+          <button class="obs-btn better" onclick="markObs(this,'mood','better')">Better</button>
+          <button class="obs-btn same" onclick="markObs(this,'mood','same')">Same</button>
+          <button class="obs-btn worse" onclick="markObs(this,'mood','worse')">Worse</button>
+        </div>
+      </div>
+      <div class="obs-item" data-obs="cravings">
+        <div class="obs-label"><strong>Cravings</strong> — do they feel less urgent or easier to sit with?</div>
+        <div class="obs-buttons">
+          <button class="obs-btn better" onclick="markObs(this,'cravings','better')">Better</button>
+          <button class="obs-btn same" onclick="markObs(this,'cravings','same')">Same</button>
+          <button class="obs-btn worse" onclick="markObs(this,'cravings','worse')">Worse</button>
+        </div>
+      </div>
+      <div class="obs-item" data-obs="headaches">
+        <div class="obs-label"><strong>Headaches</strong> — do they reduce or disappear?</div>
+        <div class="obs-buttons">
+          <button class="obs-btn better" onclick="markObs(this,'headaches','better')">Better</button>
+          <button class="obs-btn same" onclick="markObs(this,'headaches','same')">Same</button>
+          <button class="obs-btn worse" onclick="markObs(this,'headaches','worse')">Worse</button>
+        </div>
+      </div>
+      <div class="obs-item" data-obs="congestion">
+        <div class="obs-label"><strong>Congestion</strong> — any reduction in mucus or stuffiness?</div>
+        <div class="obs-buttons">
+          <button class="obs-btn better" onclick="markObs(this,'congestion','better')">Better</button>
+          <button class="obs-btn same" onclick="markObs(this,'congestion','same')">Same</button>
+          <button class="obs-btn worse" onclick="markObs(this,'congestion','worse')">Worse</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="obs-summary" id="obs-summary">
+      <p class="obs-summary-label">YOUR RESULTS SO FAR</p>
+      <p id="obs-summary-text"></p>
+    </div>
+
+    <div class="obs-thread">
+      <p>These are the quiet signals that most commonly improve across the first 48 hours of removing a food your body has been quietly reacting to — or of stabilising the blood sugar pattern driving your symptoms. Not dramatic. Not obvious. That is exactly why most women have never connected them to what they ate.</p>
+    </div>
+  </div>
+</section>
+
+<!-- REPLY -->
+<section class="reply-sec" id="s-reply">
+  <div class="reply-inner">
+    <p class="eyebrow">YOUR ANSWER</p>
+    <h2 class="reply-h">Which reason felt most like you?</h2>
+    <p class="reply-body">Reply to the email you received this guide in — or tap your answer below. I read every reply. Your answer shapes the conversation.</p>
+    <div class="mechanism-buttons">
+      <button class="mech-btn" data-mech="inflammation" onclick="selectMechanism(this)">Inflammation</button>
+      <button class="mech-btn" data-mech="cortisol" onclick="selectMechanism(this)">Cortisol</button>
+      <button class="mech-btn" data-mech="oestrogen" onclick="selectMechanism(this)">Oestrogen</button>
+      <button class="mech-btn" data-mech="metabolism" onclick="selectMechanism(this)">Metabolic Adaptation</button>
+    </div>
+    <div class="mech-selected-msg" id="mech-msg"></div>
+    <a href="https://www.instagram.com/chrislynch.reset" target="_blank" class="instagram-link" style="margin-top:20px;">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+      Follow @chrislynch.reset
+    </a>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about-sec" id="s-about">
+  <div class="about-inner">
+    <div class="about-photo-row">
+      <div class="about-photo-col">
+        <img src="chris-lynch.jpg" alt="Chris Lynch — Health Coach" class="about-photo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+        <div class="about-photo-placeholder" style="display:none;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="rgba(250,246,239,0.2)" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+          <span>CL</span>
+        </div>
+        <p class="photo-note">CHRIS LYNCH</p>
+      </div>
+      <div class="about-text-col">
+        <p class="eyebrow">THE AUTHOR</p>
+        <h2 class="sec-h2" style="color:var(--ivory);margin-bottom:16px;">Chris Lynch</h2>
+        <div class="nhs-badge" style="margin-bottom:20px;">
+          <div class="nhs-dot"></div>
+          <span class="nhs-txt">Health Coach · <strong>NHS Background</strong> · 9 Years · Women 35+</span>
+        </div>
+        <p class="about-body">After 6 years coaching women inside the NHS, Chris saw the same pattern repeatedly: women doing everything they had been told and still not seeing results. What he kept noticing was not a willpower problem. It was a mechanism problem — one the system he worked inside simply does not have the tools to address.</p>
+        <p class="about-body">That realisation is what this guide is built on. Your body is not broken. It is communicating — and now you have the explanation to understand what it has been saying.</p>
+        <div class="about-quote">
+          <p>"You have not been failing. You have been following a framework that was <em>never built</em> for what your body is actually dealing with. Your body is not broken. <em>It is communicating.</em>"</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2026 Chris Lynch Health Coaching · All rights reserved<br>
+  <a href="https://chrislynchreset.com">chrislynchreset.com</a> · <a href="https://www.iubenda.com/privacy-policy/66383332">Privacy Policy</a></p>
+</footer>
+
+<script>
+// ─── STATE ────────────────────────────────────────────────
+const state = {
+  selectedSym: null,
+  obsResults: {},
+  reflections: {}
+};
+
+// Restore from sessionStorage
+try {
+  const saved = sessionStorage.getItem('finally_state');
+  if(saved) Object.assign(state, JSON.parse(saved));
+} catch(e){}
+
+function saveState() {
+  try { sessionStorage.setItem('finally_state', JSON.stringify(state)); } catch(e){}
+}
+
+// ─── PROGRESS BAR ────────────────────────────────────────
+const sections = ['s-intro','s-reasons','s-r01','s-r02','s-r03','s-r04','s-symptom-map','s-thread','s-path-a','s-path-b','s-observation','s-reply','s-about'];
+function updateProgress() {
+  const scrollY = window.scrollY + window.innerHeight * 0.5;
+  let active = 0;
+  sections.forEach((id, i) => {
+    const el = document.getElementById(id);
+    if(el && el.offsetTop <= scrollY) active = i + 1;
+  });
+  const pct = Math.round((active / sections.length) * 100);
+  document.getElementById('progress-fill').style.width = pct + '%';
+  document.getElementById('progress-pct').textContent = pct + '%';
+}
+window.addEventListener('scroll', updateProgress, {passive:true});
+updateProgress();
+
+// ─── SYMPTOM MAP ─────────────────────────────────────────
+const symData = {
+  '01': {
+    title: 'Inflammation — Reason 01',
+    text: 'Your dominant symptoms point to chronic inflammation. Your immune system is running at a low-level constant activation, likely triggered by a specific food. Your experiment is Path A — gently setting one food aside for 48 hours.',
+    path: 'YOUR EXPERIMENT → PATH A',
+    pathKey: 'A',
+    summaryTitle: 'Path A — Set one food aside.',
+    summaryBody: 'You are trying dairy swaps or gluten swaps for 48 hours. Everything else stays exactly as it is. One small shop, then two quiet days. Scroll to Path A below.',
+    badge: 'SCROLL TO PATH A ↓'
+  },
+  '02': {
+    title: 'Cortisol — Reason 02',
+    text: 'Your dominant symptoms point to cortisol disruption. Long gaps without food, poor sleep, cravings and belly fat are all signs of a stress-hormone pattern. Your experiment is Path B — building a steadier plate to stabilise blood sugar.',
+    path: 'YOUR EXPERIMENT → PATH B',
+    pathKey: 'B',
+    summaryTitle: 'Path B — Build a steadier plate.',
+    summaryBody: 'You are building every meal around protein, fibre, and healthy fat for 48 hours. Nothing is removed. Scroll to Path B below.',
+    badge: 'SCROLL TO PATH B ↓'
+  },
+  '03': {
+    title: 'Oestrogen Decline — Reason 03',
+    text: 'Your dominant symptoms point to oestrogen decline. The gut-lining changes that follow hormonal shifts are making you react to foods you used to handle fine. Your experiment is Path A — identifying and removing the most likely trigger.',
+    path: 'YOUR EXPERIMENT → PATH A',
+    pathKey: 'A',
+    summaryTitle: 'Path A — Set one food aside.',
+    summaryBody: 'You are trying dairy swaps or gluten swaps for 48 hours. Everything else stays exactly as it is. Scroll to Path A below.',
+    badge: 'SCROLL TO PATH A ↓'
+  },
+  '04': {
+    title: 'Metabolic Adaptation — Reason 04',
+    text: 'Your dominant symptoms point to metabolic adaptation. Years of restriction have trained your body to hold on to everything. The answer is not eating less — it is removing what your immune system has been fighting. Your experiment is Path B, which stabilises the blood sugar pattern that keeps your metabolism in protective mode.',
+    path: 'YOUR EXPERIMENT → PATH B',
+    pathKey: 'B',
+    summaryTitle: 'Path B — Build a steadier plate.',
+    summaryBody: 'You are building every meal around protein, fibre, and healthy fat for 48 hours. Nothing is removed. Scroll to Path B below.',
+    badge: 'SCROLL TO PATH B ↓'
+  }
+};
+
+function selectSymptom(card) {
+  const sym = card.dataset.sym;
+  state.selectedSym = sym;
+  saveState();
+
+  document.querySelectorAll('.sym-card').forEach(c => {
+    c.classList.remove('selected','faded');
+    c.classList.add(c.dataset.sym === sym ? 'selected' : 'faded');
+  });
+
+  const d = symData[sym];
+
+  // Reveal block
+  const reveal = document.getElementById('sym-reveal');
+  document.getElementById('sym-reveal-text').textContent = d.text;
+  document.getElementById('sym-reveal-path').textContent = d.path;
+  reveal.classList.add('show');
+
+  // Path summary
+  const ps = document.getElementById('path-summary');
+  document.getElementById('path-summary-title').textContent = d.summaryTitle;
+  document.getElementById('path-summary-body').textContent = d.summaryBody;
+  document.getElementById('path-summary-badge').textContent = d.badge;
+  ps.classList.add('show');
+
+  // Badge on matching reason
+  ['01','02','03','04'].forEach(n => {
+    const b = document.getElementById('badge-0' + n.slice(-1));
+    if(b) b.classList.remove('show');
+  });
+  const badge = document.getElementById('badge-' + sym);
+  if(badge) badge.classList.add('show');
+
+  // Badge on correct path experiment
+  document.getElementById('path-a-badge').classList.remove('show');
+  document.getElementById('path-b-badge').classList.remove('show');
+  document.getElementById('path-' + d.pathKey.toLowerCase() + '-badge').classList.add('show');
+
+  // Thread indicator
+  const ypi = document.getElementById('your-path-indicator');
+  document.getElementById('your-path-text').textContent = 'Based on your selection, your experiment is ' + d.summaryTitle;
+  ypi.classList.add('show');
+}
+
+// Restore on load
+if(state.selectedSym) {
+  const card = document.querySelector('[data-sym="' + state.selectedSym + '"]');
+  if(card) selectSymptom(card);
+}
+
+// ─── DAIRY / GLUTEN TOGGLE ────────────────────────────────
+function selectDairyGluten(type) {
+  document.getElementById('dairy-no').classList.toggle('active', type==='dairy');
+  document.getElementById('gluten-yes').classList.toggle('active', type==='gluten');
+
+  const dairyGrid = document.getElementById('swap-grid-dairy');
+  const glutenGrid = document.getElementById('swap-grid-gluten');
+  dairyGrid.style.display = type==='dairy' ? 'grid' : 'none';
+  glutenGrid.style.display = type==='gluten' ? 'grid' : 'none';
+
+  const note = document.getElementById('swap-hidden-note');
+  const content = document.getElementById('hidden-triggers-content');
+  if(type==='dairy'){
+    content.innerHTML = '<div class="ht-item">Dairy also hides in non-dairy creamers, milk chocolate, and some breads — scan labels for <strong>casein, caseinate, whey, lactose.</strong></div>';
+  } else {
+    content.innerHTML = '<div class="ht-item">Gluten also hides in soy sauce, gravy, sauces, dressings, and oats — choose ones marked <strong>gluten-free.</strong></div>';
+  }
+  note.style.display = 'block';
+  note.style.animation = 'fadeIn 0.3s ease';
+}
+
+// ─── OBSERVATION TRACKER ────────────────────────────────
+function markObs(btn, metric, result) {
+  const item = btn.closest('.obs-item');
+  item.querySelectorAll('.obs-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  state.obsResults[metric] = result;
+  saveState();
+  updateObsSummary();
+}
+
+function updateObsSummary() {
+  const results = state.obsResults;
+  const betterCount = Object.values(results).filter(v => v==='better').length;
+  const total = Object.keys(results).length;
+  if(total === 0) return;
+
+  const summary = document.getElementById('obs-summary');
+  const text = document.getElementById('obs-summary-text');
+  summary.classList.add('show');
+
+  if(betterCount === 0) {
+    text.textContent = 'You have marked ' + total + ' item' + (total>1?'s':'') + '. If nothing has improved yet, you may not have completed the 48 hours — or your primary trigger may not be one of these two. That is useful information too. Complete the experiment fully and come back.';
+  } else if(betterCount === 1) {
+    text.textContent = 'One Better. Your body is communicating. That single shift is more significant than it looks — it means the mechanism is real and the approach is working. This is your starting point.';
+  } else if(betterCount <= 3) {
+    text.textContent = betterCount + ' improvements marked. This is exactly the pattern. Multiple mechanisms easing across 48 hours confirms your body was reacting — and has started to settle. This is the evidence most doctors have never helped you find.';
+  } else {
+    text.textContent = betterCount + ' improvements — this is a strong signal. Your body has been carrying a sustained inflammatory or metabolic load, and removing or steadying just one variable has created a noticeable shift. This is the evidence most approaches have never helped you find.';
+  }
+}
+
+// Restore obs on load
+if(Object.keys(state.obsResults).length > 0) {
+  Object.entries(state.obsResults).forEach(([metric, result]) => {
+    const item = document.querySelector('[data-obs="' + metric + '"]');
+    if(item) {
+      const btn = item.querySelector('.obs-btn.' + result);
+      if(btn) { btn.classList.add('active'); }
+    }
+  });
+  updateObsSummary();
+}
+
+// ─── REFLECTIONS ─────────────────────────────────────────
+function saveReflection(id, val) {
+  state.reflections[id] = val;
+  saveState();
+}
+
+// Restore reflections on load
+if(Object.keys(state.reflections).length > 0) {
+  Object.entries(state.reflections).forEach(([id, val]) => {
+    const el = document.getElementById(id);
+    if(el) el.value = val;
+  });
+}
+
+// ─── MECHANISM REPLY ─────────────────────────────────────
+const mechMessages = {
+  inflammation: 'Inflammation selected. Your immune system has been quietly holding fat in place. The experiment you just ran — removing the trigger — is the first step in switching that signal off.',
+  cortisol: 'Cortisol selected. Every time you tried harder, your body read it as stress. Building a steadier plate is not about eating less — it is about stopping the cortisol loop that has been working against you.',
+  oestrogen: 'Oestrogen Decline selected. The rules changed after 35 and nobody updated your instruction manual. The gut-lining shift is real — and it is identifiable.',
+  metabolism: 'Metabolic Adaptation selected. Every diet taught your body to need less. What changes it is not another restriction — it is removing what your immune system has been fighting the entire time.'
+};
+
+function selectMechanism(btn) {
+  document.querySelectorAll('.mech-btn').forEach(b => b.classList.remove('selected'));
+  btn.classList.add('selected');
+  const msg = document.getElementById('mech-msg');
+  msg.textContent = mechMessages[btn.dataset.mech];
+  msg.classList.add('show');
+}
+</script>
+</body>
+</html>
