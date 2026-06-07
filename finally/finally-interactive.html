@@ -42,7 +42,6 @@ nav{background:var(--teal);padding:13px 32px;display:flex;align-items:center;jus
 .hero-stat{font-family:var(--mono);font-size:12px;color:var(--teal-light);letter-spacing:1.5px;text-transform:uppercase;}
 .hero-stat strong{color:var(--ivory);font-family:var(--sans);font-size:20px;font-weight:700;display:block;letter-spacing:0;}
 .hero-author{display:flex;align-items:center;gap:10px;justify-content:center;}
-.author-dot{width:32px;height:32px;border-radius:50%;background:var(--teal);border:2px solid var(--teal-light);flex-shrink:0;}
 .author-label{font-family:var(--mono);font-size:12px;color:rgba(250,246,239,0.65);letter-spacing:1px;text-align:left;}
 .author-label strong{color:var(--ivory);font-family:var(--sans);font-size:14px;font-weight:700;display:block;letter-spacing:0;}
 
@@ -255,7 +254,7 @@ nav{background:var(--teal);padding:13px 32px;display:flex;align-items:center;jus
 .about-inner{max-width:680px;margin:0 auto;position:relative;z-index:1;}
 .about-photo-row{display:grid;grid-template-columns:200px 1fr;gap:40px;align-items:start;}
 .about-photo-col{display:flex;flex-direction:column;align-items:center;gap:8px;}
-.about-photo-img{width:100%;max-width:200px;aspect-ratio:3/4;object-fit:cover;object-position:center top;border-radius:12px;border:2px solid rgba(142,206,206,0.25);display:block;}
+.about-photo-img{width:100%;max-width:200px;aspect-ratio:3/4;object-fit:cover;object-position:center top;border-radius:14px;border:2px solid rgba(212,135,74,0.5);box-shadow:0 8px 32px rgba(26,53,53,0.5);display:block;}
 .about-photo-placeholder{width:100%;max-width:200px;aspect-ratio:3/4;border-radius:12px;background:linear-gradient(160deg,#1A3535 0%,#2D7A7A 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;}
 .about-photo-placeholder svg{width:36px;height:36px;}
 .about-photo-placeholder span{font-size:28px;color:rgba(250,246,239,0.25);font-family:'Playfair Display',serif;font-weight:700;letter-spacing:2px;}
@@ -348,7 +347,7 @@ footer a{color:var(--teal-light);text-decoration:none;}
       <div class="hero-stat"><strong>1</strong>EXPLANATION</div>
     </div>
     <div class="hero-author">
-      <div class="author-dot"></div>
+      <img src="chris-lynch-headshot-circle.png" alt="Chris Lynch" style="width:40px;height:40px;border-radius:50%;border:2px solid var(--teal-light);object-fit:cover;flex-shrink:0;">
       <div class="author-label">
         <strong>Chris Lynch</strong>
         HEALTH COACH · NHS BACKGROUND · 9 YEARS · WOMEN 35+
@@ -881,7 +880,7 @@ footer a{color:var(--teal-light);text-decoration:none;}
   <div class="about-inner">
     <div class="about-photo-row">
       <div class="about-photo-col">
-        <img src="chris-lynch.jpg" alt="Chris Lynch — Health Coach" class="about-photo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+        <img src="chris-lynch-author.jpg" alt="Chris Lynch — Health Coach" class="about-photo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
         <div class="about-photo-placeholder" style="display:none;">
           <svg viewBox="0 0 24 24" fill="none" stroke="rgba(250,246,239,0.2)" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
           <span>CL</span>
