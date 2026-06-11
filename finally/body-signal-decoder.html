@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Your Body Signal Decoder · Chris Lynch</title>
+<meta name="description" content="You ran the experiment. Now find out what your body was actually telling you. A companion toolkit from Chris Lynch, Health Coach."/>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%232D7A7A'/><text x='50%25' y='50%25' dominant-baseline='central' text-anchor='middle' font-family='Georgia,serif' font-size='14' font-weight='700' fill='%23D4874A'>CL</text></svg>"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Lato:wght@300;400;700&family=DM+Mono&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --teal:#2D7A7A;--teal-mid:#4A9E9E;--teal-light:#8ECECE;
+  --teal-dark:#1A3535;
+  --amber:#D4874A;--blush:#E8B89A;
+  --ivory:#FAF6EF;--sand:#EDE0CC;--slate:#8A9090;
+  --dark:#1A3535;--body:#3D5252;
+  --serif:'Playfair Display',Georgia,serif;
+  --sans:'Lato',sans-serif;
+  --mono:'DM Mono',monospace;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:var(--sans);background:var(--ivory);color:var(--body);line-height:1.75;-webkit-font-smoothing:antialiased;}
+
+/* ── TOPBAR ── */
+.topbar{background:var(--dark);padding:9px 24px;text-align:center;}
+.topbar p{font-family:var(--mono);font-size:12px;color:var(--teal-light);letter-spacing:1.5px;}
+.topbar span{color:var(--amber);}
+
+/* ── NAV ── */
+nav{background:var(--teal);padding:13px 32px;display:flex;align-items:center;justify-content:space-between;box-shadow:0 2px 16px rgba(26,53,53,0.22);}
+.nav-logo{font-family:var(--serif);font-size:17px;color:var(--ivory);font-weight:400;}
+.nav-logo span{font-family:var(--mono);font-size:10px;color:var(--teal-light);display:block;letter-spacing:2px;}
+.nav-pill{font-family:var(--mono);font-size:11px;color:var(--teal-light);letter-spacing:1px;}
+
+/* ── HERO ── */
+.hero{background:var(--dark);padding:52px 24px 60px;text-align:center;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 15% 85%,rgba(212,135,74,0.12) 0%,transparent 55%),radial-gradient(ellipse at 85% 15%,rgba(45,122,122,0.1) 0%,transparent 50%);pointer-events:none;}
+.hero-inner{max-width:600px;margin:0 auto;position:relative;z-index:1;}
+.guide-tag{display:inline-block;font-family:var(--mono);font-size:12px;letter-spacing:2px;color:var(--amber);border:1px solid rgba(212,135,74,0.4);border-radius:20px;padding:5px 16px;margin-bottom:20px;text-transform:uppercase;}
+.hero h1{font-family:var(--serif);font-size:clamp(32px,6vw,52px);font-weight:700;color:var(--ivory);line-height:1.1;margin-bottom:14px;letter-spacing:-0.5px;}
+.hero h1 em{color:var(--amber);font-style:italic;}
+.hero-sub{font-family:var(--serif);font-style:italic;font-size:clamp(17px,2.5vw,21px);color:rgba(250,246,239,0.82);margin-bottom:28px;line-height:1.5;}
+.hero-steps{display:flex;gap:0;justify-content:center;flex-wrap:wrap;margin-bottom:8px;}
+.step-pill{font-family:var(--mono);font-size:11px;color:var(--teal-light);letter-spacing:1.5px;text-transform:uppercase;padding:7px 16px;border:1px solid rgba(142,206,206,0.25);display:flex;align-items:center;gap:7px;}
+.step-pill:first-child{border-radius:20px 0 0 20px;}
+.step-pill:last-child{border-radius:0 20px 20px 0;}
+.step-pill .step-num{background:var(--amber);color:var(--ivory);font-size:11px;font-family:var(--mono);width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.step-pill.active-step{background:rgba(212,135,74,0.12);border-color:rgba(212,135,74,0.4);}
+
+/* ── SHARED SECTION ── */
+.sec{padding:56px 24px;}
+.sec-inner{max-width:620px;margin:0 auto;}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:3px;text-transform:uppercase;color:var(--teal-mid);margin-bottom:12px;}
+.sec-h2{font-family:var(--serif);font-size:clamp(22px,3.5vw,32px);color:var(--teal);font-weight:600;line-height:1.25;margin-bottom:16px;}
+.sec-h2 em{color:var(--amber);font-style:italic;}
+.sec-body{font-size:17px;color:var(--body);line-height:1.85;margin-bottom:18px;}
+
+/* ── PROGRESS ── */
+.progress-wrap{background:var(--teal-dark);border-bottom:1px solid rgba(45,122,122,0.2);padding:12px 24px;position:sticky;top:0;z-index:100;}
+.progress-inner{max-width:620px;margin:0 auto;}
+.progress-label{font-family:var(--mono);font-size:11px;color:var(--teal-light);letter-spacing:1px;margin-bottom:6px;display:flex;justify-content:space-between;}
+.progress-track{background:rgba(45,122,122,0.25);border-radius:100px;height:4px;}
+.progress-fill{background:linear-gradient(90deg,var(--teal) 0%,var(--amber) 100%);border-radius:100px;height:4px;width:0%;transition:width 0.6s ease;}
+
+/* ── SECTION 1: RE-MARK RESULTS ── */
+.results-sec{background:var(--ivory);padding:56px 24px;}
+.intro-card{background:var(--sand);border-left:3px solid var(--amber);border-radius:0 10px 10px 0;padding:20px 22px;margin:24px 0;}
+.intro-card-label{font-family:var(--mono);font-size:11px;letter-spacing:2px;color:var(--amber);text-transform:uppercase;margin-bottom:8px;}
+.intro-card p{font-size:16px;color:var(--body);line-height:1.8;}
+
+.obs-grid{display:grid;gap:10px;margin:28px 0;}
+.obs-item{background:#fff;border:1.5px solid var(--sand);border-radius:10px;padding:16px 18px;display:grid;grid-template-columns:1fr auto;gap:14px;align-items:center;transition:border-color 0.2s;}
+.obs-item.has-result{border-color:rgba(45,122,122,0.3);}
+.obs-label{font-size:16px;color:var(--body);line-height:1.55;}
+.obs-label strong{color:var(--dark);font-weight:700;}
+.obs-buttons{display:flex;gap:7px;}
+.obs-btn{font-family:var(--mono);font-size:12px;letter-spacing:0.3px;padding:8px 13px;border-radius:5px;border:1.5px solid var(--sand);background:transparent;color:var(--slate);cursor:pointer;transition:all 0.15s;}
+.obs-btn:hover{border-color:var(--teal-mid);color:var(--teal);}
+.obs-btn.better.active{background:rgba(45,122,122,0.1);border-color:var(--teal);color:var(--teal);font-weight:700;}
+.obs-btn.same.active{background:rgba(142,206,206,0.12);border-color:var(--teal-mid);color:var(--teal-mid);}
+.obs-btn.worse.active{background:rgba(212,135,74,0.1);border-color:var(--amber);color:var(--amber);}
+
+.results-counter{font-family:var(--mono);font-size:13px;color:var(--slate);letter-spacing:1px;margin-bottom:6px;text-align:center;transition:color 0.3s;}
+.results-counter.has-data{color:var(--teal);}
+
+.read-btn-wrap{text-align:center;margin-top:28px;}
+.read-btn{background:var(--teal-dark);color:var(--ivory);font-family:var(--mono);font-size:14px;letter-spacing:1px;padding:16px 36px;border:none;border-radius:8px;cursor:pointer;transition:all 0.2s;box-shadow:0 4px 18px rgba(26,53,53,0.2);}
+.read-btn:hover{background:var(--teal);transform:translateY(-2px);box-shadow:0 8px 24px rgba(26,53,53,0.25);}
+.read-btn:disabled{opacity:0.4;cursor:not-allowed;transform:none;}
+.read-btn-note{font-family:var(--mono);font-size:12px;color:var(--slate);margin-top:10px;letter-spacing:0.5px;}
+
+/* ── SECTION 2: INTERPRETATION ── */
+.decode-sec{background:var(--teal-dark);padding:56px 24px;display:none;}
+.decode-sec.show{display:block;animation:fadeIn 0.5s ease;}
+.decode-sec .eyebrow{color:var(--teal-light);}
+.decode-sec .sec-h2{color:var(--ivory);}
+
+.signal-card{border-radius:14px;padding:28px 26px;margin-bottom:20px;border:1px solid rgba(250,246,239,0.12);}
+.signal-card.primary{background:rgba(45,122,122,0.22);border-color:rgba(142,206,206,0.3);}
+.signal-card.secondary{background:rgba(250,246,239,0.05);}
+.signal-card.nothing{background:rgba(212,135,74,0.1);border-color:rgba(212,135,74,0.25);}
+
+.signal-eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:2px;text-transform:uppercase;margin-bottom:10px;}
+.signal-card.primary .signal-eyebrow{color:var(--teal-light);}
+.signal-card.secondary .signal-eyebrow{color:rgba(250,246,239,0.5);}
+.signal-card.nothing .signal-eyebrow{color:var(--amber);}
+
+.signal-title{font-family:var(--serif);font-size:clamp(18px,2.5vw,22px);color:var(--ivory);font-weight:600;margin-bottom:12px;line-height:1.3;}
+.signal-body{font-size:16px;color:rgba(250,246,239,0.88);line-height:1.85;margin-bottom:0;}
+
+.mechanism-badge{display:inline-block;font-family:var(--mono);font-size:12px;letter-spacing:1px;color:var(--ivory);background:rgba(45,122,122,0.4);border:1px solid rgba(142,206,206,0.3);border-radius:20px;padding:5px 14px;margin-bottom:14px;}
+
+.results-summary-bar{display:flex;gap:14px;flex-wrap:wrap;margin:20px 0 28px;}
+.result-count{font-family:var(--mono);font-size:13px;letter-spacing:0.5px;padding:8px 16px;border-radius:6px;}
+.result-count.better{background:rgba(45,122,122,0.2);color:var(--teal-light);}
+.result-count.same{background:rgba(142,206,206,0.1);color:rgba(250,246,239,0.6);}
+.result-count.worse{background:rgba(212,135,74,0.15);color:var(--amber);}
+
+/* ── SECTION 3: REFLECTION ── */
+.reflect-sec{background:var(--sand);padding:56px 24px;display:none;}
+.reflect-sec.show{display:block;animation:fadeIn 0.5s ease;}
+
+.reflect-card{background:var(--ivory);border-radius:14px;padding:28px 26px;border:1px solid rgba(45,122,122,0.12);}
+.reflect-label{font-family:var(--mono);font-size:11px;letter-spacing:2px;color:var(--amber);text-transform:uppercase;margin-bottom:14px;}
+.reflect-q{font-family:var(--serif);font-size:clamp(19px,2.5vw,24px);color:var(--teal);line-height:1.4;margin-bottom:20px;}
+.reflect-input{width:100%;font-family:var(--sans);font-size:16px;color:var(--body);background:var(--sand);border:1.5px solid rgba(45,122,122,0.2);border-radius:8px;padding:14px 16px;line-height:1.75;resize:vertical;min-height:110px;outline:none;transition:border-color 0.2s;}
+.reflect-input:focus{border-color:var(--teal);}
+.reflect-private{font-family:var(--mono);font-size:12px;color:var(--slate);letter-spacing:0.5px;margin-top:10px;display:flex;align-items:center;gap:6px;}
+.reflect-private::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--teal-mid);flex-shrink:0;}
+
+/* ── BRIDGE ── */
+.bridge-sec{background:var(--teal);padding:56px 24px;text-align:center;display:none;}
+.bridge-sec.show{display:block;animation:fadeIn 0.5s ease;}
+.bridge-inner{max-width:520px;margin:0 auto;}
+.bridge-sec .eyebrow{color:var(--teal-light);}
+.bridge-h{font-family:var(--serif);font-size:clamp(22px,3vw,30px);color:var(--ivory);margin-bottom:18px;line-height:1.3;}
+.bridge-body{font-size:17px;color:rgba(250,246,239,0.88);line-height:1.85;margin-bottom:28px;}
+.bridge-thread{background:rgba(26,53,53,0.35);border-radius:10px;padding:20px 22px;font-family:var(--serif);font-style:italic;font-size:17px;color:var(--ivory);line-height:1.8;}
+
+/* ── FOOTER ── */
+footer{background:var(--dark);padding:28px 24px;text-align:center;}
+footer p{font-family:var(--mono);font-size:12px;color:rgba(250,246,239,0.4);letter-spacing:1px;line-height:1.9;}
+footer a{color:var(--teal-light);text-decoration:none;}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeIn{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);}}
+
+/* ── RESPONSIVE ── */
+@media(max-width:600px){
+  .obs-item{grid-template-columns:1fr;gap:10px;}
+  .obs-buttons{flex-wrap:wrap;}
+  .step-pill{font-size:10px;padding:6px 10px;}
+  .results-summary-bar{gap:8px;}
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <p>CHRIS LYNCH · HEALTH COACH · <span>chrislynchreset.com</span></p>
+</div>
+
+<nav>
+  <div class="nav-logo">
+    Chris Lynch
+    <span>HEALTH COACH</span>
+  </div>
+  <div class="nav-pill">BODY SIGNAL DECODER</div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="guide-tag">YOUR EXPERIMENT RESULTS</div>
+    <h1>Did your body<br><em>say anything?</em></h1>
+    <p class="hero-sub">You noticed. Now let's find out what it means.</p>
+    <div class="hero-steps">
+      <div class="step-pill active-step"><div class="step-num">1</div> Mark your results</div>
+      <div class="step-pill"><div class="step-num">2</div> Read the signal</div>
+      <div class="step-pill"><div class="step-num">3</div> Name what you noticed</div>
+    </div>
+  </div>
+</section>
+
+<!-- PROGRESS -->
+<div class="progress-wrap">
+  <div class="progress-inner">
+    <div class="progress-label">
+      <span id="progress-text">Step 1 of 3</span>
+      <span id="progress-pct">0%</span>
+    </div>
+    <div class="progress-track">
+      <div class="progress-fill" id="progress-fill"></div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 1: MARK RESULTS -->
+<section class="results-sec" id="s1">
+  <div class="sec-inner">
+    <p class="eyebrow">STEP 1 OF 3</p>
+    <h2 class="sec-h2">Mark what your body did<br>over the <em>48 hours.</em></h2>
+    <p class="sec-body">You already ran the experiment — removing one food, or building a steadier plate. Now bring your results. Mark each one as it actually was, not as you hoped it would be. Even no change is important information.</p>
+
+    <div class="intro-card">
+      <div class="intro-card-label">IF YOU TOOK A SCREENSHOT</div>
+      <p>Use it to re-mark your results below. Your selections are not saved between sessions, so the screenshot was for exactly this moment.</p>
+    </div>
+    <div class="intro-card" style="border-left-color:var(--teal);margin-top:0;">
+      <div class="intro-card-label" style="color:var(--teal);">IF YOU DIDN'T SCREENSHOT — NO PROBLEM</div>
+      <p>Mark from memory. The pattern across all eight is what matters — you don't need to be perfectly precise on each one.</p>
+    </div>
+
+    <p class="results-counter" id="results-counter">0 of 8 marked</p>
+
+    <div class="obs-grid" id="obs-grid">
+
+      <div class="obs-item" data-obs="energy">
+        <div class="obs-label"><strong>Energy</strong> — did it feel steadier, or did the crashes ease?</div>
+        <div class="obs-buttons">
+          <button class="obs-btn better" onclick="markObs(this,'energy','better')">Better</button>
+          <button class="obs-btn same" onclick="markObs(this,'energy','same')">Same</button>
+          <button class="obs-btn worse" onclick="markObs(this,'energy','worse')">Worse</button>
+        </div>
+      </div>
+
+      <div class="obs-item" data-obs="bloating">
+        <div class="obs-label"><strong>Bloating</strong> — any reduction in size or discomfort?</div>
+        <div class="obs-buttons">
+          <button class="obs-btn better" onclick="markObs(this,'bloating','better')">Better</button>
+          <button class="obs-btn same" onclick="markObs(this,'bloating','same')">Same</button>
+          <button class="obs-btn worse" onclick="markObs(this,'bloating','worse')">Worse</button>
+        </div>
+      </div>
+
+      <div class="obs-item" data-obs="clarity">
+        <div class="obs-label"><strong>Mental clarity</strong> — any lift in the fog?</div>
+        <div class="obs-buttons">
+          <button class="obs-btn better" onclick="markObs(this,'clarity','better')">Better</button>
+          <button class="obs-btn same" onclick="markObs(this,'clarity','same')">Same</button>
+          <button class="obs-btn worse" onclick="markObs(this,'clarity','worse')">Worse</button>
+        </div>
+      </div>
+
+      <div class="obs-item" data-obs="sleep">
+        <div class="obs-label"><strong>Sleep</strong> — did you fall asleep more easily, or wake less?</div>
+        <div class="obs-buttons">
+          <button class="obs-btn better" onclick="markObs(this,'sleep','better')">Better</button>
+          <button class="obs-btn same" onclick="markObs(this,'sleep','same')">Same</button>
+          <button class="obs-btn worse" onclick="markObs(this,'sleep','worse')">Worse</button>
+        </div>
+      </div>
+
+      <div class="obs-item" data-obs="mood">
+        <div class="obs-label"><strong>Mood</strong> — did it feel more even, less reactive?</div>
+        <div class="obs-buttons">
+          <button class="obs-btn better" onclick="markObs(this,'mood','better')">Better</button>
+          <button class="obs-btn same" onclick="markObs(this,'mood','same')">Same</button>
+          <button class="obs-btn worse" onclick="markObs(this,'mood','worse')">Worse</button>
+        </div>
+      </div>
+
+      <div class="obs-item" data-obs="cravings">
+        <div class="obs-label"><strong>Cravings</strong> — did the pull toward sugar or carbs ease at all?</div>
+        <div class="obs-buttons">
+          <button class="obs-btn better" onclick="markObs(this,'cravings','better')">Better</button>
+          <button class="obs-btn same" onclick="markObs(this,'cravings','same')">Same</button>
+          <button class="obs-btn worse" onclick="markObs(this,'cravings','worse')">Worse</button>
+        </div>
+      </div>
+
+      <div class="obs-item" data-obs="headaches">
+        <div class="obs-label"><strong>Headaches</strong> — did they reduce or disappear?</div>
+        <div class="obs-buttons">
+          <button class="obs-btn better" onclick="markObs(this,'headaches','better')">Better</button>
+          <button class="obs-btn same" onclick="markObs(this,'headaches','same')">Same</button>
+          <button class="obs-btn worse" onclick="markObs(this,'headaches','worse')">Worse</button>
+        </div>
+      </div>
+
+      <div class="obs-item" data-obs="congestion">
+        <div class="obs-label"><strong>Congestion</strong> — any reduction in stuffiness or mucus?</div>
+        <div class="obs-buttons">
+          <button class="obs-btn better" onclick="markObs(this,'congestion','better')">Better</button>
+          <button class="obs-btn same" onclick="markObs(this,'congestion','same')">Same</button>
+          <button class="obs-btn worse" onclick="markObs(this,'congestion','worse')">Worse</button>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="read-btn-wrap">
+      <button class="read-btn" id="decode-btn" onclick="revealDecode()" disabled>
+        Read what your body was saying →
+      </button>
+      <p class="read-btn-note" id="decode-btn-note">Mark at least one result to continue</p>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 2: INTERPRETATION -->
+<section class="decode-sec" id="s2">
+  <div class="sec-inner">
+    <p class="eyebrow">STEP 2 OF 3 · YOUR SIGNAL</p>
+    <h2 class="sec-h2" style="color:var(--ivory);">What your body<br>was <em style="color:var(--amber);">telling you.</em></h2>
+
+    <div class="results-summary-bar" id="results-bar"></div>
+
+    <div id="interpretation-output"></div>
+
+  </div>
+</section>
+
+<!-- SECTION 3: REFLECTION -->
+<section class="reflect-sec" id="s3">
+  <div class="sec-inner">
+    <p class="eyebrow">STEP 3 OF 3</p>
+    <h2 class="sec-h2">The one thing<br>you <em>can't ignore.</em></h2>
+    <p class="sec-body">Of everything that shifted — or stayed the same — there is usually one thing that stands out. Not the most dramatic result. The one that felt most like your body finally speaking clearly.</p>
+
+    <div class="reflect-card">
+      <div class="reflect-label">YOUR PRIVATE REFLECTION</div>
+      <p class="reflect-q">Of everything your body said in the last 48 hours — what is the one thing you cannot ignore?</p>
+      <textarea class="reflect-input" id="reflection-input" placeholder="Write what comes up. This is for you only — it will not be saved or sent anywhere." rows="5"></textarea>
+      <p class="reflect-private">This stays on your device and is never shared or stored.</p>
+    </div>
+  </div>
+</section>
+
+<!-- BRIDGE -->
+<section class="bridge-sec" id="s4">
+  <div class="bridge-inner">
+    <p class="eyebrow">WHAT COMES NEXT</p>
+    <h2 class="bridge-h">Your body has a pattern.<br>Patterns can be worked with.</h2>
+    <p class="bridge-body">What you have just identified is not a diagnosis. It is something more useful than that. It is a direction. You now know more about how your body specifically responds than most people ever discover — because most approaches never pause long enough to ask the question.</p>
+    <div class="bridge-thread">
+      "These mechanisms do not operate in isolation. They connect to each other — which is why addressing one small piece at a time has never been enough. What breaks the cycle is understanding the whole picture, and working with your body rather than against it."
+    </div>
+    <p style="font-size:14px;color:rgba(250,246,239,0.5);font-family:var(--mono);letter-spacing:0.5px;margin-top:20px;">— Chris Lynch, Health Coach · NHS Background</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© <span id="yr"></span> Chris Lynch · chrislynchreset.com<br>
+  <a href="https://www.iubenda.com/privacy-policy/66383332" target="_blank" rel="noopener">Privacy Policy</a></p>
+</footer>
+
+<script>
+// ─── STATE ──────────────────────────────────────────────────
+const results = {};
+let markedCount = 0;
+
+// ─── MARK OBS ───────────────────────────────────────────────
+function markObs(btn, metric, result) {
+  const item = btn.closest('.obs-item');
+  const wasMarked = !results[metric];
+  item.querySelectorAll('.obs-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  item.classList.add('has-result');
+  results[metric] = result;
+
+  if(wasMarked) markedCount++;
+  updateCounter();
+  tryEnableBtn();
+}
+
+function updateCounter() {
+  const el = document.getElementById('results-counter');
+  el.textContent = markedCount + ' of 8 marked';
+  el.classList.toggle('has-data', markedCount > 0);
+  // progress: section 1 is 0-33%
+  const pct = Math.round((markedCount / 8) * 33);
+  setProgress(pct, 'Step 1 of 3');
+}
+
+function tryEnableBtn() {
+  const btn = document.getElementById('decode-btn');
+  const note = document.getElementById('decode-btn-note');
+  if(markedCount >= 1) {
+    btn.disabled = false;
+    note.textContent = markedCount === 8 ? 'All 8 marked — read your full signal below' : markedCount + ' marked — you can read your signal now, or mark more first';
+  }
+}
+
+// ─── PROGRESS ───────────────────────────────────────────────
+function setProgress(pct, label) {
+  document.getElementById('progress-fill').style.width = pct + '%';
+  document.getElementById('progress-pct').textContent = pct + '%';
+  document.getElementById('progress-text').textContent = label;
+}
+
+// ─── INTERPRETATION LOGIC ───────────────────────────────────
+const SIGNALS = {
+  inflammation: {
+    markers: ['bloating','headaches','congestion'],
+    title: 'Your body was fighting something it recognises as a threat.',
+    body: 'The symptoms that eased — bloating, headaches, congestion — are classic signs of a low-level immune response. Your body was not malfunctioning. It was doing exactly what it is designed to do when it detects a trigger food. The problem is that when this response runs continuously, it creates the exact inflammatory environment that keeps fat cells in storage mode and makes weight loss feel impossible regardless of effort. Removing the trigger quieted the signal. That quieting is real evidence.',
+    mechanism: 'Inflammation'
+  },
+  cortisol: {
+    markers: ['energy','cravings','sleep','mood'],
+    title: 'Your blood sugar — and your stress hormones — were more connected than you knew.',
+    body: 'When energy steadied, cravings eased, or sleep improved, your body was telling you that the cortisol-blood sugar loop was under less strain. Long gaps without food, high-carbohydrate meals, and chronic stress all feed the same cycle — cortisol rises, blood sugar swings, and your body holds fat around the abdomen as a protective response. Building a steadier plate interrupted that cycle. The shift you felt in 48 hours is what happens when your nervous system stops receiving a constant low-level threat signal.',
+    mechanism: 'Cortisol'
+  },
+  mixed: {
+    title: 'Your body responded across more than one system.',
+    body: 'Improvements across both physical symptoms — like bloating and congestion — and energy or mood signal that more than one mechanism was in play. This is actually very common. Inflammation and cortisol dysregulation feed each other. When you reduce the inflammatory load, blood sugar stabilises more easily. When blood sugar stabilises, cortisol settles. The body does not work in neat separate channels — which is precisely why addressing one thing at a time has rarely been enough.',
+    mechanism: 'Multiple mechanisms'
+  },
+  nothing: {
+    title: 'No change is also information — and it matters.',
+    body: 'If nothing shifted, there are a few possible explanations — and none of them mean the approach is wrong. First, 48 hours may not have been long enough for your specific pattern. For some women, particularly those with oestrogen-related gut changes or longer-term metabolic adaptation, the window needs to be longer before signals appear. Second, the trigger may not have been the one you removed. Third — and this is worth sitting with — the mechanism may be deeper than food alone. Metabolic adaptation from years of restriction sometimes requires a different starting point entirely. Either way, what you now know is that your body needs a more complete picture, not a harder try at the same approach.',
+    mechanism: 'Further investigation needed'
+  }
+};
+
+function revealDecode() {
+  const betterItems = Object.entries(results).filter(([,v]) => v === 'better').map(([k]) => k);
+  const betterCount = betterItems.length;
+  const worseCount = Object.values(results).filter(v => v === 'worse').length;
+  const sameCount = Object.values(results).filter(v => v === 'same').length;
+
+  // Determine primary signal
+  const inflammationBetters = SIGNALS.inflammation.markers.filter(m => results[m] === 'better').length;
+  const cortisolBetters = SIGNALS.cortisol.markers.filter(m => results[m] === 'better').length;
+
+  let primarySignal;
+  if(betterCount === 0) {
+    primarySignal = 'nothing';
+  } else if(inflammationBetters >= 2 && cortisolBetters >= 2) {
+    primarySignal = 'mixed';
+  } else if(inflammationBetters > cortisolBetters) {
+    primarySignal = 'inflammation';
+  } else if(cortisolBetters > inflammationBetters) {
+    primarySignal = 'cortisol';
+  } else if(betterCount >= 1) {
+    primarySignal = 'mixed';
+  } else {
+    primarySignal = 'nothing';
+  }
+
+  const signal = SIGNALS[primarySignal];
+
+  // Build summary bar
+  const bar = document.getElementById('results-bar');
+  bar.innerHTML = '';
+  if(betterCount > 0) bar.innerHTML += `<div class="result-count better">${betterCount} Better</div>`;
+  if(sameCount > 0) bar.innerHTML += `<div class="result-count same">${sameCount} Same</div>`;
+  if(worseCount > 0) bar.innerHTML += `<div class="result-count worse">${worseCount} Worse</div>`;
+
+  // Build interpretation
+  const out = document.getElementById('interpretation-output');
+  let html = `<div class="signal-card primary">
+    <div class="signal-eyebrow">YOUR PRIMARY SIGNAL</div>
+    <div class="mechanism-badge">${signal.mechanism}</div>
+    <div class="signal-title">${signal.title}</div>
+    <p class="signal-body">${signal.body}</p>
+  </div>`;
+
+  // Contextual additional cards
+  if(primarySignal === 'inflammation' && cortisolBetters >= 1) {
+    html += `<div class="signal-card secondary">
+      <div class="signal-eyebrow">ALSO WORTH NOTING</div>
+      <div class="signal-title">Your cortisol pattern may also be involved.</div>
+      <p class="signal-body">Some of your energy or mood shifts suggest the blood sugar and cortisol connection is also relevant for you. Inflammation and cortisol dysregulation frequently run together — each one makes the other harder to resolve.</p>
+    </div>`;
+  }
+
+  if(primarySignal === 'cortisol' && inflammationBetters >= 1) {
+    html += `<div class="signal-card secondary">
+      <div class="signal-eyebrow">ALSO WORTH NOTING</div>
+      <div class="signal-title">There may be an inflammatory thread alongside this.</div>
+      <p class="signal-body">Some of your physical symptoms also responded, which suggests the food-inflammation connection is worth exploring further. Steadying blood sugar and reducing inflammatory food triggers are often two parts of the same picture.</p>
+    </div>`;
+  }
+
+  if(worseCount >= 2) {
+    html += `<div class="signal-card secondary">
+      <div class="signal-eyebrow">ON THE THINGS THAT FELT WORSE</div>
+      <div class="signal-title">Feeling worse before better is a known response.</div>
+      <p class="signal-body">When you remove a food your body has been reacting to, or shift a blood sugar pattern it has been relying on, a short adjustment period is common. Headaches, fatigue, or increased cravings in the first 48 to 72 hours often signal that the body was more dependent on the pattern than expected. This is not a sign that the approach is wrong — it is often the opposite.</p>
+    </div>`;
+  }
+
+  out.innerHTML = html;
+
+  // Show sections
+  document.getElementById('s2').classList.add('show');
+  document.getElementById('s3').classList.add('show');
+  document.getElementById('s4').classList.add('show');
+
+  setProgress(66, 'Step 2 of 3');
+  document.getElementById('s2').scrollIntoView({behavior:'smooth', block:'start'});
+
+  // Update step pills
+  document.querySelectorAll('.step-pill')[1].classList.add('active-step');
+  document.querySelectorAll('.step-pill')[2].classList.add('active-step');
+
+  // Watch for reflection input to update progress
+  document.getElementById('reflection-input').addEventListener('input', function() {
+    if(this.value.length > 5) {
+      setProgress(100, 'Complete');
+    }
+  });
+}
+
+// ─── COPYRIGHT YEAR ─────────────────────────────────────────
+document.getElementById('yr').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
