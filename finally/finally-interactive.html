@@ -217,12 +217,15 @@ nav{background:var(--teal);padding:13px 32px;display:flex;align-items:center;jus
 .plate-examples{font-size:14px;color:var(--body);line-height:1.65;}
 
 .path-note{font-family:var(--serif);font-style:italic;font-size:17px;color:var(--teal);text-align:center;margin:24px 0 0;line-height:1.65;}
+.path-next-link{display:block;margin-top:28px;text-align:center;font-family:var(--mono);font-size:13px;letter-spacing:1px;color:var(--ivory);text-decoration:none;padding:14px 24px;border-radius:8px;transition:all 0.2s;background:var(--teal-dark);border:1.5px solid rgba(142,206,206,0.25);}
+.path-next-link:hover{background:var(--teal);border-color:var(--teal);}
 
 /* ── OBSERVATION ── */
 .observation-sec{background:var(--teal-dark);padding:56px 24px;}
 .observation-sec .sec-h2{color:var(--ivory);}
 .observation-sec .eyebrow{color:var(--teal-light);}
-.obs-intro{font-size:17px;color:var(--ivory);margin-bottom:28px;line-height:1.8;max-width:560px;}
+.obs-intro{font-size:17px;color:var(--ivory);margin-bottom:12px;line-height:1.8;max-width:560px;}
+.obs-save-note{font-family:var(--mono);font-size:12px;color:rgba(142,206,206,0.7);letter-spacing:0.5px;margin-bottom:24px;line-height:1.6;}
 
 .obs-grid{display:grid;gap:10px;margin-bottom:28px;}
 .obs-item{background:rgba(250,246,239,0.06);border:1px solid rgba(250,246,239,0.12);border-radius:10px;padding:16px 18px;display:grid;grid-template-columns:1fr auto;gap:14px;align-items:center;}
@@ -243,6 +246,13 @@ nav{background:var(--teal);padding:13px 32px;display:flex;align-items:center;jus
 
 .obs-thread{background:rgba(250,246,239,0.04);border-left:3px solid var(--teal-light);padding:18px 20px;margin-top:24px;border-radius:0 10px 10px 0;}
 .obs-thread p{font-size:16px;color:var(--ivory);line-height:1.85;font-style:italic;font-family:var(--serif);}
+
+.screenshot-prompt{display:none;background:rgba(212,135,74,0.1);border:1.5px solid rgba(212,135,74,0.35);border-radius:12px;padding:20px 22px;margin-top:24px;display:flex;gap:16px;align-items:flex-start;}
+.sp-icon{color:var(--amber);flex-shrink:0;margin-top:3px;}
+.sp-content{}
+.sp-label{font-family:var(--mono);font-size:11px;letter-spacing:2px;color:var(--amber);text-transform:uppercase;margin-bottom:8px;}
+.sp-body{font-size:15px;color:var(--ivory);line-height:1.8;margin-bottom:8px;}
+.sp-hint{font-family:var(--mono);font-size:12px;color:rgba(250,246,239,0.5);letter-spacing:0.5px;line-height:1.65;}
 
 /* ── REPLY / INSTAGRAM ── */
 .reply-sec{background:var(--sand);padding:52px 24px;text-align:center;}
@@ -709,6 +719,10 @@ footer a{color:var(--teal-light);text-decoration:none;}
       <p id="path-summary-body"></p>
       <span class="path-badge" id="path-summary-badge"></span>
     </div>
+
+    <a class="path-next-link" id="path-summary-link" href="#s-thread" style="display:none;">
+      Now read how all four connect — then find your experiment &darr;
+    </a>
   </div>
 </section>
 
@@ -795,6 +809,10 @@ footer a{color:var(--teal-light);text-decoration:none;}
     </div>
 
     <p class="path-note" style="margin-top:24px;">There is nothing to get perfect here. You are simply giving your body two quiet days without the thing it may have been reacting to — and letting it show you the answer.</p>
+
+    <a class="path-next-link" href="#s-observation">
+      Now scroll down — what to notice during &amp; after the 48 hours &darr;
+    </a>
   </div>
 </section>
 
@@ -840,6 +858,10 @@ footer a{color:var(--teal-light);text-decoration:none;}
     </div>
 
     <p class="path-note">You are not eating less. You are building each plate so blood sugar stops spiking and crashing. You do not need to count anything or get it perfect. Build each plate around all three — protein, fibre and healthy fat — start with breakfast, and let the next two days show you how different steady can feel.</p>
+
+    <a class="path-next-link" href="#s-observation">
+      Now scroll down — what to notice during &amp; after the 48 hours &darr;
+    </a>
   </div>
 </section>
 
@@ -847,8 +869,10 @@ footer a{color:var(--teal-light);text-decoration:none;}
 <section class="observation-sec" id="s-observation">
   <div class="thread-inner">
     <p class="eyebrow">DURING &amp; AFTER THE 48 HOURS</p>
-    <h2 class="sec-h2">Then pay attention to one thing only — what gets better.</h2>
-    <p class="obs-intro">Notice the shifts as they happen. After 48 hours, mark where you land on each of these. You are not looking for dramatic change. <strong style="color:var(--ivory);">Even one Better is your body communicating.</strong></p>
+    <h2 class="sec-h2">From now until the end — pay attention to what gets better.</h2>
+    <p class="obs-intro">Notice the shifts as they happen — not just at the end. Come back and mark these as the 48 hours unfold. You are not looking for dramatic change. <strong style="color:var(--ivory);">Even one Better is your body communicating.</strong></p>
+
+    <p class="obs-save-note" id="obs-save-note">Your selections are saved on this device — you can close this page and come back as often as you need to during the 48 hours.</p>
 
     <div class="obs-grid" id="obs-grid">
       <div class="obs-item" data-obs="energy">
@@ -925,6 +949,18 @@ footer a{color:var(--teal-light);text-decoration:none;}
     <div class="obs-thread">
       <p>These are the quiet signals that most commonly improve across the first 48 hours of removing a food your body has been quietly reacting to — or of stabilising the blood sugar pattern driving your symptoms. Not dramatic. Not obvious. That is exactly why most women have never connected them to what they ate.</p>
     </div>
+
+    <div class="screenshot-prompt" id="screenshot-prompt">
+      <div class="sp-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="3" width="20" height="14" rx="2" stroke="currentColor" stroke-width="1.8"/><path d="M8 21h8M12 17v4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M7 8l3 3 4-4 3 3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <div class="sp-content">
+        <p class="sp-label">ONE THING WORTH DOING</p>
+        <p class="sp-body">Take a screenshot of your results — a useful backup to have when the follow-up arrives in a few days.</p>
+        <p class="sp-hint">On mobile: press the side button and volume up together. On desktop: use your screenshot tool or press Print Screen.</p>
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -933,7 +969,7 @@ footer a{color:var(--teal-light);text-decoration:none;}
   <div class="reply-inner">
     <p class="eyebrow">YOUR ANSWER</p>
     <h2 class="reply-h">Which reason felt most like you?</h2>
-    <p class="reply-body">Reply to the email you received this guide in — or tap your answer below. I read every reply. Your answer shapes the conversation.</p>
+    <p class="reply-body">Hit reply to the email this guide came in and tell me — one line is enough. I read every reply and it shapes what I send you next.</p>
     <div class="mechanism-buttons">
       <button class="mech-btn" data-mech="inflammation" onclick="selectMechanism(this)">Inflammation</button>
       <button class="mech-btn" data-mech="cortisol" onclick="selectMechanism(this)">Cortisol</button>
@@ -1049,14 +1085,14 @@ const state = {
   reflections: {}
 };
 
-// Restore from sessionStorage
+// Restore from localStorage
 try {
-  const saved = sessionStorage.getItem('finally_state');
+  const saved = localStorage.getItem('finally_state');
   if(saved) Object.assign(state, JSON.parse(saved));
 } catch(e){}
 
 function saveState() {
-  try { sessionStorage.setItem('finally_state', JSON.stringify(state)); } catch(e){}
+  try { localStorage.setItem('finally_state', JSON.stringify(state)); } catch(e){}
 }
 
 // ─── PROGRESS BAR ────────────────────────────────────────
@@ -1083,8 +1119,8 @@ const symData = {
     path: 'YOUR EXPERIMENT → PATH A',
     pathKey: 'A',
     summaryTitle: 'Path A — Set one food aside.',
-    summaryBody: 'You are trying dairy swaps or gluten swaps for 48 hours. Everything else stays exactly as it is. One small shop, then two quiet days. Scroll to Path A below.',
-    badge: 'SCROLL TO PATH A ↓'
+    summaryBody: 'You are trying dairy swaps or gluten swaps for 48 hours. Everything else stays exactly as it is. One small shop, then two quiet days.',
+    badge: 'YOUR PATH → PATH A'
   },
   '02': {
     title: 'Cortisol — Reason 02',
@@ -1092,8 +1128,8 @@ const symData = {
     path: 'YOUR EXPERIMENT → PATH B',
     pathKey: 'B',
     summaryTitle: 'Path B — Build a steadier plate.',
-    summaryBody: 'You are building every meal around protein, fibre, and healthy fat for 48 hours. Nothing is removed. Scroll to Path B below.',
-    badge: 'SCROLL TO PATH B ↓'
+    summaryBody: 'You are building every meal around protein, fibre, and healthy fat for 48 hours. Nothing is removed.',
+    badge: 'YOUR PATH → PATH B'
   },
   '03': {
     title: 'Oestrogen Decline — Reason 03',
@@ -1101,8 +1137,8 @@ const symData = {
     path: 'YOUR EXPERIMENT → PATH A',
     pathKey: 'A',
     summaryTitle: 'Path A — Set one food aside.',
-    summaryBody: 'You are trying dairy swaps or gluten swaps for 48 hours. Everything else stays exactly as it is. Scroll to Path A below.',
-    badge: 'SCROLL TO PATH A ↓'
+    summaryBody: 'You are trying dairy swaps or gluten swaps for 48 hours. Everything else stays exactly as it is.',
+    badge: 'YOUR PATH → PATH A'
   },
   '04': {
     title: 'Metabolic Adaptation — Reason 04',
@@ -1110,8 +1146,8 @@ const symData = {
     path: 'YOUR EXPERIMENT → PATH B',
     pathKey: 'B',
     summaryTitle: 'Path B — Build a steadier plate.',
-    summaryBody: 'You are building every meal around protein, fibre, and healthy fat for 48 hours. Nothing is removed. Scroll to Path B below.',
-    badge: 'SCROLL TO PATH B ↓'
+    summaryBody: 'You are building every meal around protein, fibre, and healthy fat for 48 hours. Nothing is removed.',
+    badge: 'YOUR PATH → PATH B'
   }
 };
 
@@ -1139,6 +1175,10 @@ function selectSymptom(card) {
   document.getElementById('path-summary-body').textContent = d.summaryBody;
   document.getElementById('path-summary-badge').textContent = d.badge;
   ps.classList.add('show');
+
+  // Show scroll prompt
+  const psl = document.getElementById('path-summary-link');
+  if(psl) psl.style.display = 'block';
 
   // Badge on matching reason
   ['01','02','03','04'].forEach(n => {
