@@ -3,6 +3,16 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<script>
+(function(){
+  var p = new URLSearchParams(window.location.search);
+  var allowed = p.has('cl') || p.get('from') === 'email';
+  var isTesting = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+  if(!allowed && !isTesting){
+    window.location.replace('https://chris2000xl.github.io/chrislynchreset/');
+  }
+})();
+</script>
 <title>FINALLY — The explanation your body has been waiting for · Chris Lynch</title>
 <meta name="description" content="Four reasons your body has been resisting weight loss after 35 — and the 48-hour experiment that shows you which one applies to you. A free guide by Chris Lynch, Health Coach."/>
 <meta property="og:title" content="FINALLY — The explanation your body has been waiting for"/>
@@ -328,65 +338,8 @@ footer a{color:var(--teal-light);text-decoration:none;}
 
 
 /* ── OPT-IN SECTION ── */
-.optin-sec{background:var(--dark);padding:56px 24px;text-align:center;position:relative;overflow:hidden;}
-.optin-sec::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(45,122,122,0.2) 0%,transparent 60%);pointer-events:none;}
-.optin-inner{max-width:480px;margin:0 auto;position:relative;z-index:1;}
-.optin-eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:2px;color:var(--teal-light);text-transform:uppercase;margin-bottom:14px;}
-.optin-h{font-family:var(--serif);font-size:clamp(20px,3vw,26px);color:var(--ivory);margin-bottom:12px;line-height:1.3;}
-.optin-body{font-size:16px;color:rgba(250,246,239,0.82);line-height:1.8;margin-bottom:28px;}
-.optin-note{font-family:var(--mono);font-size:11px;color:rgba(250,246,239,0.3);margin-top:14px;letter-spacing:0.5px;}
 
-/* Override MailerLite embed to match brand */
-#mlb2-42363914.ml-form-embedContainer{background:transparent!important;}
-#mlb2-42363914.ml-form-embedContainer .ml-form-embedWrapper{background:transparent!important;width:100%!important;}
-#mlb2-42363914.ml-form-embedContainer .ml-form-embedWrapper.embedForm{max-width:100%!important;width:100%!important;}
-#mlb2-42363914.ml-form-embedContainer .ml-form-embedBody{padding:0!important;}
-#mlb2-42363914.ml-form-embedContainer .ml-form-embedBody .ml-form-embedContent{display:none;}
-#mlb2-42363914.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow input{
-  background:rgba(250,246,239,0.07)!important;
-  color:var(--ivory)!important;
-  border:1.5px solid rgba(142,206,206,0.3)!important;
-  border-radius:7px!important;
-  font-family:'Lato',sans-serif!important;
-  font-size:15px!important;
-  padding:13px 16px!important;
-  width:100%!important;
-  margin-bottom:10px;
-  transition:border-color 0.2s;
-}
-#mlb2-42363914.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow input::placeholder{color:rgba(250,246,239,0.38)!important;}
-#mlb2-42363914.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow input:focus{border-color:var(--teal-light)!important;outline:none!important;}
-#mlb2-42363914.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow{margin-bottom:10px!important;}
-#mlb2-42363914.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow .ml-field-group label{display:none!important;}
-#mlb2-42363914.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedSubmit{margin:0!important;}
-#mlb2-42363914.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedSubmit button.primary{
-  background-color:var(--amber)!important;
-  border:none!important;
-  border-radius:7px!important;
-  font-family:'Lato',sans-serif!important;
-  font-size:15px!important;
-  font-weight:700!important;
-  letter-spacing:0.5px!important;
-  padding:14px 24px!important;
-  width:100%!important;
-  transition:background-color 0.2s!important;
-  color:var(--ivory)!important;
-}
-#mlb2-42363914.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedSubmit button.primary:hover{background-color:#c07340!important;}
-#mlb2-42363914.ml-form-embedContainer .ml-form-embedWrapper .ml-form-successBody{padding:0!important;}
-#mlb2-42363914.ml-form-embedContainer .ml-form-embedWrapper .ml-form-successBody .ml-form-successContent h4{
-  font-family:'Playfair Display',serif!important;
-  font-size:22px!important;
-  color:var(--ivory)!important;
-  font-weight:400!important;
-  margin-bottom:10px!important;
-}
-#mlb2-42363914.ml-form-embedContainer .ml-form-embedWrapper .ml-form-successBody .ml-form-successContent p{
-  font-family:'Lato',sans-serif!important;
-  font-size:15px!important;
-  color:rgba(250,246,239,0.75)!important;
-  line-height:1.7!important;
-}
+
 
 </style>
 </head>
@@ -982,65 +935,6 @@ footer a{color:var(--teal-light);text-decoration:none;}
 </section>
 
 
-<!-- OPT-IN — for readers who arrive via shared link -->
-<section class="optin-sec" id="s-optin">
-  <div class="optin-inner">
-    <p class="optin-eyebrow">ALREADY A SUBSCRIBER? YOU ARE ALL SET.</p>
-    <h2 class="optin-h">Did someone share this with you?</h2>
-
-    <div style="background:rgba(45,122,122,0.18);border:1px solid rgba(142,206,206,0.25);border-radius:10px;padding:16px 20px;margin-bottom:22px;text-align:left;">
-      <p style="font-family:var(--mono);font-size:11px;letter-spacing:1.5px;color:var(--teal-light);text-transform:uppercase;margin-bottom:6px;">IF YOU SUBSCRIBED FOR THIS FREE GUIDE</p>
-      <p style="font-size:15px;color:var(--ivory);line-height:1.7;margin:0;">You are already subscribed — everything that follows comes to you automatically. <strong style="color:var(--teal-light);">No action needed here.</strong></p>
-    </div>
-
-    <div style="background:rgba(212,135,74,0.08);border:1px solid rgba(212,135,74,0.22);border-radius:10px;padding:16px 20px;margin-bottom:24px;text-align:left;">
-      <p style="font-family:var(--mono);font-size:11px;letter-spacing:1.5px;color:var(--amber);text-transform:uppercase;margin-bottom:6px;">IF THIS WAS SHARED WITH YOU</p>
-      <p style="font-size:15px;color:var(--ivory);line-height:1.7;margin:0;">Enter your name and email below. You will receive a short companion page that shows each of the four mechanisms as a moving cycle — and in a few days, the follow-up that helps you understand what your 48-hour results are telling you.</p>
-    </div>
-
-    <div id="mlb2-42363914" class="ml-form-embedContainer ml-subscribe-form ml-subscribe-form-42363914">
-      <div class="ml-form-align-center">
-        <div class="ml-form-embedWrapper embedForm">
-          <div class="ml-form-embedBody ml-form-embedBodyDefault row-form">
-            <div class="ml-form-embedContent" style="margin-bottom:0;"></div>
-            <form class="ml-block-form" action="https://assets.mailerlite.com/jsonp/2227626/forms/189745325918913724/subscribe" data-code="" method="post" target="_blank">
-              <div class="ml-form-formContent">
-                <div class="ml-form-fieldRow">
-                  <div class="ml-field-group ml-field-name ml-validate-required">
-                    <input aria-label="name" aria-required="true" type="text" class="form-control" name="fields[name]" placeholder="First name" autocomplete="given-name">
-                  </div>
-                </div>
-                <div class="ml-form-fieldRow ml-last-item">
-                  <div class="ml-field-group ml-field-email ml-validate-email ml-validate-required">
-                    <input aria-label="email" aria-required="true" type="email" class="form-control" name="fields[email]" placeholder="Email address" autocomplete="email">
-                  </div>
-                </div>
-              </div>
-              <input type="hidden" name="ml-submit" value="1">
-              <div class="ml-form-embedSubmit">
-                <button type="submit" class="primary">Yes — send me what comes next →</button>
-                <button disabled="disabled" style="display:none;" type="button" class="loading">
-                  <div class="ml-form-embedSubmitLoad"></div>
-                  <span class="sr-only">Loading...</span>
-                </button>
-              </div>
-              <input type="hidden" name="anticsrf" value="true">
-            </form>
-          </div>
-          <div class="ml-form-successBody row-success" style="display:none;">
-            <div class="ml-form-successContent">
-              <h4>You are in — check your inbox shortly.</h4>
-              <p>Look out for an email from Chris Lynch with the how-it-works page and what to do next with your experiment.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <p class="optin-note">No spam. Unsubscribe any time. <a href="https://www.iubenda.com/privacy-policy/66383332" target="_blank" style="color:rgba(142,206,206,0.5);text-decoration:none;">Privacy policy</a></p>
-  </div>
-</section>
-
 <!-- ABOUT -->
 <section class="about-sec" id="s-about">
   <div class="about-inner">
@@ -1304,16 +1198,5 @@ document.getElementById('yr').textContent = new Date().getFullYear();
 
 </script>
 
-  <script>
-    function ml_webform_success_42363914() {
-      var $ = ml_jQuery || jQuery;
-      $('.ml-subscribe-form-42363914 .row-success').show();
-      $('.ml-subscribe-form-42363914 .row-form').hide();
-    }
-  </script>
-  <script src="https://groot.mailerlite.com/js/w/webforms.min.js?v83147fa8ce2d95cb73ece7f28b469519" type="text/javascript"></script>
-  <script>
-    fetch("https://assets.mailerlite.com/jsonp/2227626/forms/189745325918913724/takel")
-  </script>
 </body>
 </html>
