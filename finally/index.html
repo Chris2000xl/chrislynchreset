@@ -77,17 +77,15 @@
 
   /* FORM CARD */
   .form-card{background:var(--ivory);border-radius:0;padding:0 0 24px;box-shadow:none;border:none;overflow:hidden;}
-  .form-card-mockup{width:100%;max-width:100%;margin:0 0 16px;display:block;}
-  .form-card-mockup img{width:100%;height:auto;display:block;border-radius:0;}
-  /* CSS mockup fallback &mdash; remove once real PNG added */
-  .form-card-mockup-fallback{background:linear-gradient(160deg,var(--teal) 0%,var(--dark) 100%);border-radius:10px;padding:20px 16px;box-shadow:6px 8px 20px rgba(26,53,53,0.25);transform:rotate(-1deg);position:relative;width:160px;margin:0 auto 20px;}
-  .form-card-mockup-fallback:hover{transform:rotate(0deg) scale(1.02);transition:transform 0.3s;}
-  .guide-badge{position:absolute;top:-8px;right:-8px;background:var(--amber);color:var(--ivory);font-family:var(--mono);font-size:8px;font-weight:700;padding:3px 8px;border-radius:10px;transform:rotate(8deg);box-shadow:0 2px 6px rgba(212,135,74,0.4);}
   .guide-num{font-family:var(--serif);font-size:44px;color:var(--amber);font-weight:700;line-height:1;margin-bottom:4px;}
   .guide-title{font-family:var(--serif);font-size:11px;color:var(--ivory);line-height:1.35;font-weight:600;margin-bottom:8px;}
   .guide-author{font-size:8px;color:rgba(250,246,239,0.5);font-family:var(--mono);letter-spacing:1px;}
 
   .form-card-headline{font-family:var(--serif);font-size:16px;font-weight:600;color:var(--teal);line-height:1.35;margin-bottom:14px;text-align:center;padding:0 20px;}
+  .proof-quote{background:var(--dark);border-radius:10px;padding:20px 20px 16px;margin:0 0 16px;position:relative;text-align:left;}
+  .proof-quote-mark{font-family:var(--serif);font-size:48px;color:var(--amber);line-height:0.6;margin-bottom:10px;display:block;opacity:0.7;}
+  .proof-quote-text{font-family:var(--serif);font-style:italic;font-size:15px;color:var(--ivory);line-height:1.75;margin-bottom:10px;}
+  .proof-quote-attr{font-family:var(--mono);font-size:10px;letter-spacing:1.5px;color:var(--teal-light);text-transform:uppercase;}
 
   /* BADGES */
   .badges{display:flex;gap:5px;justify-content:center;flex-wrap:wrap;margin-bottom:10px;padding:0 20px;}
@@ -318,9 +316,13 @@
     <div class="hero-right fu d2">
       <div class="form-card" id="hero-form">
 
-        <div class="form-card-mockup"><img src="mockup.png" alt="Finally &mdash; The Explanation Your Body Has Been Waiting For" /></div>
+        <div class="proof-quote">
+          <div class="proof-quote-mark">&ldquo;</div>
+          <p class="proof-quote-text">The reason every plan stopped working is not you. It is what your immune system has been quietly fighting &mdash; and nobody has ever shown you what that is.</p>
+          <div class="proof-quote-attr">Chris Lynch &middot; Health Coach &middot; NHS Background</div>
+        </div>
 
-        <p class="form-card-headline">Get the free guide &mdash; understand your body tonight</p>
+        <p class="form-card-headline">Understand why tonight &mdash; free guide, instant access</p>
 
         <!-- BADGES: sit directly above the form so they're the last thing read before clicking -->
         <div class="badges">
