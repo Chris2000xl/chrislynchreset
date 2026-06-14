@@ -972,22 +972,46 @@ footer a{color:var(--teal-light);text-decoration:none;}
 </footer>
 
 <script>
-// ─── STATE ────────────────────────────────────────────────
+// ─── STATE ───────────────────────────────────────────────
 const state = {
   selectedSym: null,
   obsResults: {},
   reflections: {}
 };
 
-// Restore from localStorage
-try {
-  const saved = localStorage.getItem('finally_state');
-  if(saved) Object.assign(state, JSON.parse(saved));
-} catch(e){}
+// If ?cl is present (owner preview), clear all saved state for a clean slate
+const _isCL = new URLSearchParams(window.location.search).has('cl');
+if(_isCL) {
+  try {
+    localStorage.removeItem('finally_obs');
+    localStorage.removeItem('finally_ref');
+    localStorage.removeItem('finally_state');
+  } catch(e){}
+}
+
+// Restore saved state for normal visitors returning to the page
+if(!_isCL) {
+  try {
+    const savedObs = localStorage.getItem('finally_obs');
+    if(savedObs) state.obsResults = JSON.parse(savedObs);
+    const savedRef = localStorage.getItem('finally_ref');
+    if(savedRef) state.reflections = JSON.parse(savedRef);
+    const savedSym = localStorage.getItem('finally_sym');
+    if(savedSym) state.selectedSym = savedSym;
+  } catch(e){}
+}
 
 function saveState() {
-  try { localStorage.setItem('finally_state', JSON.stringify(state)); } catch(e){}
+  if(_isCL) return; // never save during owner preview
+  try {
+    localStorage.setItem('finally_obs', JSON.stringify(state.obsResults));
+    localStorage.setItem('finally_ref', JSON.stringify(state.reflections));
+    if(state.selectedSym) localStorage.setItem('finally_sym', state.selectedSym);
+  } catch(e){}
 }
+
+// Clear any legacy combined key
+try { localStorage.removeItem('finally_state'); } catch(e){}
 
 // ─── PROGRESS BAR ────────────────────────────────────────
 const sections = ['s-intro','s-reasons','s-r01','s-r02','s-r03','s-r04','s-symptom-map','s-thread','s-path-a','s-path-b','s-observation','s-reply','s-optin','s-about'];
