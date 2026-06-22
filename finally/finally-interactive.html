@@ -674,7 +674,7 @@ footer a{color:var(--teal-light);text-decoration:none;}
     </div>
 
     <a class="path-next-link" id="path-summary-link" href="#s-thread" style="display:none;">
-      Now read how all four connect — then find your experiment &darr;
+      Now read how all four connect — then go to your experiment &darr;
     </a>
   </div>
 </section>
@@ -710,6 +710,9 @@ footer a{color:var(--teal-light);text-decoration:none;}
       <div class="your-path-indicator" id="your-path-indicator">
         <p class="ypi-label">BASED ON YOUR SELECTION ABOVE</p>
         <p class="ypi-text" id="your-path-text"></p>
+        <a class="path-next-link" id="thread-path-link" href="#s-path-a" style="display:none;margin-top:16px;">
+          Go to your experiment ↓
+        </a>
       </div>
     </div>
   </div>
@@ -1070,13 +1073,9 @@ function selectSymptom(card) {
   document.getElementById('path-summary-badge').textContent = d.badge;
   ps.classList.add('show');
 
-  // Show scroll prompt — point directly to the reader's specific path
+  // Show scroll prompt — always leads to the connecting thread first
   const psl = document.getElementById('path-summary-link');
-  if(psl) {
-    psl.style.display = 'block';
-    psl.href = '#s-path-' + d.pathKey.toLowerCase();
-    psl.textContent = 'Go straight to your experiment — Path ' + d.pathKey + ' ↓';
-  }
+  if(psl) psl.style.display = 'block';
 
   // Badge on matching reason
   ['01','02','03','04'].forEach(n => {
@@ -1095,6 +1094,14 @@ function selectSymptom(card) {
   const ypi = document.getElementById('your-path-indicator');
   document.getElementById('your-path-text').textContent = 'Based on your selection, your experiment is ' + d.summaryTitle;
   ypi.classList.add('show');
+
+  // Thread-section link — sends her to her specific path once it's known
+  const tpl = document.getElementById('thread-path-link');
+  if(tpl) {
+    tpl.style.display = 'block';
+    tpl.href = '#s-path-' + d.pathKey.toLowerCase();
+    tpl.textContent = 'Go to your experiment — Path ' + d.pathKey + ' ↓';
+  }
 }
 
 // Restore on load
