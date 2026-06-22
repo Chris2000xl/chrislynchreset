@@ -9,7 +9,7 @@
 <meta property="og:description" content="Four mechanisms working against weight loss after 35 that nobody tells you about. Free guide for women 35+."/>
 <meta property="og:url" content="https://chrislynchreset.com/finally/"/>
 <meta property="og:type" content="website"/>
-<meta property="og:image" content="https://chrislynchreset.com/finally/mockup.png"/>
+<meta property="og:image" content="https://chrislynchreset.com/finally/Mobile_mock_up.png"/>
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:title" content="You Haven't Been Failing. Your Body Has Been Resisting."/>
 <meta name="twitter:description" content="Four mechanisms working against weight loss after 35. Free guide by Chris Lynch, Health Coach."/>
@@ -77,11 +77,8 @@
 
   /* FORM CARD */
   .form-card{background:var(--ivory);border-radius:0;padding:0 0 24px;box-shadow:none;border:none;overflow:hidden;}
-  .form-card-mockup{width:100%;max-width:100%;margin:0 0 16px;display:block;}
-  .form-card-mockup img{width:100%;height:auto;display:block;border-radius:0;}
-  /* CSS mockup fallback &mdash; remove once real PNG added */
-  .form-card-mockup-fallback{background:linear-gradient(160deg,var(--teal) 0%,var(--dark) 100%);border-radius:10px;padding:20px 16px;box-shadow:6px 8px 20px rgba(26,53,53,0.25);transform:rotate(-1deg);position:relative;width:160px;margin:0 auto 20px;}
-  .form-card-mockup-fallback:hover{transform:rotate(0deg) scale(1.02);transition:transform 0.3s;}
+  .hero-mockup{text-align:center;margin:8px 0 4px;}
+  .hero-mockup img{width:38%;max-width:148px;height:auto;display:inline-block;}
   .guide-badge{position:absolute;top:-8px;right:-8px;background:var(--amber);color:var(--ivory);font-family:var(--mono);font-size:8px;font-weight:700;padding:3px 8px;border-radius:10px;transform:rotate(8deg);box-shadow:0 2px 6px rgba(212,135,74,0.4);}
   .guide-num{font-family:var(--serif);font-size:44px;color:var(--amber);font-weight:700;line-height:1;margin-bottom:4px;}
   .guide-title{font-family:var(--serif);font-size:11px;color:var(--ivory);line-height:1.35;font-weight:600;margin-bottom:8px;}
@@ -232,16 +229,14 @@
     .cred-pills{justify-content:center;}
     h1{font-size:clamp(24px,6.5vw,32px);}
 
-    /* FORM CARD &mdash; mockup larger, closer to headline */
+    /* FORM CARD &mdash; mockup compact, badges single line */
     .form-card{padding:0 0 12px;border-radius:0;margin-left:-24px;margin-right:-24px;}
-    .form-card-mockup{max-width:100%;width:100%;margin:0;}
-    .form-card-mockup img{width:100%;max-width:100%;height:auto;}
     .form-card-headline{font-size:15px;margin-bottom:4px;}
-    .badge{font-size:12px;padding:5px 10px;}
-    .badges{gap:6px;padding:0 20px;flex-wrap:wrap;}
+    .badge{font-size:11px;padding:5px 8px;}
+    .badges{gap:5px;padding:0 16px;flex-wrap:wrap;}
     .form-card-headline{padding:0 24px;font-size:15px;margin-bottom:4px;margin-top:-8px;}
-    .form-card-mockup img{border-radius:0;}
     .hero-form{padding:0 24px;}
+    .hero-mockup img{width:26% !important;max-width:108px !important;}
 
     /* PROOF STRIP &mdash; two items per line, aligned */
     .proof-inner{
@@ -261,8 +256,8 @@
 
     /* HOW IT WORKS &mdash; mockup much larger, zoomed into book */
     .how-grid{grid-template-columns:1fr;gap:28px;}
-    .mockup-col{flex-direction:column;align-items:center;overflow:hidden;}
-    .mockup-col img{max-width:100% !important;width:100% !important;transform:scale(1.85);transform-origin:center top;}
+    .mockup-col{flex-direction:column;align-items:center;overflow:visible;}
+    .mockup-col img{max-width:160px !important;width:50% !important;transform:none !important;}
 
     /* ABOUT */
     .about-inner{grid-template-columns:1fr;gap:20px;}
@@ -322,9 +317,11 @@
     <div class="hero-right fu d2">
       <div class="form-card" id="hero-form">
 
-        <div class="form-card-mockup"><img src="mockup.png" alt="Finally &mdash; The Explanation Your Body Has Been Waiting For" /></div>
+        <div class="hero-mockup">
+          <img src="Mobile_mock_up.png" alt="FINALLY — The explanation your body has been waiting for" />
+        </div>
 
-        <p class="form-card-headline">Get the free guide &mdash; understand your body tonight</p>
+        <p class="form-card-headline">Understand why tonight &mdash; free guide, instant access</p>
 
         <!-- BADGES: sit directly above the form so they're the last thing read before clicking -->
         <div class="badges">
@@ -566,7 +563,7 @@
     <div class="how-grid">
       <!-- MOCKUP IMAGE COLUMN -->
       <div class="mockup-col">
-        <img src="mockup.png" alt="Why Your Body Resists Weight Loss After 35" style="width:100%;max-width:none;border-radius:0;box-shadow:none;transform:rotate(-1deg);" />
+        <img src="Mobile_mock_up.png" alt="The FINALLY Guide — symptom map on mobile" style="width:100%;max-width:200px;border-radius:0;box-shadow:none;transform:none;" />
         <div class="mockup-note"></div>
       </div>
 
