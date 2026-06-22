@@ -825,7 +825,7 @@ footer a{color:var(--teal-light);text-decoration:none;}
     <h2 class="sec-h2">From now until the end — pay attention to what gets better.</h2>
     <p class="obs-intro">Notice the shifts as they happen — not just at the end. Come back and mark these as the 48 hours unfold. You are not looking for dramatic change. <strong style="color:var(--ivory);">Even one Better is your body communicating.</strong></p>
 
-    <p class="obs-save-note" id="obs-save-note">Your selections are saved on this device — you can close this page and come back as often as you need to during the 48 hours.</p>
+    <p class="obs-save-note" id="obs-save-note">Your selections are saved on this device — you can close this page and come back as often as you need to during the 48 hours. Worth bookmarking this page now, so you don't have to dig back through your inbox to find it.</p>
 
     <div class="obs-grid" id="obs-grid">
       <div class="obs-item" data-obs="energy">
@@ -972,46 +972,22 @@ footer a{color:var(--teal-light);text-decoration:none;}
 </footer>
 
 <script>
-// ─── STATE ───────────────────────────────────────────────
+// ─── STATE ────────────────────────────────────────────────
 const state = {
   selectedSym: null,
   obsResults: {},
   reflections: {}
 };
 
-// If ?cl is present (owner preview), clear all saved state for a clean slate
-const _isCL = new URLSearchParams(window.location.search).has('cl');
-if(_isCL) {
-  try {
-    localStorage.removeItem('finally_obs');
-    localStorage.removeItem('finally_ref');
-    localStorage.removeItem('finally_state');
-  } catch(e){}
-}
-
-// Restore saved state for normal visitors returning to the page
-if(!_isCL) {
-  try {
-    const savedObs = localStorage.getItem('finally_obs');
-    if(savedObs) state.obsResults = JSON.parse(savedObs);
-    const savedRef = localStorage.getItem('finally_ref');
-    if(savedRef) state.reflections = JSON.parse(savedRef);
-    const savedSym = localStorage.getItem('finally_sym');
-    if(savedSym) state.selectedSym = savedSym;
-  } catch(e){}
-}
+// Restore from localStorage
+try {
+  const saved = localStorage.getItem('finally_state');
+  if(saved) Object.assign(state, JSON.parse(saved));
+} catch(e){}
 
 function saveState() {
-  if(_isCL) return; // never save during owner preview
-  try {
-    localStorage.setItem('finally_obs', JSON.stringify(state.obsResults));
-    localStorage.setItem('finally_ref', JSON.stringify(state.reflections));
-    if(state.selectedSym) localStorage.setItem('finally_sym', state.selectedSym);
-  } catch(e){}
+  try { localStorage.setItem('finally_state', JSON.stringify(state)); } catch(e){}
 }
-
-// Clear any legacy combined key
-try { localStorage.removeItem('finally_state'); } catch(e){}
 
 // ─── PROGRESS BAR ────────────────────────────────────────
 const sections = ['s-intro','s-reasons','s-r01','s-r02','s-r03','s-r04','s-symptom-map','s-thread','s-path-a','s-path-b','s-observation','s-reply','s-optin','s-about'];
@@ -1094,9 +1070,13 @@ function selectSymptom(card) {
   document.getElementById('path-summary-badge').textContent = d.badge;
   ps.classList.add('show');
 
-  // Show scroll prompt
+  // Show scroll prompt — point directly to the reader's specific path
   const psl = document.getElementById('path-summary-link');
-  if(psl) psl.style.display = 'block';
+  if(psl) {
+    psl.style.display = 'block';
+    psl.href = '#s-path-' + d.pathKey.toLowerCase();
+    psl.textContent = 'Go straight to your experiment — Path ' + d.pathKey + ' ↓';
+  }
 
   // Badge on matching reason
   ['01','02','03','04'].forEach(n => {
