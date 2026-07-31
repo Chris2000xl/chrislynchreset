@@ -391,23 +391,54 @@ function setProgress(pct, label) {
   document.getElementById('progress-text').textContent = label;
 }
 
+// ─── PERSONALISATION HELPERS ─────────────────────────────────
+const MARKER_LABELS = {
+  energy: 'energy',
+  bloating: 'bloating',
+  clarity: 'mental clarity',
+  sleep: 'sleep',
+  mood: 'mood',
+  cravings: 'cravings',
+  headaches: 'headaches',
+  congestion: 'congestion'
+};
+
+// Joins marker keys into a readable, natural-language list using their display labels.
+// ['bloating'] -> "bloating"
+// ['bloating','headaches'] -> "bloating and headaches"
+// ['bloating','headaches','congestion'] -> "bloating, headaches, and congestion"
+function joinList(keys) {
+  const labels = keys.map(k => MARKER_LABELS[k] || k);
+  if(labels.length === 0) return '';
+  if(labels.length === 1) return labels[0];
+  if(labels.length === 2) return labels[0] + ' and ' + labels[1];
+  return labels.slice(0, -1).join(', ') + ', and ' + labels[labels.length - 1];
+}
+
 // ─── INTERPRETATION LOGIC ───────────────────────────────────
 const SIGNALS = {
   inflammation: {
-    markers: ['bloating','headaches','congestion'],
+    markers: ['bloating','headaches','congestion','clarity'],
     title: 'Your body was fighting something it recognises as a threat.',
-    body: 'The symptoms that eased — bloating, headaches, congestion — are classic signs of a low-level immune response. Your body was not malfunctioning. It was doing exactly what it is designed to do when it detects a trigger food. The problem is that when this response runs continuously, it creates the exact inflammatory environment that keeps fat cells in storage mode and makes weight loss feel impossible regardless of effort. Removing the trigger quieted the signal. That quieting is real evidence.',
+    body: (items) => `What eased for you — ${joinList(items)} — is a classic sign of a low-level immune response. Your body was not malfunctioning. It was doing exactly what it is designed to do when it detects a trigger food. The problem is that when this response runs continuously, it creates the exact inflammatory environment that keeps fat cells in storage mode and makes weight loss feel impossible regardless of effort. Removing the trigger quieted the signal. That quieting is real evidence.`,
     mechanism: 'Inflammation'
   },
   cortisol: {
-    markers: ['energy','cravings','sleep','mood'],
+    markers: ['energy','cravings','sleep','mood','clarity'],
     title: 'Your blood sugar — and your stress hormones — were more connected than you knew.',
-    body: 'When energy steadied, cravings eased, or sleep improved, your body was telling you that the cortisol-blood sugar loop was under less strain. Long gaps without food, high-carbohydrate meals, and chronic stress all feed the same cycle — cortisol rises, blood sugar swings, and your body holds fat around the abdomen as a protective response. Building a steadier plate interrupted that cycle. The shift you felt in 48 hours is what happens when your nervous system stops receiving a constant low-level threat signal.',
+    body: (items) => `When your ${joinList(items)} shifted, your body was telling you that the cortisol-blood sugar loop was under less strain. Long gaps without food, high-carbohydrate meals, and chronic stress all feed the same cycle — cortisol rises, blood sugar swings, and your body holds fat around the abdomen as a protective response. Building a steadier plate interrupted that cycle. The shift you felt in 48 hours is what happens when your nervous system stops receiving a constant low-level threat signal.`,
     mechanism: 'Cortisol'
   },
   mixed: {
     title: 'Your body responded across more than one system.',
-    body: 'Improvements across both physical symptoms — like bloating and congestion — and energy or mood signal that more than one mechanism was in play. This is actually very common. Inflammation and cortisol dysregulation feed each other. When you reduce the inflammatory load, blood sugar stabilises more easily. When blood sugar stabilises, cortisol settles. The body does not work in neat separate channels — which is precisely why addressing one thing at a time has rarely been enough.',
+    body: (inflItems, cortItems, allItems) => {
+      const uniqueInfl = inflItems.filter(i => !cortItems.includes(i));
+      const uniqueCort = cortItems.filter(i => !inflItems.includes(i));
+      if(uniqueInfl.length > 0 && uniqueCort.length > 0) {
+        return `Improvements across both physical symptoms — ${joinList(uniqueInfl)} — and ${joinList(uniqueCort)} suggest more than one mechanism was in play for you. This is actually very common. Inflammation and cortisol dysregulation feed each other. When you reduce the inflammatory load, blood sugar stabilises more easily. When blood sugar stabilises, cortisol settles. The body does not work in neat separate channels — which is precisely why addressing one thing at a time has rarely been enough.`;
+      }
+      return `What shifted for you — ${joinList(allItems)} — doesn't map neatly onto a single mechanism, and that's genuinely common. Inflammation and cortisol dysregulation feed each other, so a change that doesn't sit cleanly in one category is still real evidence that something in the system moved. The body does not work in neat separate channels — which is precisely why addressing one thing at a time has rarely been enough.`;
+    },
     mechanism: 'Multiple mechanisms'
   },
   nothing: {
@@ -420,12 +451,15 @@ const SIGNALS = {
 function revealDecode() {
   const betterItems = Object.entries(results).filter(([,v]) => v === 'better').map(([k]) => k);
   const betterCount = betterItems.length;
-  const worseCount = Object.values(results).filter(v => v === 'worse').length;
+  const worseItems = Object.entries(results).filter(([,v]) => v === 'worse').map(([k]) => k);
+  const worseCount = worseItems.length;
   const sameCount = Object.values(results).filter(v => v === 'same').length;
 
   // Determine primary signal
-  const inflammationBetters = SIGNALS.inflammation.markers.filter(m => results[m] === 'better').length;
-  const cortisolBetters = SIGNALS.cortisol.markers.filter(m => results[m] === 'better').length;
+  const inflammationBetterItems = SIGNALS.inflammation.markers.filter(m => results[m] === 'better');
+  const cortisolBetterItems = SIGNALS.cortisol.markers.filter(m => results[m] === 'better');
+  const inflammationBetters = inflammationBetterItems.length;
+  const cortisolBetters = cortisolBetterItems.length;
 
   let primarySignal;
   if(betterCount === 0) {
@@ -444,6 +478,18 @@ function revealDecode() {
 
   const signal = SIGNALS[primarySignal];
 
+  // Resolve the personalised body text for whichever signal applies
+  let signalBody;
+  if(primarySignal === 'inflammation') {
+    signalBody = signal.body(inflammationBetterItems);
+  } else if(primarySignal === 'cortisol') {
+    signalBody = signal.body(cortisolBetterItems);
+  } else if(primarySignal === 'mixed') {
+    signalBody = signal.body(inflammationBetterItems, cortisolBetterItems, betterItems);
+  } else {
+    signalBody = signal.body; // 'nothing' has no items to reference — stays general
+  }
+
   // Build summary bar
   const bar = document.getElementById('results-bar');
   bar.innerHTML = '';
@@ -457,23 +503,26 @@ function revealDecode() {
     <div class="signal-eyebrow">YOUR PRIMARY SIGNAL</div>
     <div class="mechanism-badge">${signal.mechanism}</div>
     <div class="signal-title">${signal.title}</div>
-    <p class="signal-body">${signal.body}</p>
+    <p class="signal-body">${signalBody}</p>
   </div>`;
 
-  // Contextual additional cards
-  if(primarySignal === 'inflammation' && cortisolBetters >= 1) {
+  // Contextual additional cards — only reference items not already credited to the primary signal
+  const cortisolOnlyItems = cortisolBetterItems.filter(i => !inflammationBetterItems.includes(i));
+  const inflammationOnlyItems = inflammationBetterItems.filter(i => !cortisolBetterItems.includes(i));
+
+  if(primarySignal === 'inflammation' && cortisolOnlyItems.length >= 1) {
     html += `<div class="signal-card secondary">
       <div class="signal-eyebrow">ALSO WORTH NOTING</div>
       <div class="signal-title">Your cortisol pattern may also be involved.</div>
-      <p class="signal-body">Some of your energy or mood shifts suggest the blood sugar and cortisol connection is also relevant for you. Inflammation and cortisol dysregulation frequently run together — each one makes the other harder to resolve.</p>
+      <p class="signal-body">Your ${joinList(cortisolOnlyItems)} also improved, which suggests the blood sugar and cortisol connection is relevant for you too. Inflammation and cortisol dysregulation frequently run together — each one makes the other harder to resolve.</p>
     </div>`;
   }
 
-  if(primarySignal === 'cortisol' && inflammationBetters >= 1) {
+  if(primarySignal === 'cortisol' && inflammationOnlyItems.length >= 1) {
     html += `<div class="signal-card secondary">
       <div class="signal-eyebrow">ALSO WORTH NOTING</div>
       <div class="signal-title">There may be an inflammatory thread alongside this.</div>
-      <p class="signal-body">Some of your physical symptoms also responded, which suggests the food-inflammation connection is worth exploring further. Steadying blood sugar and reducing inflammatory food triggers are often two parts of the same picture.</p>
+      <p class="signal-body">Your ${joinList(inflammationOnlyItems)} also responded, which suggests the food-inflammation connection is worth exploring further for you. Steadying blood sugar and reducing inflammatory food triggers are often two parts of the same picture.</p>
     </div>`;
   }
 
@@ -481,7 +530,7 @@ function revealDecode() {
     html += `<div class="signal-card secondary">
       <div class="signal-eyebrow">ON THE THINGS THAT FELT WORSE</div>
       <div class="signal-title">Feeling worse before better is a known response.</div>
-      <p class="signal-body">When you remove a food your body has been reacting to, or shift a blood sugar pattern it has been relying on, a short adjustment period is common. Headaches, fatigue, or increased cravings in the first 48 to 72 hours often signal that the body was more dependent on the pattern than expected. This is not a sign that the approach is wrong — it is often the opposite.</p>
+      <p class="signal-body">Your ${joinList(worseItems)} getting worse in the first 48 to 72 hours is a known adjustment response. When you remove a food your body has been reacting to, or shift a blood sugar pattern it has been relying on, a short dip is common — it often signals that the body was more dependent on the pattern than expected. This is not a sign that the approach is wrong — it is often the opposite.</p>
     </div>`;
   }
 
