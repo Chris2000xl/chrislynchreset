@@ -280,6 +280,13 @@ nav{background:var(--teal);padding:13px 32px;display:flex;align-items:center;jus
 
 /* ── ABOUT ── */
 .about-sec{background:var(--teal);padding:56px 24px;position:relative;overflow:hidden;}
+
+/* ── PATH COLLAPSE ── */
+.path-body{max-height:3000px;overflow:hidden;transition:max-height 0.4s ease;}
+.path-body.collapsed{max-height:0;}
+.path-toggle-row{display:block;margin:18px 0 4px;}
+.path-toggle-link{display:inline-flex;align-items:center;gap:6px;font-family:var(--mono);font-size:13px;letter-spacing:0.5px;color:var(--teal);background:none;border:1px solid var(--sand);border-radius:20px;padding:8px 16px;cursor:pointer;text-decoration:none;}
+.path-toggle-link:hover{border-color:var(--teal);}
 .about-sec::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 90% 50%,rgba(26,53,53,0.45) 0%,transparent 60%);pointer-events:none;}
 .about-inner{max-width:680px;margin:0 auto;position:relative;z-index:1;}
 .about-photo-row{display:grid;grid-template-columns:200px 1fr;gap:40px;align-items:start;}
@@ -342,6 +349,12 @@ footer a{color:var(--teal-light);text-decoration:none;}
 
 
 </style>
+<noscript>
+<style>
+.path-body.collapsed{max-height:none !important;}
+.path-toggle-row{display:none !important;}
+</style>
+</noscript>
 </head>
 <body>
 
@@ -726,6 +739,11 @@ footer a{color:var(--teal-light);text-decoration:none;}
     <h2 class="sec-h2">Path A — gently set <em style="color:var(--amber);">one food</em> aside.</h2>
     <p class="experiment-subhead">This is your path if you recognised yourself most in Reason 01 — Inflammation or Reason 03 — Oestrogen. One small shop, then 48 hours — everything else stays exactly as it is.</p>
 
+    <div class="path-toggle-row" id="path-a-toggle-row">
+      <a class="path-toggle-link" href="#" data-closed-text="View this experiment ▾" onclick="togglePathBody('path-a'); return false;">View this experiment ▾</a>
+    </div>
+
+    <div class="path-body collapsed" id="path-a-body">
     <div class="dairy-gluten-q">
       <p class="dq-label">DO YOU ALREADY AVOID DAIRY, OR EAT VERY LITTLE OF IT?</p>
       <div class="dq-options">
@@ -769,6 +787,7 @@ footer a{color:var(--teal-light);text-decoration:none;}
     <a class="path-next-link" href="#s-observation">
       Now scroll down — what to notice during &amp; after the 48 hours &darr;
     </a>
+    </div>
   </div>
 </section>
 
@@ -780,6 +799,11 @@ footer a{color:var(--teal-light);text-decoration:none;}
     <h2 class="sec-h2">Path B — build a steadier plate.</h2>
     <p class="experiment-subhead">This is your path if you recognised yourself most in Reason 02 — Cortisol or Reason 04 — Metabolic Adaptation. Nothing is removed here — this is simply about how you build each plate.</p>
 
+    <div class="path-toggle-row" id="path-b-toggle-row">
+      <a class="path-toggle-link" href="#" data-closed-text="View this experiment ▾" onclick="togglePathBody('path-b'); return false;">View this experiment ▾</a>
+    </div>
+
+    <div class="path-body collapsed" id="path-b-body">
     <p style="font-size:17px;color:var(--body);margin-bottom:22px;line-height:1.85;">Your experiment is about steadying blood sugar — not removing food. At every meal, build your plate around these three:</p>
 
     <div class="plate-method">
@@ -818,6 +842,7 @@ footer a{color:var(--teal-light);text-decoration:none;}
     <a class="path-next-link" href="#s-observation">
       Now scroll down — what to notice during &amp; after the 48 hours &darr;
     </a>
+    </div>
   </div>
 </section>
 
@@ -1102,6 +1127,33 @@ function selectSymptom(card) {
     tpl.href = '#s-path-' + d.pathKey.toLowerCase();
     tpl.textContent = 'Go to your experiment — Path ' + d.pathKey + ' ↓';
   }
+
+  applyPathVisibility(d.pathKey);
+}
+
+// ─── PATH COLLAPSE ─────────────────────────────────────────
+function applyPathVisibility(recommendedKey) {
+  const rec = recommendedKey.toLowerCase();
+  const other = rec === 'a' ? 'b' : 'a';
+
+  document.getElementById('path-' + rec + '-body').classList.remove('collapsed');
+  document.getElementById('path-' + rec + '-toggle-row').style.display = 'none';
+
+  const otherBody = document.getElementById('path-' + other + '-body');
+  const otherLink = document.querySelector('#path-' + other + '-toggle-row .path-toggle-link');
+  otherBody.classList.add('collapsed');
+  document.getElementById('path-' + other + '-toggle-row').style.display = 'block';
+  if(otherLink) {
+    otherLink.dataset.closedText = 'Not your path — tap to view anyway ▾';
+    otherLink.textContent = otherLink.dataset.closedText;
+  }
+}
+
+function togglePathBody(pathId) {
+  const body = document.getElementById(pathId + '-body');
+  const link = document.querySelector('#' + pathId + '-toggle-row .path-toggle-link');
+  const nowCollapsed = body.classList.toggle('collapsed');
+  if(link) link.textContent = nowCollapsed ? link.dataset.closedText : 'Hide this ▴';
 }
 
 // Restore on load
