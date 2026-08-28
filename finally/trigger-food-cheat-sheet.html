@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Your Trigger Food Cheat Sheet · Chris Lynch</title>
+<meta name="description" content="Hidden sources of dairy, gluten, and sugar — and simple swaps for each. A companion resource from Chris Lynch, Health Coach."/>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%232D7A7A'/><text x='50%25' y='50%25' dominant-baseline='central' text-anchor='middle' font-family='Georgia,serif' font-size='14' font-weight='700' fill='%23D4874A'>CL</text></svg>"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Lato:wght@300;400;700&family=DM+Mono&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --teal:#2D7A7A;--teal-mid:#4A9E9E;--teal-light:#8ECECE;
+  --teal-dark:#1A3535;
+  --amber:#D4874A;--blush:#E8B89A;
+  --ivory:#FAF6EF;--sand:#EDE0CC;--slate:#8A9090;
+  --dark:#1A3535;--body:#3D5252;
+  --serif:'Playfair Display',Georgia,serif;
+  --sans:'Lato',sans-serif;
+  --mono:'DM Mono',monospace;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:var(--sans);background:var(--ivory);color:var(--body);line-height:1.75;-webkit-font-smoothing:antialiased;}
+
+.topbar{background:var(--dark);padding:9px 24px;text-align:center;}
+.topbar p{font-family:var(--mono);font-size:12px;color:var(--teal-light);letter-spacing:1.5px;}
+.topbar span{color:var(--amber);}
+
+nav{background:var(--teal);padding:13px 32px;display:flex;align-items:center;justify-content:space-between;box-shadow:0 2px 16px rgba(26,53,53,0.22);}
+.nav-logo{font-family:var(--serif);font-size:17px;color:var(--ivory);font-weight:400;}
+.nav-logo span{font-family:var(--mono);font-size:10px;color:var(--teal-light);display:block;letter-spacing:2px;}
+.nav-pill{font-family:var(--mono);font-size:11px;color:var(--teal-light);letter-spacing:1px;}
+
+.hero{background:var(--dark);padding:52px 24px 60px;text-align:center;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 15% 85%,rgba(212,135,74,0.12) 0%,transparent 55%),radial-gradient(ellipse at 85% 15%,rgba(45,122,122,0.1) 0%,transparent 50%);pointer-events:none;}
+.hero-inner{max-width:600px;margin:0 auto;position:relative;z-index:1;}
+.guide-tag{display:inline-block;font-family:var(--mono);font-size:12px;letter-spacing:2px;color:var(--amber);border:1px solid rgba(212,135,74,0.4);border-radius:20px;padding:5px 16px;margin-bottom:20px;text-transform:uppercase;}
+.hero h1{font-family:var(--serif);font-size:clamp(32px,6vw,50px);font-weight:700;color:var(--ivory);line-height:1.15;margin-bottom:14px;letter-spacing:-0.5px;}
+.hero h1 em{color:var(--amber);font-style:italic;}
+.hero-sub{font-family:var(--serif);font-style:italic;font-size:clamp(16px,2.5vw,20px);color:rgba(250,246,239,0.82);margin-bottom:8px;line-height:1.5;}
+
+.sec{padding:52px 24px;}
+.sec-inner{max-width:640px;margin:0 auto;}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:3px;text-transform:uppercase;color:var(--teal-mid);margin-bottom:12px;}
+.intro-body{font-size:17px;color:var(--body);line-height:1.85;margin-bottom:0;}
+
+/* ── FOOD SECTION BLOCKS ── */
+.food-block{padding:44px 24px;}
+.food-block.dairy{background:var(--ivory);}
+.food-block.gluten{background:#fff;}
+.food-block.sugar{background:var(--ivory);}
+.food-block-inner{max-width:640px;margin:0 auto;}
+.food-h2{font-family:var(--serif);font-size:clamp(24px,4vw,32px);color:var(--teal);font-weight:600;margin-bottom:6px;}
+.food-tag{font-family:var(--mono);font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--amber);margin-bottom:14px;display:block;}
+
+.hidden-box{background:var(--sand);border-left:3px solid var(--amber);border-radius:0 10px 10px 0;padding:20px 22px;margin:18px 0 24px;}
+.hidden-label{font-family:var(--mono);font-size:11px;letter-spacing:2px;color:var(--amber);text-transform:uppercase;margin-bottom:10px;}
+.hidden-box ul{list-style:none;}
+.hidden-box li{font-size:15.5px;color:var(--body);line-height:1.7;margin-bottom:8px;padding-left:18px;position:relative;}
+.hidden-box li::before{content:'—';position:absolute;left:0;color:var(--amber);}
+.hidden-box li strong{color:var(--dark);}
+
+.swap-grid{background:#fff;border-radius:10px;overflow:hidden;border:1.5px solid var(--sand);}
+.swap-col-header{background:var(--teal);padding:12px 16px;font-family:var(--mono);font-size:11px;letter-spacing:2px;color:var(--ivory);text-transform:uppercase;}
+.swap-items{padding:6px 16px;}
+.swap-row{display:grid;grid-template-columns:1fr 22px 1fr;gap:8px;align-items:center;padding:11px 0;border-bottom:1px solid var(--sand);}
+.swap-row:last-child{border-bottom:none;}
+.swap-from{font-size:15px;color:var(--body);}
+.swap-arrow{font-size:15px;color:var(--teal);text-align:center;}
+.swap-to{font-size:15px;color:var(--teal);font-weight:700;}
+
+@media(max-width:480px){
+  .swap-grid{border-radius:10px;}
+  .swap-row{grid-template-columns:1fr 18px 1fr;}
+  .swap-from,.swap-arrow,.swap-to{font-size:13.5px;}
+}
+
+/* ── CLOSING ── */
+.bridge-sec{background:var(--teal-dark);padding:56px 24px;}
+.bridge-inner{max-width:600px;margin:0 auto;text-align:center;}
+.bridge-h{font-family:var(--serif);font-size:clamp(22px,3.5vw,30px);color:var(--ivory);font-weight:600;line-height:1.3;margin-bottom:18px;}
+.bridge-h em{color:var(--amber);font-style:italic;}
+.bridge-body{font-size:16.5px;color:rgba(250,246,239,0.88);line-height:1.85;margin-bottom:20px;}
+
+footer{background:var(--dark);padding:28px 24px;text-align:center;}
+footer p{font-family:var(--mono);font-size:11px;color:rgba(250,246,239,0.4);line-height:1.8;}
+footer a{color:var(--teal-light);text-decoration:none;}
+
+/* ── ACCORDION ── */
+.food-toggle{display:flex;align-items:center;justify-content:space-between;cursor:pointer;user-select:none;}
+.food-toggle-icon{font-family:var(--mono);font-size:22px;color:var(--teal);width:28px;height:28px;border:1.5px solid var(--sand);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:transform 0.25s ease;}
+.food-toggle.open .food-toggle-icon{transform:rotate(45deg);}
+.food-content{max-height:0;overflow:hidden;transition:max-height 0.35s ease;}
+.food-content.open{max-height:2000px;}
+
+/* ── REFLECTION ── */
+.reflect-card{background:rgba(250,246,239,0.06);border:1px solid rgba(250,246,239,0.15);border-radius:14px;padding:24px 22px;margin:28px 0;text-align:left;}
+.reflect-label{font-family:var(--mono);font-size:11px;letter-spacing:2px;color:var(--teal-light);text-transform:uppercase;margin-bottom:10px;}
+.reflect-q{font-family:var(--serif);font-size:17px;color:var(--ivory);line-height:1.5;margin-bottom:14px;}
+.reflect-input{width:100%;background:rgba(250,246,239,0.08);border:1px solid rgba(250,246,239,0.2);border-radius:8px;padding:14px;color:var(--ivory);font-family:var(--sans);font-size:15px;line-height:1.6;resize:vertical;}
+.reflect-input::placeholder{color:rgba(250,246,239,0.4);}
+.reflect-private{font-family:var(--mono);font-size:11.5px;color:rgba(250,246,239,0.45);margin-top:10px;letter-spacing:0.3px;}
+</style>
+</head>
+<body>
+
+<div class="topbar"><p>YOUR TRIGGER FOOD <span>CHEAT SHEET</span></p></div>
+
+<nav>
+  <div class="nav-logo">Chris Lynch<span>HEALTH COACH</span></div>
+  <div class="nav-pill">A FOLLOW-UP TO YOUR SIGNAL DECODER</div>
+</nav>
+
+<section class="hero">
+  <div class="hero-inner">
+    <span class="guide-tag">One Practical Step</span>
+    <h1>Now that you know <em>why</em> — here's <em>where it hides.</em></h1>
+    <p class="hero-sub">Your Signal Decoder told you which mechanism was in play. This is the practical next step: the everyday places dairy, gluten, and sugar hide without you realising — and simple swaps for each.</p>
+  </div>
+</section>
+
+<!-- REFRAME -->
+<section class="sec" style="background:var(--ivory);padding-top:52px;">
+  <div class="sec-inner">
+    <div class="hidden-box" style="margin:0;">
+      <div class="hidden-label">WORTH KNOWING BEFORE YOU GO FURTHER</div>
+      <p style="font-family:var(--serif);font-size:clamp(20px,3vw,26px);color:var(--dark);font-weight:600;line-height:1.35;margin-bottom:16px;">One food shows you <em style="color:var(--amber);font-style:italic;">part</em> of the picture — not the whole one.</p>
+      <p style="font-size:16px;color:var(--body);line-height:1.8;margin-bottom:14px;">What you just tested was real. If dairy or gluten shifted something for you, that shift is genuine evidence, not a coincidence. But here's what's also true: inflammation, cortisol, oestrogen decline, and metabolic adaptation don't work in isolation — they feed into each other. Removing one food shows you one thread. It doesn't show you the whole pattern, because the pattern was never made of just one thread.</p>
+      <p style="font-size:16px;color:var(--body);line-height:1.8;margin-bottom:0;">That's not a flaw in your experiment. It's simply what testing one variable at a time can, and can't, tell you. The swaps below still matter — dairy and gluten remain the two most common starting points for a reason. But if you try them and only feel a partial shift, that's not you doing something wrong. It's a sign there's more than one thread to pull.</p>
+    </div>
+  </div>
+</section>
+
+<section class="sec" style="padding-top:0;">
+  <div class="sec-inner">
+    <p class="eyebrow">BEFORE YOU START</p>
+    <p class="intro-body">You don't need all three of these. If inflammation or oestrogen came up as your signal, dairy and gluten are worth your attention. If cortisol or metabolic adaptation came up, sugar is the one to look at first. Either way — this isn't about cutting everything out forever. It's about knowing where to look.</p>
+    <p class="intro-body" style="margin-top:16px;">One more thing worth knowing: in your first experiment, you were only ever routed to test dairy <em>or</em> gluten — never both — based on whether you already avoid dairy day to day, not on which one might actually matter more for you. So if inflammation or oestrogen came up as your signal, the food you didn't test the first time is probably the most useful next step now — testing it either rules it in or rules it out, rather than leaving it an open question. If neither felt like a clean test because you already eat very little of one of them, that's useful too: it likely means that one was never going to show you much, so the other deserves your attention first.</p>
+  </div>
+</section>
+
+<!-- DAIRY -->
+<div class="food-block dairy">
+  <div class="food-block-inner">
+    <span class="food-tag">01 · Dairy</span>
+    <div class="food-toggle" onclick="toggleFood('dairy-content', this)">
+      <h2 class="food-h2" style="margin-bottom:0;">Where it hides.</h2>
+      <span class="food-toggle-icon">+</span>
+    </div>
+
+    <div class="food-content" id="dairy-content">
+    <div class="hidden-box" style="margin-top:18px;">
+      <div class="hidden-label">CHECK THE LABEL FOR</div>
+      <ul>
+        <li>Non-dairy creamers — many still contain <strong>sodium caseinate</strong></li>
+        <li>Protein powders and bars — whey and casein are common bases</li>
+        <li>Deli meats and sausages — milk proteins are used as a binder</li>
+        <li>"May contain milk" dark chocolate and baked goods</li>
+        <li>Cream-based soups, white sauces, and salad dressings</li>
+        <li>Some breads — milk or whey powder added for softness</li>
+      </ul>
+    </div>
+
+    <div class="swap-grid">
+      <div class="swap-col-header">EASY SWAPS</div>
+      <div class="swap-items">
+        <div class="swap-row"><span class="swap-from">Ice cream</span><span class="swap-arrow">→</span><span class="swap-to">Frozen banana "nice cream"</span></div>
+        <div class="swap-row"><span class="swap-from">Cream in soups/sauces</span><span class="swap-arrow">→</span><span class="swap-to">Coconut milk or cashew cream</span></div>
+        <div class="swap-row"><span class="swap-from">Creamy salad dressing</span><span class="swap-arrow">→</span><span class="swap-to">Olive oil, lemon &amp; herbs</span></div>
+        <div class="swap-row"><span class="swap-from">Whey protein shake</span><span class="swap-arrow">→</span><span class="swap-to">Pea or hemp protein</span></div>
+        <div class="swap-row"><span class="swap-from">Milk chocolate</span><span class="swap-arrow">→</span><span class="swap-to">70%+ dark chocolate</span></div>
+      </div>
+    </div>
+    </div>
+  </div>
+</div>
+
+<!-- GLUTEN -->
+<div class="food-block gluten">
+  <div class="food-block-inner">
+    <span class="food-tag">02 · Gluten</span>
+    <div class="food-toggle" onclick="toggleFood('gluten-content', this)">
+      <h2 class="food-h2" style="margin-bottom:0;">Where it hides.</h2>
+      <span class="food-toggle-icon">+</span>
+    </div>
+
+    <div class="food-content" id="gluten-content">
+    <div style="height:18px;"></div>
+
+    <div class="hidden-box">
+      <div class="hidden-label">CHECK THE LABEL FOR</div>
+      <ul>
+        <li>Soy sauce — most brands contain wheat</li>
+        <li>Gravies and stock cubes — wheat flour is a common thickener</li>
+        <li>Deli meats and sausages — wheat used as a filler</li>
+        <li>Salad dressings and sauces</li>
+        <li>Oats — cross-contamination unless labelled gluten-free</li>
+        <li>Beer, and some spice blends (anti-caking agents)</li>
+      </ul>
+    </div>
+
+    <div class="swap-grid">
+      <div class="swap-col-header">EASY SWAPS</div>
+      <div class="swap-items">
+        <div class="swap-row"><span class="swap-from">Soy sauce</span><span class="swap-arrow">→</span><span class="swap-to">Tamari or coconut aminos</span></div>
+        <div class="swap-row"><span class="swap-from">Stock cube / gravy</span><span class="swap-arrow">→</span><span class="swap-to">Gluten-free stock, cornflour to thicken</span></div>
+        <div class="swap-row"><span class="swap-from">Beer</span><span class="swap-arrow">→</span><span class="swap-to">Wine, cider, or GF beer</span></div>
+        <div class="swap-row"><span class="swap-from">Plain flour for cooking</span><span class="swap-arrow">→</span><span class="swap-to">Rice or buckwheat flour</span></div>
+        <div class="swap-row"><span class="swap-from">Couscous</span><span class="swap-arrow">→</span><span class="swap-to">Quinoa or rice</span></div>
+        <div class="swap-row"><span class="swap-from">Breaded/battered food</span><span class="swap-arrow">→</span><span class="swap-to">GF breadcrumbs or almond flour coating</span></div>
+      </div>
+    </div>
+    </div>
+  </div>
+</div>
+
+<!-- SUGAR -->
+<div class="food-block sugar">
+  <div class="food-block-inner">
+    <span class="food-tag">03 · Sugar</span>
+    <div class="food-toggle" onclick="toggleFood('sugar-content', this)">
+      <h2 class="food-h2" style="margin-bottom:0;">Where it hides.</h2>
+      <span class="food-toggle-icon">+</span>
+    </div>
+
+    <div class="food-content" id="sugar-content">
+    <div style="height:18px;"></div>
+
+    <div class="hidden-box">
+      <div class="hidden-label">CHECK THE LABEL FOR</div>
+      <ul>
+        <li>Pasta sauces and ketchup — often surprisingly high in sugar</li>
+        <li>"Low-fat" flavoured yogurts — sugar often replaces the fat</li>
+        <li>Granola and cereal bars marketed as healthy</li>
+        <li>Some breads — added sugar for texture and shelf life</li>
+        <li>Salad dressings</li>
+        <li>Flavoured coffee and tea drinks, and most fruit juice</li>
+      </ul>
+    </div>
+
+    <div class="swap-grid">
+      <div class="swap-col-header">EASY SWAPS</div>
+      <div class="swap-items">
+        <div class="swap-row"><span class="swap-from">Flavoured yogurt</span><span class="swap-arrow">→</span><span class="swap-to">Plain yogurt + berries</span></div>
+        <div class="swap-row"><span class="swap-from">Granola bar</span><span class="swap-arrow">→</span><span class="swap-to">Nuts and a piece of fruit</span></div>
+        <div class="swap-row"><span class="swap-from">Fizzy drink</span><span class="swap-arrow">→</span><span class="swap-to">Sparkling water + citrus</span></div>
+        <div class="swap-row"><span class="swap-from">Fruit juice</span><span class="swap-arrow">→</span><span class="swap-to">Whole fruit</span></div>
+        <div class="swap-row"><span class="swap-from">Needing something sweet</span><span class="swap-arrow">→</span><span class="swap-to">Cinnamon or vanilla added to food</span></div>
+      </div>
+    </div>
+    </div>
+  </div>
+</div>
+
+<section class="bridge-sec">
+  <div class="bridge-inner">
+    <h2 class="bridge-h">You don't need to <em>get this perfect.</em></h2>
+    <p class="bridge-body">Pick one category — dairy, gluten, or sugar, not all three at once — and try it for the next 3 to 4 days. Changing everything together makes it impossible to know what's actually helping. That's the whole task. Notice what happens, the same way you did with your first experiment.</p>
+
+    <div class="reflect-card">
+      <div class="reflect-label">YOUR PRIVATE NOTE</div>
+      <p class="reflect-q">What are you going to try, and what would you actually notice if it worked?</p>
+      <textarea class="reflect-input" placeholder="Write what comes up. This is for you only — it will not be saved or sent anywhere." rows="4"></textarea>
+      <p class="reflect-private">This stays on your device and is never shared or stored.</p>
+    </div>
+
+    <p class="bridge-body">If you want, reply to the email this came from and tell me what you're trying, or what you noticed after a few days. I read every reply myself.</p>
+    <p class="bridge-body">You won't hear from me every day. But you're on my list, and I'll be back in touch when it matters.</p>
+    <p style="font-size:14px;color:rgba(250,246,239,0.5);font-family:var(--mono);letter-spacing:0.5px;margin-top:8px;">— Chris Lynch, Health Coach</p>
+  </div>
+</section>
+
+<footer>
+  <p>© <span id="yr"></span> Chris Lynch · chrislynchreset.com<br>
+  <a href="https://www.iubenda.com/privacy-policy/66383332" target="_blank" rel="noopener">Privacy Policy</a></p>
+</footer>
+
+<script>
+document.getElementById('yr').textContent = new Date().getFullYear();
+
+function toggleFood(contentId, headerEl) {
+  const content = document.getElementById(contentId);
+  const isOpen = content.classList.contains('open');
+  content.classList.toggle('open', !isOpen);
+  headerEl.classList.toggle('open', !isOpen);
+}
+</script>
+
+</body>
+</html>
