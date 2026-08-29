@@ -737,7 +737,7 @@ footer a{color:var(--teal-light);text-decoration:none;}
     <div id="path-a-badge" class="reason-relevance">★ THIS IS YOUR RECOMMENDED EXPERIMENT</div>
     <p class="eyebrow">YOUR 48-HOUR EXPERIMENT · PATH A OF TWO</p>
     <h2 class="sec-h2">Path A — gently set <em style="color:var(--amber);">one food</em> aside.</h2>
-    <p class="experiment-subhead">This is your path if you recognised yourself most in Reason 01 — Inflammation or Reason 03 — Oestrogen. One small shop, then 48 hours — everything else stays exactly as it is.</p>
+    <p class="experiment-subhead" id="path-a-subhead">This is your path if you recognised yourself most in Reason 01 — Inflammation or Reason 03 — Oestrogen. One small shop, then 48 hours — everything else stays exactly as it is.</p>
 
     <div class="path-toggle-row" id="path-a-toggle-row">
       <a class="path-toggle-link" href="#" data-closed-text="View this experiment ▾" onclick="togglePathBody('path-a'); return false;">View this experiment ▾</a>
@@ -797,7 +797,7 @@ footer a{color:var(--teal-light);text-decoration:none;}
     <div id="path-b-badge" class="reason-relevance">★ THIS IS YOUR RECOMMENDED EXPERIMENT</div>
     <p class="eyebrow">YOUR 48-HOUR EXPERIMENT · PATH B OF TWO</p>
     <h2 class="sec-h2">Path B — build a steadier plate.</h2>
-    <p class="experiment-subhead">This is your path if you recognised yourself most in Reason 02 — Cortisol or Reason 04 — Metabolic Adaptation. Nothing is removed here — this is simply about how you build each plate.</p>
+    <p class="experiment-subhead" id="path-b-subhead">This is your path if you recognised yourself most in Reason 02 — Cortisol or Reason 04 — Metabolic Adaptation. Nothing is removed here — this is simply about how you build each plate.</p>
 
     <div class="path-toggle-row" id="path-b-toggle-row">
       <a class="path-toggle-link" href="#" data-closed-text="View this experiment ▾" onclick="togglePathBody('path-b'); return false;">View this experiment ▾</a>
@@ -1140,12 +1140,19 @@ function applyPathVisibility(recommendedKey) {
   document.getElementById('path-' + rec + '-toggle-row').style.display = 'none';
 
   const otherBody = document.getElementById('path-' + other + '-body');
-  const otherLink = document.querySelector('#path-' + other + '-toggle-row .path-toggle-link');
+  const otherToggleRow = document.getElementById('path-' + other + '-toggle-row');
+  const otherLink = otherToggleRow.querySelector('.path-toggle-link');
+  const otherSubhead = document.getElementById('path-' + other + '-subhead');
   otherBody.classList.add('collapsed');
-  document.getElementById('path-' + other + '-toggle-row').style.display = 'block';
+  otherToggleRow.style.display = 'block';
   if(otherLink) {
     otherLink.dataset.closedText = 'Not your path — tap to view anyway ▾';
     otherLink.textContent = otherLink.dataset.closedText;
+  }
+  // Move the skip button to appear right after the heading, before the subhead —
+  // so skipping this path doesn't require reading a paragraph about it first.
+  if(otherSubhead && otherSubhead.parentNode) {
+    otherSubhead.parentNode.insertBefore(otherToggleRow, otherSubhead);
   }
 }
 
