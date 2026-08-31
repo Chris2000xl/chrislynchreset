@@ -285,8 +285,9 @@ nav{background:var(--teal);padding:13px 32px;display:flex;align-items:center;jus
 .path-body{max-height:3000px;overflow:hidden;transition:max-height 0.4s ease;}
 .path-body.collapsed{max-height:0;}
 .path-toggle-row{display:block;margin:18px 0 4px;}
-.path-toggle-link{display:inline-flex;align-items:center;gap:6px;font-family:var(--mono);font-size:13px;letter-spacing:0.5px;color:var(--teal);background:rgba(45,122,122,0.08);border:1px solid rgba(45,122,122,0.35);border-radius:20px;padding:8px 16px;cursor:pointer;text-decoration:none;}
-.path-toggle-link:hover{background:rgba(45,122,122,0.14);border-color:var(--teal);}
+.path-toggle-link{display:inline-flex;align-items:center;gap:7px;font-family:var(--mono);font-size:14px;font-weight:700;letter-spacing:0.5px;color:var(--amber);background:rgba(212,135,74,0.12);border:1.5px solid rgba(212,135,74,0.4);border-radius:24px;padding:11px 20px;cursor:pointer;text-decoration:none;}
+.path-toggle-link:hover{background:rgba(212,135,74,0.2);border-color:var(--amber);}
+.subhead-muted{color:var(--slate)!important;font-style:normal!important;}
 .about-sec::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 90% 50%,rgba(26,53,53,0.45) 0%,transparent 60%);pointer-events:none;}
 .about-inner{max-width:680px;margin:0 auto;position:relative;z-index:1;}
 .about-photo-row{display:grid;grid-template-columns:200px 1fr;gap:40px;align-items:start;}
@@ -1138,6 +1139,8 @@ function applyPathVisibility(recommendedKey) {
 
   document.getElementById('path-' + rec + '-body').classList.remove('collapsed');
   document.getElementById('path-' + rec + '-toggle-row').style.display = 'none';
+  const recSubhead = document.getElementById('path-' + rec + '-subhead');
+  if(recSubhead) recSubhead.classList.remove('subhead-muted');
 
   const otherBody = document.getElementById('path-' + other + '-body');
   const otherToggleRow = document.getElementById('path-' + other + '-toggle-row');
@@ -1149,6 +1152,7 @@ function applyPathVisibility(recommendedKey) {
     otherLink.dataset.closedText = 'Not your path — tap to view anyway ▾';
     otherLink.textContent = otherLink.dataset.closedText;
   }
+  if(otherSubhead) otherSubhead.classList.add('subhead-muted');
   // Move the skip button to appear right after the heading, before the subhead —
   // so skipping this path doesn't require reading a paragraph about it first.
   if(otherSubhead && otherSubhead.parentNode) {
